@@ -11,10 +11,11 @@ body {
 
 /* Container */
 .container {
-    width: 960px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns */
     grid-template-rows: auto auto;
+    flex-wrap:wrap;
     gap: 10px;
     background-color: #ffffff;
     border: 1px solid #ccc;
@@ -39,11 +40,13 @@ body {
 .box {
     border: 1px solid #ddd;
     border-radius: 8px;
+    flex: 1 1 calc(100% - 20px); /* Makes boxes take full width on smaller screens */
     padding: 20px;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
     justify-content: middle;
+    position: relative; /* Positions the elements relative to the box */
 }
 
 /* Other Specific Box Styles */
@@ -110,12 +113,17 @@ body {
     align-items: center; /* Align items vertically in the center */
     justify-content: center; /* Ensure the entire container is centered */
     gap: 10px; /* Add spacing between images and the counter */
+    max-width: 100%; /* Prevents the container from exceeding the screen width */
 }
 
 .counter-image {
     width: 80px; /* Adjust the size as needed */
+    max-width:100%;
     height: auto;
-}
+    object-fit: contain; /* Ensures the entire image is visible within the box */
+    display: block; /* Removes extra spacing around inline images */
+    margin: 0 auto; /* Centers the image within the container */
+    }
 #current-color-selector {
     width: 100%;
     padding: 8px;
@@ -179,4 +187,50 @@ body {
 
 #timer-box button:hover {
     background-color: grey;
+}
+/* Mobile View */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Stacks boxes vertically */
+        grid-template-rows: auto; /* Adjust row heights dynamically */
+        gap: 15px; /* Adds space between boxes */
+        width: 100%; /* Ensures container fits the viewport width */
+    }
+    .box {
+        flex: 1 1 100%; /* Ensures all boxes take full width */
+            padding: 15px; /* Reduces padding for smaller screens */
+            margin: 5px 0; /* Simplifies spacing between boxes */
+    }
+
+    #color-inputs-container div {
+        display: block; /* Stacks color inputs vertically */
+        margin-bottom: 10px;
+    }
+
+    .button-container {
+        flex-direction: column; /* Stacks buttons vertically */
+        gap: 5px; /* Adds spacing between buttons */
+    }
+
+    h1, h2 {
+        font-size: 20px; /* Adjusts font size for headers */
+    }
+
+    input, select {
+        font-size: 14px; /* Adjusts input font size */
+    }
+    .counter-image, #sparkle-right-image, #sparkle-left-image, #color-inputs-container input[type="color"] {
+        max-width: 100%; /* Prevents images from exceeding their container */
+        height: auto; /* Keeps aspect ratio */
+    }    
+    .counter-image {
+        max-width: 60%; /* Reduces the image size for smaller screens */
+        height: auto; /* Maintains aspect ratio */
+    }
+    .counter-container {
+        flex-direction: column; /* Stacks elements vertically on smaller screens */
+    }
+}
+body {
+    overflow-x: hidden; /* Prevents horizontal scrolling */
 }
