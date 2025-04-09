@@ -234,3 +234,8 @@ body {
 body {
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
+.sparkles {
+    display: flex; /* Displays the images in a row */
+    justify-content: center; /* Centers the images horizontally */
+    gap: 10px; /* Adds spacing between the images */
+}
