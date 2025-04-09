@@ -66,7 +66,8 @@
         }
         @media (max-width: 768px) 
         {
-        .topnav a {
+        
+            .topnav a {
             font-size: 16px;
             width:80%;
             }
@@ -81,6 +82,14 @@
             grid-column: 1 / span 2; /* Ensure each element takes the full width */
             font-size:12px;
         }
+        .ul{
+                padding-left:0px;
+                margin-left:0px;
+            }
+            .il{
+                text-indent:none;
+                padding-left:0px;
+            }
         }
     .grid-container {
                 display: grid;
@@ -135,12 +144,21 @@
             a:hover {
              color: darkslateblue; /* Optional: Changes the link color when hovered over */
             }
-            .ul {
-            list-style-type:none;
-        }
-        .il{
-            font-size:18px;
-        }
+            ul {
+            list-style-type:disc;
+            padding-left: 0px;
+            margin-left:0px;
+            }
+            ul li{
+                font-size:18px;
+                padding-left: 0px;
+                margin-left:20px;
+            }
+            ol li{
+                font-size:18px;
+                padding-left: 20px;
+                margin-left:0px;
+            }
     </style>
 </head>
 <body>
@@ -169,7 +187,7 @@
         </div>
         <div class="text">
         <b><p>I began by drafting out my idea and understanding the steps I needed to take.</p></b>
-            <ol class="il">
+            <ol>
                 <li>Draft design in Figma to understand the layout structure and functionality I wanted</li><br>
                 <li>Confirm the functionality I wanted: increasing and decreasing values, capture user inputs, and graphic animations that play upon achieving a goal</li><br>
                 <li>Create gif animations in Piskell to utilize for goal animations </li><br>
@@ -184,7 +202,7 @@
         <div class="text">
             <b><p>Next, I used VSCode to write CSS, HTML, and JavaScript to accomplish a basic understanding of the functionality in practice.</b> <br><br>My first project was designing the website you're seeing now, so I did not have much experience with JavaScript. This crochet project allowed me to understand more of what JavaScript was capable of and how to think about the different actions needed for desired functionality. The main JavaScript functionality does the following:</p>
             <ul>
-                <ul class="il"><li>Increases the number of stitches completed (decreasing to come later!). The HTML and CSS create the buttons, but the JavaScript identifies what value to update and to increase by 1.</li><br>
+                <ul><li>Increases the number of stitches completed (decreasing to come later!). The HTML and CSS create the buttons, but the JavaScript identifies what value to update and to increase by 1.</li><br>
                 <li>Allows users to enter their own goals. This input is user text, where I formatted the Timer Goals to be in Minutes and Hours instead of the default time values. </li><br>
                 <li>Saves and re-loads values after leaving and returning to the session, so a user can keep track of progress.</li>
             </ul>
@@ -209,13 +227,12 @@
         <div class="text">
             <p><b>I finalized the design, tested that each input worked as expected, updated my website to reflect this project, and completed my project!</b><br><br></p>
             <ul>
-                <ul class="il">
-                <li>Start, pause, and stop a timer to keep track of how long they have been working on a project.</li><br>
-                <li>Indicate the hook size they are working with. It is hard to remember and if you come back to it later, using the wrong hook size will create inconsistent stitches.</li><br>
-                <li>Select what colors they are working with to keep track of color compatability as well as progress. The EventListener JavaScript ensures they save after selection.</li><br>
-                <li>Input goals for rows, stitches, and time (calculated in total seconds). Upon achieving any of these goals, a unique gif animation will display in celebration. Give it a try!</li><br>
-                <li>Check what goals have been achieved and ensure dynamic goals display. For example, if I achieve my Row Goal and my Stitch Goal, but then need to change my Stitch Goal, my Row Goal should remain in animation and my Stitch Goal animation should stop until reached again.</li><br>
-                <li>Track current stitch and row counts so you don't lose your place while working. I have prevented negative values from being calculated.</li>
+                    <li>Start, pause, and stop a timer to keep track of how long they have been working on a project.</li><br>
+                    <li>Indicate the hook size they are working with. It is hard to remember and if you come back to it later, using the wrong hook size will create inconsistent stitches.</li><br>
+                    <li>Select what colors they are working with to keep track of color compatability as well as progress. The EventListener JavaScript ensures they save after selection.</li><br>
+                    <li>Input goals for rows, stitches, and time (calculated in total seconds). Upon achieving any of these goals, a unique gif animation will display in celebration. Give it a try!</li><br>
+                    <li>Check what goals have been achieved and ensure dynamic goals display. For example, if I achieve my Row Goal and my Stitch Goal, but then need to change my Stitch Goal, my Row Goal should remain in animation and my Stitch Goal animation should stop until reached again.</li><br>
+                    <li>Track current stitch and row counts so you don't lose your place while working. I have prevented negative values from being calculated.</li>
             </ul>
         </div>
 
