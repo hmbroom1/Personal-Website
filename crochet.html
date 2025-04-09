@@ -8,9 +8,13 @@
 </head>
 <body>
 
-    <div class="container">
-        <!-- Title -->
+<!-- Title -->
         <h1 class="title">Keeping Up With Crochet</h1>
+
+<!-- Clear Project Button -->
+        <div class="clear-project-row">
+             <button id="clear-project-button">Clear Project</button>
+        </div>
 
         <div class="box" id="timer-box">
             <h2>Project Timer</h2>
@@ -396,34 +400,93 @@ document.getElementById("time-goal-minutes").addEventListener("input", saveTimeG
             }
         }
     
-        // Increment function
-        function incrementCounter(id) {
-            let counter = document.getElementById(id);
-            counter.value = parseInt(counter.value) + 1;
-            saveData(); // Save data to localStorage whenever a change is made
-    
-            // Recheck goals after increment
-            checkGoals();
-        }
-    
-        // Decrement function
-        function decrementCounter(id) {
-            let counter = document.getElementById(id);
-            if (parseInt(counter.value) > 0) { // Prevent going below zero
-                counter.value = parseInt(counter.value) - 1;
-                saveData(); // Save data to localStorage whenever a change is made
-    
-                // Recheck goals after decrement
-                checkGoals();
-            }
-        }
-    
-        // Save data whenever an input or selection changes
-        document.getElementById("hook-size-small").addEventListener("change", saveData);
-        document.getElementById("hook--size-large").addEventListener("change", saveData);
-        document.getElementById("row-goal").addEventListener("input", saveData);
-        document.getElementById("stitch-goal").addEventListener("input", saveData);
-    
+     // Increment function
+function incrementCounter(id) {
+    let counter = document.getElementById(id);
+    counter.value = parseInt(counter.value) + 1;
+    saveData(); // Save data to localStorage whenever a change is made
+
+    // Recheck goals after increment
+    checkGoals();
+}
+
+// Decrement function
+function decrementCounter(id) {
+    let counter = document.getElementById(id);
+    if (parseInt(counter.value) > 0) { // Prevent going below zero
+        counter.value = parseInt(counter.value) - 1;
+        saveData(); // Save data to localStorage whenever a change is made
+
+        // Recheck goals after decrement
+        checkGoals();
+    }
+}
+
+// Save data whenever an input or selection changes
+document.getElementById("hook-size-small").addEventListener("change", saveData);
+document.getElementById("hook--size-large").addEventListener("change", saveData);
+document.getElementById("row-goal").addEventListener("input", saveData);
+document.getElementById("stitch-goal").addEventListener("input", saveData);
+
+
+  // Clear Project
+document.getElementById('clear-project-button').addEventListener('click', function () {
+    // Reset Timer
+    const timerDisplay = document.getElementById('timer-display');
+    if (timerDisplay) {
+        timerDisplay.textContent = '00:00:00'; // Resets timer display
+    }
+
+    // Reset Crochet Hook Size Selections
+    const hookSizeSelectors = document.querySelectorAll('#hook-size-small, #hook--size-large');
+    hookSizeSelectors.forEach(selector => {
+        selector.selectedIndex = 0; // Resets dropdown to default option
+    });
+
+    // Reset Goals
+    const goalInputs = document.querySelectorAll('#row-goal, #stitch-goal, #time-goal-hours, #time-goal-minutes');
+    goalInputs.forEach(input => {
+        input.value = ''; // Clears input values
+    });
+
+    // Reset Yarn Color Selections
+    const colorInputs = document.querySelectorAll('#color-inputs-container input[type="color"]');
+    colorInputs.forEach(colorInput => {
+        colorInput.value = '#ffffff'; // Resets all color pickers to white
+    });
+
+    // Clear 'Currently Working With' and 'Current Color'
+    const currentColorDisplay = document.getElementById('current-color-selector');
+    const activeColorText = document.getElementById('active-color');
+    if (currentColorDisplay) {
+        currentColorDisplay.value = '#ffffff'; // Resets current color to white
+    }
+    if (activeColorText) {
+        activeColorText.style.backgroundColor = '#ffffff'; // Resets active color display
+    }
+
+    // Reset Stitch and Row Counters
+    const counters = document.querySelectorAll('#stitch-counter, #row-counter');
+    counters.forEach(counter => {
+        counter.value = '0'; // Resets counters to zero
+    });
+
+    // Stop and Clear Goal Animations
+    const goalAnimations = document.querySelectorAll('#sparkle-left-image, #sparkle-right-image');
+    goalAnimations.forEach(animation => {
+        animation.style.display = 'none'; // Hides animation elements
+    });
+
+    const rowAnimations = document.querySelectorAll('#row-left-image, #row-right-image');
+    rowAnimations.forEach(animation => {
+        animation.style.display = 'none'; // Hides row animations
+    });
+
+    // Clear Local Storage
+    localStorage.clear(); // Removes all saved data in localStorage
+
+});
+
     </script>
     
 
