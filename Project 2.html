@@ -66,11 +66,20 @@
         }
         @media (max-width: 768px) 
         {
-        
-            .topnav a {
-            font-size: 16px;
-            width:80%;
+            .topnav {
+                flex-direction: column; /* Stack items vertically */
+                height: auto; /* Adjust height to fit all items */
+                align-items: stretch; /* Make items fill the width of the container */
             }
+            .topnav a {
+                margin: 5px 0; /* Add spacing between buttons */
+                text-align: center; /* Center text in each link */
+                padding: 10px; /* Adjust padding for better fit */
+                font-size: 16px; /* Reduce font size for smaller screens */
+            }
+        .topnav a.email-me {
+            align-self: center; /* Ensure "Email Me" is properly aligned */
+        }
             img {
                 width: 100%;
                 height: auto;
@@ -90,6 +99,7 @@
                 text-indent:none;
                 padding-left:0px;
             }
+            
         }
     .grid-container {
                 display: grid;
