@@ -239,3 +239,24 @@ body {
     justify-content: center; /* Centers the images horizontally */
     gap: 10px; /* Adds spacing between the images */
 }
+.clear-project-row {
+    grid-column: 1 / -1; /* Spans across both columns */
+    text-align: center; /* Centers content horizontally */
+    margin-bottom:10px;
+}
+
+#clear-project-button {
+    background-color: grey; /* Red background */
+    color: white; /* White text */
+    font-size: 12px; /* Small text size */
+    border: 3px solid black;
+    padding: 5px 10px; /* Compact padding */
+    border-radius: 3px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    margin: 0 auto; /* Centers the button within the row */
+    display: inline-block; /* Ensures button does not stretch */
+}
+
+#clear-project-button:hover {
+    background-color: darkgrey; /* Darker red on hover */
+}
