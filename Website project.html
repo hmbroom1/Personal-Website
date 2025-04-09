@@ -75,7 +75,8 @@
 
         .column img {
         margin-top: 12px;
-        animation: slideInFromBelow 3s ease-in;
+        animation: slideInFromBelow 3s ease-in forwards;
+        opacity:0;
         }
 
         /* Clear floats after the columns */
@@ -100,21 +101,22 @@
             }
         }
         
-        .column img:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .column img:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        .column img:nth-child(3) {
-            animation-delay: 1s;
-        }
-        .column img:nth-child(4) {
-            animation-delay: 1.5s;
-        }
-        .column img:nth-child(5) {
-            animation-delay: 2s;
-        }
+        .column img:nth-child(1) {
+        animation-delay: .25s;
+        }
+        .column img:nth-child(2) {
+        animation-delay: .5s;
+        }
+        .column img:nth-child(3) {
+        animation-delay: .75s;
+        }
+        .column img:nth-child(4) {
+        animation-delay: 1s;
+        }
+        .column img:nth-child(5) {
+        animation-delay: 1.25s;
+        }
+
         @keyframes rotateStar{
             0% {
                 transform: rottate(0deg);
@@ -141,6 +143,7 @@
         }
         .row{
             font-size:12px;
+            flex-wrap:wrap;
         }
         .column img{
             height:5px;
@@ -168,7 +171,7 @@
     <body>
 
         <nav class="topnav">
-            <a href="index.html">About Me</a>
+            <a href="main website code.html">About Me</a>
             <a href="Resume.html">Resume</a>
             <a class="active" href="Current Projects.html">Current Projects</a>
             <a href="mailto:hmbroom1@gmail.com" class="email-me">Email Me <ion-icon name="mail-outline"></ion-icon></a>
@@ -181,14 +184,11 @@
             <p style="padding-top:20px;">I made this website with the goal of gaining a better understanding of front end development. I used HTML, CSS, and some basic JavaScript to create this website. I really enjoyed the process of starting from scratch and having to teach something completely new to myself. I now have a basic understanding of how websites are created and coding concepts. This project is only the beginning of my curiousity into the tech space!
             </p>
                 <div class="row">
-                    <img style="height:75px" src="images/stack overflow.png">
-                    <img style="height:75px" src="images/github.png">
-                    <img style="height:75px" src="images/visual studio code.png">
-
-                    <div class="row">
-                        <img style="height:75px" src="images/html.png">   
-                        <img style="height:75px" src="images/youtube.png">
-                    </div>
+                    <img style="height:75px" src="icons/stack overflow.png">
+                    <img style="height:75px" src="icons/github.png">
+                    <img style="height:75px" src="icons/visual studio code.png">
+                        <img style="height:75px" src="icons/html.png">   
+                        <img style="height:75px" src="icons/youtube.png">
                 </div>
             </div>
             <div class="column">
