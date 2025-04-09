@@ -1,0 +1,182 @@
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+/* Container */
+.container {
+    width: 960px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    grid-template-rows: auto auto;
+    gap: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.title {
+    grid-column: 1 / -1; /* Span both columns */
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid lightgrey;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Box Styles */
+.box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: middle;
+}
+
+/* Other Specific Box Styles */
+#hook-size-box select, #goals-box input[type="number"] 
+{   width: 100%; 
+    padding: 8px; 
+    font-size: 16px; 
+    margin-bottom: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+}
+.box h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+/* Counter Styles */
+.counter {
+    display: flex;
+    align-items: center;
+}
+.counter button:first-of-type {
+    margin-right: 10px; /* Space between the decrease button and the text box */
+}
+.counter input[type="text"] {
+    width: 60px;
+    text-align: center;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.counter button {
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    height:40px;
+    width:40px;
+}
+.counter button:hover {
+    background-color: grey;
+}
+.gif-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: none; /* Initially hidden */
+    justify-content: center; /* Center the GIFs */
+    align-items: center;
+    flex-wrap: wrap; /* Arrange GIFs in a flexible layout */
+}
+
+.gif {
+    max-width: 100px; /* Adjust size as needed */
+    margin: 5px;
+}
+.counter-container {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    justify-content: center; /* Ensure the entire container is centered */
+    gap: 10px; /* Add spacing between images and the counter */
+}
+
+.counter-image {
+    width: 80px; /* Adjust the size as needed */
+    height: auto;
+}
+#current-color-selector {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+#color-inputs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between each color input */
+    justify-content: space-between; /* Spread out the inputs evenly */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#color-inputs-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#color-inputs-container label {
+    font-size: 16px; /* Adjust label size if needed */
+    margin-bottom: 5px; /* Space between the label and the input */
+}
+
+#color-inputs-container input[type="color"] {
+    width: 40px;
+    height: 40px; /* Adjust the size of the color picker */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#timer-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timer-display {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+#timer-box .button-container {
+    display: flex; /* Align buttons horizontally */
+    gap: 10px; /* Add space between buttons */
+    justify-content: center; /* Center the buttons */
+}
+
+#timer-box button {
+    padding: 10px 20px; /* Add padding for a better look */
+    font-size: 16px; /* Adjust font size for readability */
+    background-color: black; /* Button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#timer-box button:hover {
+    background-color: grey;
+}

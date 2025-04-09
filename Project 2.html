@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
+    <meta name="author" content="Hannah Broom">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        body {font-family:Arial, Helvetica, sans-serif;
+        background-color:whitesmoke
+        }
+        p { color:black
+        }
+        .topnav {
+            overflow:hidden;
+            background-color:lavender;
+            display:flex;
+            position:sticky;
+            align-items:center;
+            justify-content:space-evenly;
+            background-blend-mode:darken;
+            background-size:cover;
+            text-decoration:none;
+            text-align:center;
+            height:75px;
+            border-radius:10px;
+        }
+        .topnav a{
+            float:left;
+            color:black;
+            text-align:center;
+            padding: 16px 16px;
+            font-size:18px;
+            font-weight:bold;
+            margin-right: 25px;
+            border-radius:10px;
+            transition:color .3s ease-in-out;
+        }
+        .topnav a:hover {
+            background-color:white;
+            color:black;
+            border-radius:10px;
+        }
+        .topnav a.active{
+            background-color:slateblue;
+            color:white;
+            border-color:black;
+            border-width:5px;
+        }
+        .topnav a.email-me {
+            align-items:right;
+            background-color: rgb(77, 65, 151);
+            color:white;
+
+        }
+        .topnav a.email-me:hover {
+            background-color:rgb(63, 53, 128);
+            color:white;
+            transition:color .3s ease-in-out;   
+        }
+        .section{
+            padding:20px;
+            margin: 10px 0;
+            
+        }
+        @media (max-width: 768px) 
+        {
+        .topnav a {
+            font-size: 16px;
+            width:80%;
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+            .grid-container {
+            grid-template-columns: 1fr; /* Switch to one column for mobile screens */
+        }
+        .image, .text {
+            grid-column: 1 / span 2; /* Ensure each element takes the full width */
+            font-size:12px;
+        }
+        }
+    .grid-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto auto;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .grid-container > div {
+                background-color: lavender;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .description {
+                grid-column: 1 / span 2;
+                text-align: center;
+                background-color: slateblue;
+                color: white;
+                font-size: 18px;
+            }
+
+            .image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .image img {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 10px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5)
+            }
+
+            .text {
+                display: flex;
+                align-items: center;
+                justify-content:center;
+                flex-direction:column;
+            }
+
+            .text p {
+                margin: 0;
+                font-size:18px;
+            }
+            a {
+             color: slateblue;
+            }
+            a:hover {
+             color: darkslateblue; /* Optional: Changes the link color when hovered over */
+            }
+            .ul {
+            list-style-type:none;
+        }
+        .il{
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="topnav">
+        <a href="index.html">About Me</a>
+        <a href="Resume.html">Resume</a>
+        <a class="active" href="Current Projects.html">Current Projects</a>
+        <a href="mailto:hmbroom1@gmail.com" class="email-me">Email Me <ion-icon name="mail-outline"></ion-icon></a>
+    </nav>
+
+    <title> Hannah's Crochet Website
+    </title>
+
+    <div class="grid-container">
+        <!-- Row 1 -->
+        <div class="description">
+            <h2 style="color:black;">CREATING A CROCHET TRACKER</h2>
+            <i style="color:black;">Check out the crochet tracker: <a href="crochet web app/crochet.html">here!</a></i>
+            <p>This project showcases the process of creating a functional crochet tracker. I love to crochet so I was excited to develop something for my everyday life. This project relied much more heavily on JavaScript to acccomplish the functions I desired. I also decided to mock up my idea in Figma first to get a better understanding of the layout and features I wanted before starting development. The steps in my process are detailed below.</p>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="image">
+            <img src="Crochet web app/Figma Crochet Web Design.png" alt="Figma Design File">
+        </div>
+        <div class="text">
+        <b><p>I began by drafting out my idea and understanding the steps I needed to take.</p></b>
+            <ol class="il">
+                <li>Draft design in Figma to understand the layout structure and functionality I wanted</li><br>
+                <li>Confirm the functionality I wanted: increasing and decreasing values, capture user inputs, and graphic animations that play upon achieving a goal</li><br>
+                <li>Create gif animations in Piskell to utilize for goal animations </li><br>
+                <li>Set up files for the project such as the base .html, CSS style sheet, and folder structure for storing images</li>
+            </ol>
+        </div>
+        
+        <!-- Row 3 -->
+        <div class="image">
+            <img src="Crochet web app/Development Progress.png" alt="Development Progress">
+        </div>
+        <div class="text">
+            <b><p>Next, I used VSCode to write CSS, HTML, and JavaScript to accomplish a basic understanding of the functionality in practice.</b> <br><br>My first project was designing the website you're seeing now, so I did not have much experience with JavaScript. This crochet project allowed me to understand more of what JavaScript was capable of and how to think about the different actions needed for desired functionality. The main JavaScript functionality does the following:</p>
+            <ul>
+                <ul class="il"><li>Increases the number of stitches completed (decreasing to come later!). The HTML and CSS create the buttons, but the JavaScript identifies what value to update and to increase by 1.</li><br>
+                <li>Allows users to enter their own goals. This input is user text, where I formatted the Timer Goals to be in Minutes and Hours instead of the default time values. </li><br>
+                <li>Saves and re-loads values after leaving and returning to the session, so a user can keep track of progress.</li>
+            </ul>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="image">
+            <img src="Crochet web app/Development Progress 2.png" alt="Development Progress 2">
+        </div>
+        <div class="text">
+            <b><p>Once I established the basic JavaScript functionality, I focused on CSS and HTML to improve the design.</b><br><br>
+                 I ensured that the containers for each function were adaptable for mobile devices as well, in case users were accessing from their phone. I knew I wanted to stick with very simple colors and design. <br>
+                 <br>
+                 I went back into the CSS and HTML file and wrote extensive notes on how each line of code was impacting the design, to highlight my understanding of the code.
+                Once I was comfortable with the layout, I even thought of a few additional ideas on how to enhance the project. </p>
+        </div>
+
+        <!-- Row 5 -->
+        <div class="image">
+            <img src="Crochet web app/Final Development.png" alt="Final Development">
+        </div>
+        <div class="text">
+            <p><b>I finalized the design, tested that each input worked as expected, updated my website to reflect this project, and completed my project!</b><br><br></p>
+            <ul>
+                <ul class="il">
+                <li>Start, pause, and stop a timer to keep track of how long they have been working on a project.</li><br>
+                <li>Indicate the hook size they are working with. It is hard to remember and if you come back to it later, using the wrong hook size will create inconsistent stitches.</li><br>
+                <li>Select what colors they are working with to keep track of color compatability as well as progress. The EventListener JavaScript ensures they save after selection.</li><br>
+                <li>Input goals for rows, stitches, and time (calculated in total seconds). Upon achieving any of these goals, a unique gif animation will display in celebration. Give it a try!</li><br>
+                <li>Check what goals have been achieved and ensure dynamic goals display. For example, if I achieve my Row Goal and my Stitch Goal, but then need to change my Stitch Goal, my Row Goal should remain in animation and my Stitch Goal animation should stop until reached again.</li><br>
+                <li>Track current stitch and row counts so you don't lose your place while working. I have prevented negative values from being calculated.</li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    </body>
+
+
+</html>
+
+
+<!-- notes: worked on setting up Figma file to wireframe first. made pixels images through Piskell. https://www.figma.com/design/8OvLsOtwpdZxKyuiktaSfy/Crochet-Web-App?node-id=0-1&t=aXPuKvCHACCtMbDy-1 4/7
+-->

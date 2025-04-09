@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
+    <meta name="author" content="Hannah Broom">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+    body {font-family:Arial, Helvetica, sans-serif;
+    background-color:whitesmoke
+    }
+    p { color:black
+    }
+    .topnav {
+        overflow:hidden;
+        background-color:lavender;
+        display:flex;
+        position:sticky;
+        align-items:center;
+        justify-content:space-evenly;
+        background-blend-mode:darken;
+        background-size:cover;
+        text-decoration:none;
+        text-align:center;
+        height:75px;
+        border-radius:10px;
+    }
+    .topnav a{
+        float:left;
+        color:black;
+        text-align:center;
+        padding: 16px 16px;
+        font-size:18px;
+        font-weight:bold;
+        margin-right: 25px;
+        border-radius:10px;
+        transition:color .3s ease-in-out;
+    }
+    .topnav a:hover {
+        background-color:white;
+        color:black;
+        border-radius:10px;
+    }
+    .topnav a.active{
+        background-color:slateblue;
+        color:white;
+        border-color:black;
+        border-width:5px;
+    }
+    .topnav a.email-me {
+        align-items:right;
+        background-color: rgb(77, 65, 151);
+        color:white;
+
+    }
+    .topnav a.email-me:hover {
+        background-color:rgb(63, 53, 128);
+        color:white;
+        transition:color .3s ease-in-out;   
+    }
+    .section{
+        padding:20px;
+        margin: 10px 0;
+        
+    }
+    .full-width{
+        display:flex;
+        justify-content:space-between;
+        flex-direction:column;
+    }
+    .half-width-container{
+        display:flex;
+        justify-content:space-between;
+    }
+    .half-width{
+        width:48%;
+        background-color:whitesmoke;
+    }
+    .about{
+        text-align:center;
+        text-decoration-color:#555;
+    }
+    @keyframes profileBounce {
+        0%, 100% {
+            transform:translateY(0);
+        }
+        50% {
+            transform:translateY(-10px);
+        }
+    }
+    profileBounce animation {
+        transform:translateY(-.40288px);    
+    }
+    img.profile-picture{
+        max-width: 250px;
+        max-height:250px;
+        box-shadow:slateblue 0px 5px 10px;
+        border-radius: 50%;
+        margin: 20px auto;
+        border-width:5px;
+        border-color:slategray;
+        border-image:initial;
+        animation: profileBounce 3s infinite;
+    }
+    img {
+        overflow-clip-margin: content-box;
+        overflow-clip-margin:none;
+    }
+    .row {
+        display: flex;
+        align-items:center;
+        margin-bottom: 20px;
+        }
+    .row img {
+        max-width: 150px;
+        margin-right: 20px;
+    }
+     .row .text {
+        flex: 1;
+    }
+
+    ul{
+    position:relative;
+    margin:0;
+    padding:0;
+    }
+
+    li{
+    text-align:center;
+    height:auto;
+    display:inline-block;
+    align-items:center;
+    list-style:none;
+    position:relative;
+    border:solid 12px #fff;
+    background:#fff;
+    box-shadow:0 0 15px 0px #555;
+    transition:all 1s ease;
+    -o-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    -webkit-transition:all 1s ease;
+    }
+
+    li:hover{
+    top:-50px;
+    opacity:0.5;
+    }
+
+    li:nth-child(1){
+        transform:rotate(10deg);
+    }
+
+    li:nth-child(2){
+        transform:rotate(0deg);
+    }
+
+    li:nth-child(3){
+        transform:rotate(-10deg);
+    }
+
+    li:nth-child(4){
+        transform:rotate(20deg);
+    }
+    .light{
+    border-radius:50%;
+    position:absolute;
+    left:0;
+    right:0;
+    width:700px;
+    height:700px;
+    background:#fff;
+    filter:blur(100px);
+    opacity:0.2;
+    pointer-events:none;
+    }
+
+    h2{
+        font: size 40px;
+        animation: profileBounce 4s;
+        animation-iteration-count: 1;
+    }
+
+    </style>
+    </head>
+
+<title> About Hannah
+    </title>
+
+<body>
+    <nav class="topnav">
+        <a class="active" href=index.html">About Me</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current Projects.html">Current Projects</a>
+        <a href="mailto:hmbroom1@gmail.com" class="email-me">Email Me <ion-icon name="mail-outline"></ion-icon></a>
+    </nav>
+
+<! -- Full width About Me section -- >
+<div class = "about"> 
+        <div class="section full-width">
+                <h2>ABOUT ME</h2>
+            <p style="font-size:18px">If you are interested in learning more about my work experience, education, and what I have been up to recently, then you have come to the right place. I began this website as a personal project to learn about front end development. I love learning about technology and am constantly trying out new things. Below you will find pictures of hobbies, interests, and a bit more about my life.</p>
+        </div> 
+</div>
+
+    <div class = "about">
+        <div class = "section full-width" style="align-items:center">
+                <h2>HOBBIES & INTERESTS</h2>
+                <ul>
+                    <li><img src="Hannah Sisters.jpg" width=200>
+                    <p><i>My sisters</p></i></li>
+                    <li><img src="Hannah Taking Photo.jpg" width="200"/>
+                    <p><i>Photography</p></i></li>
+                    <li><img src="Hannah Gnome Crochet.jpg" width="200"/>
+                    <p><i>Crochet</i></p></li>
+                    <li><img src="Hannah Japan.jpg" width="200"/>
+                    <p><i>Travel</p></i></li>
+                    <li><img src="Hannah in Cave.jpg" width="200"/>
+                    <p><i>Hiking</p></i></li>
+                </ul>
+                <div class="light">
+                </div>
+            </div>
+        </div>
+    </div>
+        <br>
+
+    <div class ="section full width" style="margin-top:50px;">
+        <div class = "about">
+            <h2>MUSIC</h2>
+        <iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/playlist/7BqMx666z3YhuuzziWZ0QS?utm_source=generator" 
+            width="80%" 
+            height="352"
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
+        </div>
+    </div>
+
+    <div class="section full-width">
+        <div class ="about">
+            <small>Can you guess my favorite color based on this website? <img src ="icons/laugh.png" style="height: 12px; width: 12px;"></small><br><br>
+            <p style="font-size:10px;">Icons by <a style="color: grey;" href="https://icons8.com">Icons8. </a></p>
+        </div>
+    </div>
+
+    </body>
+
+</html>

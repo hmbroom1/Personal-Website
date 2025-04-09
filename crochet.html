@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keeping Up With Crochet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Title -->
+        <h1 class="title">Keeping Up With Crochet</h1>
+
+        <div class="box" id="timer-box">
+            <h2>Project Timer</h2>
+            <div id="timer-display">00:00:00</div>
+            <div class="button-container">
+                <button id="start-timer-button">Start</button>
+                <button id="pause-timer-button">Pause</button>
+                <button id="reset-timer-button">Start Over</button>
+            </div>
+            <div id="timer-goal-message" style="display: none; margin-top: 15px; color: black; font-weight: bold;">
+                <img src="Sparkle Big.gif" alt="Sparkle Image" class="counter-image" id="sparkle-left-image">
+                <span>Time Goal Reached!</span>
+                <img src="Sparkle Big.gif" alt="Sparkle Image" class="counter-image" id="sparkle-right-image">
+              </div>
+        </div>    
+    
+        <!-- Grid Layout -->
+        <div class="box" id="hook-size-box">
+            <h2>Select Your Crochet Hook Size:</h2>
+            <label for="row-goal">Small - Medium:</label>
+            <select id="hook-size-small">
+                <option value="" disabled selected>N/A</option> 
+                <option value="1 mm">1 mm</option>
+                <option value="2 mm">2 mm</option>
+                <option value="2.25 mm">2.25 mm</option>
+                <option value="2.5 mm">2.5 mm</option>
+                <option value="2.75 mm">2.75 mm</option>
+                <option value="3 mm">3 mm</option>
+                <option value="3.25 mm">3.25 mm</option>
+                <option value="3.5 mm">3.5 mm</option>
+                <option value="4 mm">4 mm</option>
+                <option value="4.5 mm">4.5 mm</option>
+                <option value="5 mm">5 mm</option>
+                <option value="6 mm">6 mm</option>
+                <option value="7 mm">7 mm</option>
+            </select>
+
+                <label for="row-goal">Large & XL:</label>
+                <select id="hook--size-large">
+                <option value="" disabled selected>N/A</option> 
+                <option value="8 mm">8 mm</option>
+                <option value="9 mm">9 mm</option>
+                <option value="10 mm">10 mm</option>
+                <option value="11 mm">11 mm</option>
+                <option value="11.5 mm">11.5 mm</option>
+                <option value="12 mm">12 mm</option>
+                <option value="13 mm">13 mm</option>
+                <option value="14 mm">14 mm</option>
+                <option value="15 mm">15 mm</option>
+                <option value="16 mm">16 mm</option>
+                <option value="17 mm">17 mm</option>
+                <option value="18 mm">18 mm</option>
+                <option value="19 mm">19 mm</option>
+                <option value="20 mm">20 mm</option>
+            </select>
+        </div>
+    
+        <div class="box" id="color-selector-box">
+            <h2>Select Your Yarn Colors:</h2>
+            <div id="color-inputs-container">
+                <div>
+                    <label for="color1">Color 1:</label>
+                    <input type="color" id="color1">
+                </div>
+                <div>
+                    <label for="color2">Color 2:</label>
+                    <input type="color" id="color2">
+                </div>
+                <div>
+                    <label for="color3">Color 3:</label>
+                    <input type="color" id="color3">
+                </div>
+                <div>
+                    <label for="color4">Color 4:</label>
+                    <input type="color" id="color4">
+                </div>
+                <div>
+                    <label for="color5">Color 5:</label>
+                    <input type="color" id="color5">
+                </div>
+            </div>
+        
+            <label for="color"><h3>Currently Working With:</h3></label>
+            <select id="current-color-selector">
+                <option value="" disabled selected>Pick a color</option>
+                <option value="color1">Color 1</option>
+                <option value="color2">Color 2</option>
+                <option value="color3">Color 3</option>
+                <option value="color4">Color 4</option>
+                <option value="color5">Color 5</option>
+            </select>
+        
+            <div id="current-color-display" style="margin-top: 15px;">
+                Current Color: <span id="active-color" style="display: inline-block; width: 40px; height: 20px; background-color: #ffffff; border: 1px solid #000;"></span>
+            </div>
+        </div>
+        
+        <div class="box" id="goals-box">
+            <h2>Enter Your Goals:</h2>
+            <label for="row-goal">Row Goal:</label>
+            <input type="number" id="row-goal">
+            <label for="stitch-goal">Stitch Goal:</label>
+            <input type="number" id="stitch-goal">
+            <label for="time-goal-hours">Time Goal:</label>
+            <div id="time-goal-container">
+                <input type="number" id="time-goal-hours" min="0" placeholder="Hours">
+                <input type="number" id="time-goal-minutes" min="0" max="59" placeholder="Minutes">
+            </div>
+        </div>
+        
+    
+        <div class="box" id="stitch-counter-box">
+            <h2>Stitch Counter</h2>
+            <div class="counter-container">
+                <img src="Pixel Star.gif" alt="Star Image" class="counter-image" id="stitch-left-image" style="display: none;">
+                <div class="counter">
+                    <button onclick="decrementCounter('stitch-counter')">-</button>
+                    <input type="text" id="stitch-counter" value="0" readonly>
+                    <button onclick="incrementCounter('stitch-counter')">+</button>
+                </div>
+                <img src="Pixel Star.gif" alt="Star Image" class="counter-image" id="stitch-right-image" style="display: none;">
+            </div>
+        </div>
+        
+        <div class="box" id="row-counter-box">
+            <h2>Row Counter</h2>
+            <div class="counter-container">
+                <img src="Pixel Star.gif" alt="Star Image" class="counter-image" id="row-left-image" style="display: none;">
+                <div class="counter">
+                    <button onclick="decrementCounter('row-counter')">-</button>
+                    <input type="text" id="row-counter" value="0" readonly>
+                    <button onclick="incrementCounter('row-counter')">+</button>
+                </div>
+                <img src="Pixel Star.gif" alt="Star Image" class="counter-image" id="row-right-image" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // Function to save colors to localStorage
+function saveColors() {
+    const colors = {
+        color1: document.getElementById("color1").value,
+        color2: document.getElementById("color2").value,
+        color3: document.getElementById("color3").value,
+        color4: document.getElementById("color4").value,
+        color5: document.getElementById("color5").value,
+    };
+    localStorage.setItem("yarnColors", JSON.stringify(colors));
+
+    const currentColor = document.getElementById("current-color-selector").value;
+    localStorage.setItem("currentColor", currentColor);
+    updateCurrentColorDisplay();
+}
+
+// Function to load colors from localStorage
+function loadColors() {
+    const savedColors = JSON.parse(localStorage.getItem("yarnColors"));
+    if (savedColors) {
+        document.getElementById("color1").value = savedColors.color1;
+        document.getElementById("color2").value = savedColors.color2;
+        document.getElementById("color3").value = savedColors.color3;
+        document.getElementById("color4").value = savedColors.color4;
+        document.getElementById("color5").value = savedColors.color5;
+    }
+
+    const currentColor = localStorage.getItem("currentColor");
+    if (currentColor) {
+        document.getElementById("current-color-selector").value = currentColor;
+        updateCurrentColorDisplay();
+    }
+}
+
+// Function to update the display for the current color
+function updateCurrentColorDisplay() {
+    const currentColorId = document.getElementById("current-color-selector").value;
+    if (currentColorId) {
+        const currentColorValue = document.getElementById(currentColorId).value;
+        const activeColorDisplay = document.getElementById("active-color");
+        activeColorDisplay.style.backgroundColor = currentColorValue;
+    }
+}
+
+// Add event listeners for color inputs and selector
+document.getElementById("color1").addEventListener("input", saveColors);
+document.getElementById("color2").addEventListener("input", saveColors);
+document.getElementById("color3").addEventListener("input", saveColors);
+document.getElementById("color4").addEventListener("input", saveColors);
+document.getElementById("color5").addEventListener("input", saveColors);
+document.getElementById("current-color-selector").addEventListener("change", saveColors);
+
+// Load colors, timer when the page is loaded
+window.onload = function () {
+    loadData(); // Load other data
+    loadTimer(); // Load timer
+    loadColors(); // Load colors
+    loadTimeGoal(); // Load time goal
+};
+
+
+let timerInterval;
+let timerSeconds = 0;
+let timerPaused = true;
+
+document.getElementById("time-goal-minutes").addEventListener("input", (event) => {
+    if (parseInt(event.target.value, 10) > 59) {
+        alert("Minutes must be less than 60.");
+        event.target.value = 59;
+    }
+});
+
+function checkTimeGoal() {
+    // Retrieve user-inputted goal values, defaulting to 0 if empty
+    const goalHours = parseInt(document.getElementById("time-goal-hours").value || 0, 10);
+    const goalMinutes = parseInt(document.getElementById("time-goal-minutes").value || 0, 10);
+
+    // Calculate the total goal seconds
+    const goalSeconds = (goalHours * 3600) + (goalMinutes * 60);
+
+    // Check if the current timer seconds are equal to or greater than goalSeconds
+    if (goalSeconds > 0 && timerSeconds >= goalSeconds) {
+        document.getElementById("timer-goal-message").style.display = "block";
+    } else {
+        document.getElementById("timer-goal-message").style.display = "none";
+    }
+}
+
+// Format the time in HH:MM:SS
+function formatTime(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+// Start the timer and save timerSeconds every second
+function startTimer() {
+    if (timerPaused) {
+        timerPaused = false;
+        clearInterval(timerInterval); // Prevent duplicate intervals
+        timerInterval = setInterval(() => {
+            timerSeconds++;
+            document.getElementById("timer-display").textContent = formatTime(timerSeconds);
+            localStorage.setItem("timerSeconds", timerSeconds); // Save current timer seconds
+            checkTimeGoal(); // Update goal display if needed
+        }, 1000);
+    }
+}
+
+// Pause the timer
+function pauseTimer() {
+    timerPaused = true;
+    clearInterval(timerInterval);
+}
+
+// Reset the timer and hide the goal message
+function resetTimer() {
+    timerPaused = true;
+    clearInterval(timerInterval);
+    timerSeconds = 0;
+    document.getElementById("timer-display").textContent = formatTime(timerSeconds);
+    localStorage.removeItem("timerSeconds"); // Remove saved timer seconds
+    document.getElementById("timer-goal-message").style.display = "none";
+}
+
+// Save the time goal values to localStorage
+function saveTimeGoal() {
+    const hours = document.getElementById("time-goal-hours").value;
+    const minutes = document.getElementById("time-goal-minutes").value;
+    localStorage.setItem("timeGoalHours", hours);
+    localStorage.setItem("timeGoalMinutes", minutes);
+    // You can call checkTimeGoal() here in case the goal changes and you need to
+    // immediately update the display
+    checkTimeGoal();
+}
+
+// Load timer information from localStorage
+function loadTimer() {
+    const savedTime = localStorage.getItem("timerSeconds");
+    if (savedTime) {
+        timerSeconds = parseInt(savedTime, 10);
+        document.getElementById("timer-display").textContent = formatTime(timerSeconds);
+    }
+}
+
+// Load the time goal values from localStorage
+function loadTimeGoal() {
+    const savedHours = localStorage.getItem("timeGoalHours");
+    const savedMinutes = localStorage.getItem("timeGoalMinutes");
+    if (savedHours !== null) {
+        document.getElementById("time-goal-hours").value = savedHours;
+    }
+    if (savedMinutes !== null) {
+        document.getElementById("time-goal-minutes").value = savedMinutes;
+    }
+    // Update the display after loading the values
+    checkTimeGoal();
+}
+
+// Event listeners for timer buttons
+document.getElementById("start-timer-button").addEventListener("click", startTimer);
+document.getElementById("pause-timer-button").addEventListener("click", pauseTimer);
+document.getElementById("reset-timer-button").addEventListener("click", resetTimer);
+
+// Event listeners for time goal inputs to save values as they change
+document.getElementById("time-goal-hours").addEventListener("input", saveTimeGoal);
+document.getElementById("time-goal-minutes").addEventListener("input", saveTimeGoal);
+
+
+        // Function to save all data to localStorage and reset goal states
+        function saveData() {
+            localStorage.setItem("hook-size-small", document.getElementById("hook-size-small").value);
+            localStorage.setItem("hook-size-large", document.getElementById("hook--size-large").value);
+            localStorage.setItem("row-goal", document.getElementById("row-goal").value);
+            localStorage.setItem("stitch-goal", document.getElementById("stitch-goal").value);
+            localStorage.setItem("row-counter", document.getElementById("row-counter").value);
+            localStorage.setItem("stitch-counter", document.getElementById("stitch-counter").value);
+    
+            // Reset goal states
+            resetGoals();
+        }
+    
+        // Function to reset the visibility of goal images
+        function resetGoals() {
+            // Hide images for Stitch Counter
+            document.getElementById("stitch-left-image").style.display = "none";
+            document.getElementById("stitch-right-image").style.display = "none";
+    
+            // Hide images for Row Counter
+            document.getElementById("row-left-image").style.display = "none";
+            document.getElementById("row-right-image").style.display = "none";
+        }
+    
+        // Function to load all data from localStorage
+        function loadData() {
+            const hookSizeSmall = localStorage.getItem("hook-size-small");
+            if (hookSizeSmall) document.getElementById("hook-size-small").value = hookSizeSmall;
+    
+            const hookSizeLarge = localStorage.getItem("hook-size-large");
+            if (hookSizeLarge) document.getElementById("hook--size-large").value = hookSizeLarge;
+    
+            const rowGoal = localStorage.getItem("row-goal");
+            if (rowGoal) document.getElementById("row-goal").value = rowGoal;
+    
+            const stitchGoal = localStorage.getItem("stitch-goal");
+            if (stitchGoal) document.getElementById("stitch-goal").value = stitchGoal;
+    
+            const rowCounter = localStorage.getItem("row-counter");
+            if (rowCounter) document.getElementById("row-counter").value = rowCounter;
+    
+            const stitchCounter = localStorage.getItem("stitch-counter");
+            if (stitchCounter) document.getElementById("stitch-counter").value = stitchCounter;
+    
+            // Recheck goals after loading data
+            checkGoals();
+        }
+    
+        // Function to check goals and manage images independently
+        function checkGoals() {
+            // Check Stitch Goal
+            let stitchGoal = document.getElementById('stitch-goal').value;
+            let stitchCounter = document.getElementById('stitch-counter').value;
+            if (stitchCounter == stitchGoal && stitchGoal !== '') {
+                document.getElementById("stitch-left-image").style.display = "inline";
+                document.getElementById("stitch-right-image").style.display = "inline";
+            } else {
+                document.getElementById("stitch-left-image").style.display = "none";
+                document.getElementById("stitch-right-image").style.display = "none";
+            }
+    
+            // Check Row Goal
+            let rowGoal = document.getElementById('row-goal').value;
+            let rowCounter = document.getElementById('row-counter').value;
+            if (rowCounter == rowGoal && rowGoal !== '') {
+                document.getElementById("row-left-image").style.display = "inline";
+                document.getElementById("row-right-image").style.display = "inline";
+            } else {
+                document.getElementById("row-left-image").style.display = "none";
+                document.getElementById("row-right-image").style.display = "none";
+            }
+        }
+    
+        // Increment function
+        function incrementCounter(id) {
+            let counter = document.getElementById(id);
+            counter.value = parseInt(counter.value) + 1;
+            saveData(); // Save data to localStorage whenever a change is made
+    
+            // Recheck goals after increment
+            checkGoals();
+        }
+    
+        // Decrement function
+        function decrementCounter(id) {
+            let counter = document.getElementById(id);
+            if (parseInt(counter.value) > 0) { // Prevent going below zero
+                counter.value = parseInt(counter.value) - 1;
+                saveData(); // Save data to localStorage whenever a change is made
+    
+                // Recheck goals after decrement
+                checkGoals();
+            }
+        }
+    
+        // Save data whenever an input or selection changes
+        document.getElementById("hook-size-small").addEventListener("change", saveData);
+        document.getElementById("hook--size-large").addEventListener("change", saveData);
+        document.getElementById("row-goal").addEventListener("input", saveData);
+        document.getElementById("stitch-goal").addEventListener("input", saveData);
+    
+    </script>
+    
+
+    </body>
+</html>

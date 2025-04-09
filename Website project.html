@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
+    <meta name="author" content="Hannah Broom">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {font-family:Arial, Helvetica, sans-serif;
+        background-color:whitesmoke
+        }
+        p { color:black
+        }
+        .topnav {
+            overflow:hidden;
+            background-color:lavender;
+            display:flex;
+            position:sticky;
+            align-items:center;
+            justify-content:space-evenly;
+            background-blend-mode:darken;
+            background-size:cover;
+            text-decoration:none;
+            text-align:center;
+            height:75px;
+            border-radius:10px;
+        }
+        .topnav a{
+            float:left;
+            color:black;
+            text-align:center;
+            padding: 16px 16px;
+            font-size:18px;
+            font-weight:bold;
+            margin-right: 25px;
+            border-radius:10px;
+            transition:color .3s ease-in-out;
+        }
+        .topnav a:hover {
+            background-color:white;
+            color:black;
+            border-radius:10px;
+        }
+        .topnav a.active{
+            background-color:slateblue;
+            color:white;
+            border-color:black;
+            border-width:5px;
+        }
+        .topnav a.email-me {
+            align-items:right;
+            background-color: rgb(77, 65, 151);
+            color:white;
+
+        }
+        .topnav a.email-me:hover {
+            background-color:rgb(63, 53, 128);
+            color:white;
+            transition:color .3s ease-in-out;   
+        }
+        .section{
+            padding:20px;
+            margin: 10px 0;
+        }
+        .header {
+        text-align: center;
+        padding: 32px;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+        }
+
+        .column img {
+        margin-top: 12px;
+        animation: slideInFromBelow 3s ease-in;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+        .row{
+            display:flex;
+            justify-content:center;
+        }
+
+        @keyframes slideInFromBelow {
+            from {
+                transform: translateY(100%);
+                opacity:0;
+            }
+            to {
+                transform: translateY(0);
+                opacity:1;
+            }
+        }
+        @keyframes rotateStar{
+            0% {
+                transform: rottate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media screen and (max-width:400px) {
+        .column {
+            width: 100%;
+            margin-bottom:20px;
+            font-size:12px;
+        }
+        @media (max-width:400px) {
+            .row {
+               flex-direction:column;
+               align-items:center;
+            }
+        }
+        .row{
+            font-size:12px;
+        }
+        .column img{
+            height:5px;
+        }
+        }
+        .ul li::before {
+            content: '★';
+            color: black;
+            font-size: 20px;
+            margin-right:5px;
+            display:inline-block;
+            animation:rotateStar 2s infinite;
+        }
+        .ul {
+            list-style-type:none;
+            padding-left:0;
+        }
+
+    </style>
+    </head>
+
+    <title> Making This Website
+    </title>
+
+    <body>
+
+        <nav class="topnav">
+            <a href="index.html">About Me</a>
+            <a href="Resume.html">Resume</a>
+            <a class="active" href="Current Projects.html">Current Projects</a>
+            <a href="mailto:hmbroom1@gmail.com" class="email-me">Email Me <ion-icon name="mail-outline"></ion-icon></a>
+        </nav>
+
+  <div class="header">
+        <div class="row">
+            <div class="column">
+            <h1>MAKING THIS WEBSITE</h1>
+            <p style="padding-top:20px;">I made this website with the goal of gaining a better understanding of front end development. I used HTML, CSS, and some basic JavaScript to create this website. I really enjoyed the process of starting from scratch and having to teach something completely new to myself. I now have a basic understanding of how websites are created and coding concepts. This project is only the beginning of my curiousity into the tech space!
+            </p>
+                <div class="row">
+                    <img style="height:75px" src="icons/stack overflow.png">
+                    <img style="height:75px" src="icons/github.png">
+                    <img style="height:75px" src="icons/visual studio code.png">
+
+                    <div class="row">
+                        <img style="height:75px" src="icons/html.png">   
+                        <img style="height:75px" src="icons/youtube.png">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <h1>INSIGHTS</h1>
+
+                <div class="row">
+                        <ul class="ul" style="text-align:left;">
+                            <li>This project helped me understand what resources to use - such as Github Pages for hosting the website, Stack Overflow for when I had questions, and Youtube for a many tutorials!</li><br>
+                            <li>Learning HTML and CSS helped me understand design, layout, coding concepts, and file structure.</li><br>
+                            <li>I had to understand how the layout would be impacted on different device screen size, such as desktop vs mobile. I used VS Code extensions to test my design on Iphones while I worked primarily on my computer.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+  <br>
+        <p style="font-size:10px; text-align:center;">Icons by <a style="color: grey;" href="https://icons8.com">Icons8. </a></p>
+        </p>
+
+    </body>
+
+</html>
