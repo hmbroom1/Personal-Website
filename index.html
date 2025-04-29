@@ -66,35 +66,12 @@
         color:white;
         transition:color .3s ease-in-out;   
     }
-    @media (max-width: 768px) {
-    .topnav {
-        flex-direction: column; /* Stack items vertically */
-        height: auto; /* Adjust height to fit all items */
-        align-items: stretch; /* Make items fill the width of the container */
-    }
-    .about {
-        margin: 0px auto;
-        margin-right:auto;
-        margin-left:auto;
-        padding: 0px auto;
-    }
-
-    .topnav a {
-        margin: 5px 0; /* Add spacing between buttons */
-        text-align: center; /* Center text in each link */
-        padding: 10px; /* Adjust padding for better fit */
-        font-size: 16px; /* Reduce font size for smaller screens */
-    }
-
-    .topnav a.email-me {
-        align-self: center; /* Ensure "Email Me" is properly aligned */
-    }
-    }
     .section{
         padding:20px;
         margin: 10px 0;
         
     }
+
     .full-width{
         display:flex;
         justify-content:space-between;
@@ -216,7 +193,30 @@
         animation-iteration-count: 1;
         font-family:'Myfont';
     }
+    @media (max-width: 768px) {
+        .topnav {
+            flex-direction: column; /* Stack items vertically */
+            height: auto; /* Adjust height to fit all items */
+            align-items: stretch; /* Make items fill the width of the container */
+        }
+        .about {
+            margin: 0px 0px;
+            margin-right:0px;
+            margin-left:0px;
+            padding: 0px 0px;
+        }
 
+        .topnav a {
+            margin: 5px 0; /* Add spacing between buttons */
+            text-align: center; /* Center text in each link */
+            padding: 10px; /* Adjust padding for better fit */
+            font-size: 16px; /* Reduce font size for smaller screens */
+        }
+
+        .topnav a.email-me {
+            align-self: center; /* Ensure "Email Me" is properly aligned */
+        }
+    }
     </style>
     </head>
 
