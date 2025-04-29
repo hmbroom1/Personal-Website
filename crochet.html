@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> /*Set up basic details about the sheet. Using various comments throughout. This, <!> and // */
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keeping Up With Crochet</title>
@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <!-- Title -->
+        <!-- Title of the site-->
         <h1 class="title">Keeping Up With Crochet</h1>
 
-        <!-- Clear Project Button -->
+        <!-- Creates the Clear Project Button -->
             <div class="clear-project-row">
                 <button id="clear-project-button">Clear Project</button>
             </div>
-
+        <!-- Creates the Timer, including Start/Pause/Start Over. The ids help identify any styling. -->
         <div class="box" id="timer-box">
             <h2>Project Timer</h2>
             <div id="timer-display">00:00:00</div>
@@ -26,6 +26,7 @@
             </div>
             <div id="timer-goal-message" style="display: none; color: black; font-weight: bold;">
                 <span>Time Goal Reached!</span>
+        <!-- Adds goal animation images.-->                
                 <div class="sparkles">
                     <img src="Sparkle Big.gif" alt="Sparkle Image" class="counter-image" id="sparkle-left-image"><img src="Sparkle Big.gif" alt="Sparkle Image" class="counter-image" id="sparkle-right-image">
                 </div>
@@ -34,6 +35,7 @@
         </div>    
     
         <!-- Grid Layout -->
+                <!-- Create hook size dropdown where you can select your hook size. Repeat in other areas. I disabled N/A but listed it so it shows as the first option until a user selects something else -->
         <div class="box" id="hook-size-box">
             <h2>Select Your Crochet Hook Size:</h2>
             <label for="row-goal">Small - Medium:</label>
@@ -73,34 +75,35 @@
                 <option value="20 mm">20 mm</option>
             </select>
         </div>
-    
+
+                <!-- Create the color selector so users can say what colors they are using. Creates color pickers. -->
         <div class="box" id="color-selector-box">
             <h2>Select Your Yarn Colors:</h2>
             <div id="color-inputs-container">
                 <div>
                     <label for="color1">Color 1:</label>
-                    <input type="color" id="color1">
+                    <input type="color" id="color1"> <!-- this id will be referenced in the JavaScript-->
                 </div>
                 <div>
                     <label for="color2">Color 2:</label>
-                    <input type="color" id="color2">
+                    <input type="color" id="color2"> <!-- this id will be referenced in the JavaScript-->
                 </div>
                 <div>
                     <label for="color3">Color 3:</label>
-                    <input type="color" id="color3">
+                    <input type="color" id="color3"> <!-- this id will be referenced in the JavaScript-->
                 </div>
                 <div>
                     <label for="color4">Color 4:</label>
-                    <input type="color" id="color4">
+                    <input type="color" id="color4"> <!-- this id will be referenced in the JavaScript-->
                 </div>
                 <div>
                     <label for="color5">Color 5:</label>
-                    <input type="color" id="color5">
+                    <input type="color" id="color5"> <!-- this id will be referenced in the JavaScript-->
                 </div>
             </div>
         
             <label for="color"><h3>Currently Working With:</h3></label>
-            <select id="current-color-selector">
+            <select id="current-color-selector"> <!-- this id will be referenced in the JavaScript-->
                 <option value="" disabled selected>Pick a color</option>
                 <option value="color1">Color 1</option>
                 <option value="color2">Color 2</option>
@@ -126,8 +129,8 @@
                 <input type="number" id="time-goal-minutes" min="0" max="59" placeholder="Minutes">
             </div>
         </div>
-        
-    
+
+                <!-- Create stitch counter where you can increase and decrease the current count, as well as add goal animation with images I created -->
         <div class="box" id="stitch-counter-box">
             <h2>Stitch Counter</h2>
             <div class="counter-container">
@@ -155,9 +158,15 @@
         </div>
     </div>
 
+
+            <!-- Beginning of the JavaScript that is key functionality to how the buttons/styling above is used. Realistically, this should have been a separate file I referenced. Now I know! -->
     <script>
 
         // Function to save colors to localStorage
+        // So this is running a function, aka action, called 'saveColors'. Then you create the variable of colors with const, which will store the objects, aka all the colors.
+        // Then it will go 'find' each color, indicated by the ID. So if Red was in Color 1 for example, then it will 'grab' red. This is from the color picker that the user inputted that we created above.
+        // It will then save the values in the browser's storage, converting it to string in order to save. This means the browser will re-open with whatever was inputted previously
+        // The same thing is occuring with the current color that's selected
 function saveColors() {
     const colors = {
         color1: document.getElementById("color1").value,
@@ -173,7 +182,7 @@ function saveColors() {
     updateCurrentColorDisplay();
 }
 
-// Function to load colors from localStorage
+// Function to load colors from localStorage. The steps above saved the colors, but now they need to be re-loaded when the page is opened again after being closed
 function loadColors() {
     const savedColors = JSON.parse(localStorage.getItem("yarnColors"));
     if (savedColors) {
@@ -201,7 +210,8 @@ function updateCurrentColorDisplay() {
     }
 }
 
-// Add event listeners for color inputs and selector
+// Add event listeners for color inputs and selector. The event listener waits for an event to occur, in this case when the colors are updated, save the colors
+// The steps are: Find 'color1', which will have been indicated by the IDs in the HTML above. Then 'listen', aka wait for a user to change the values of 'Color1.' When that happens, then run the 'saveColors' function and save the color
 document.getElementById("color1").addEventListener("input", saveColors);
 document.getElementById("color2").addEventListener("input", saveColors);
 document.getElementById("color3").addEventListener("input", saveColors);
@@ -210,6 +220,7 @@ document.getElementById("color5").addEventListener("input", saveColors);
 document.getElementById("current-color-selector").addEventListener("change", saveColors);
 
 // Load colors, timer when the page is loaded
+// This ensures that the data we're saving is loading upon re-opening
 window.onload = function () {
     loadData(); // Load other data
     loadTimer(); // Load timer
@@ -237,7 +248,7 @@ function checkTimeGoal() {
     // Calculate the total goal seconds
     const goalSeconds = (goalHours * 3600) + (goalMinutes * 60);
 
-    // Check if the current timer seconds are equal to or greater than goalSeconds
+    // Check if the current timer seconds are equal to or greater than goalSeconds. If not, don't display goal message.
     if (goalSeconds > 0 && timerSeconds >= goalSeconds) {
         document.getElementById("timer-goal-message").style.display = "block";
     } else {
@@ -246,6 +257,7 @@ function checkTimeGoal() {
 }
 
 // Format the time in HH:MM:SS
+// math.floor rounds it down to a whole number, ensures each output has 2 digits instead of 1
 function formatTime(seconds) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
@@ -429,7 +441,7 @@ document.getElementById("row-goal").addEventListener("input", saveData);
 document.getElementById("stitch-goal").addEventListener("input", saveData);
 
 
-  // Clear Project
+  // Clear Project. All of the script below is a part of what occurs when you select the 'clear project' button.
 document.getElementById('clear-project-button').addEventListener('click', function () {
     // Reset Timer
     const timerDisplay = document.getElementById('timer-display');
@@ -459,7 +471,7 @@ document.getElementById('clear-project-button').addEventListener('click', functi
     const currentColorDisplay = document.getElementById('current-color-selector');
     const activeColorText = document.getElementById('active-color');
     if (currentColorDisplay) {
-        currentColorDisplay.value = '#ffffff'; // Resets current color to white
+        currentColorDisplay.value = '#ffffff'; // Resets current color to white, which will appear 'blank' to the user
     }
     if (activeColorText) {
         activeColorText.style.backgroundColor = '#ffffff'; // Resets active color display
@@ -482,7 +494,7 @@ document.getElementById('clear-project-button').addEventListener('click', functi
         animation.style.display = 'none'; // Hides row animations
     });
 
-    // Clear Local Storage
+    // Clear Local Storage when you clear the project, that way any saved data you have doesn't reload
     localStorage.clear(); // Removes all saved data in localStorage
 
 });
