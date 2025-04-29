@@ -7,14 +7,18 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
+
     @font-face {
         font-family: 'Myfont';
         src: url(HannahHandwritingFont-Regular.ttf);
         }
-    body {font-family:Arial, Helvetica, sans-serif;
-    background-color:whitesmoke
+    body {
+        font-family:Arial, Helvetica, sans-serif;
+        background-color:whitesmoke;
+        margin:0;
     }
-    p { color:white;
+    p { 
+        color:white;
        font-size:20px;
     }
     .topnav {
@@ -74,6 +78,10 @@
     text-align: center;
     color: #fff;
     box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
+    min-height:100vh;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 #projects h2 {
@@ -81,16 +89,17 @@
 }
 
 #projects .project {
-    margin: 20px 0;
+    margin: 20px auto; /* Add spacing between the different projects and centers on screen*/
     padding: 15px;
     background: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add shadow to each box*/
+    width:90%;
 }
 
 #projects .project:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Make box 'grow' when scrolling over it*/
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
 }
 
@@ -100,17 +109,26 @@
     font-weight: bold;
 }
 
+.container { /* Make sure the slateblue background extends fully down*/
+    width:100%;
+    margin: 0; 
+    padding: 0 20px;
+    text-align: center;
+}
+
 #projects a:hover {
     color: white;
     text-decoration: underline;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 768px) { /* Adjust for viewing on smaller screens*/
     header nav ul li {
         display: block;
-        margin: 10px 0;
+        margin: 10px 10px;
     }
-    #about, #projects, #contact {
-        padding: 30px 20px;
+    #projects{
+        padding: 10px 10px;
+        font-size:16px;
     }
     .topnav {
         flex-direction: column; /* Stack items vertically */
@@ -122,13 +140,12 @@
         text-align: center; /* Center text in each link */
         padding: 10px; /* Adjust padding for better fit */
         font-size: 16px; /* Reduce font size for smaller screens */
-         text-decoration: none;
+        text-decoration: none; /* Remove the underline from the links */
     }
     .topnav a.email-me {
         align-self: center; /* Ensure "Email Me" is properly aligned */
     }
     }
-}
 
     </style>
     </head>
@@ -146,24 +163,24 @@
 
         <section id="projects">
             <div class="container">
-                 <h2>MY PROJECTS</h2>
-                <p> I'm always up to something new! Click into each project to learn more about it.</p>
+                 <h2 style="font-size:30px;">MY PROJECTS</h2>
+                <p style="font-size:24px;"> I'm always up to something new! Click into each project to learn more about it.</p>
 
 
                  <div class="project">
-                     <a href ="Website project.html"><h3>Making My Own Website</h3> </a>
-                    <p> You're seeing this project in action!</p> 
+                     <a href ="Website project.html"><h3 style="font-size:24px;">Making My Own Website</h3> </a>
+                    <p> You're seeing this project in action! Learn more about my first time coding, teaching myself something from scratch, and how this project came to be.</p> 
                 </div>
 
 
                 <div class="project">
-                    <a href="Project 2.html"><h3>Crochet Project Tracker Site</h3></a>
-                    <p>I developed a site to help track progress when crocheting.</p>
+                    <a href="Project 2.html"><h3 style="font-size:24px;">Crochet Project Tracker Site</h3></a>
+                    <p>I developed a site to help track progress when crocheting. This project helped me understand JavaScript and how to take an idea from design through execution, learning what I built upon from my website building project.</p>
                 </div>
 
 
                 <div class="project">
-                    <h3>To Be Announced</h3>
+                    <h3 style="font-size:24px;">To Be Announced</h3>
                     <p>Stay tuned for updates!</p>
                 </div>
             </div>
