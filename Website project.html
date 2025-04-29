@@ -74,8 +74,7 @@
 
         /* Create two equal columns that floats next to each other */
         .column {
-        float: left;
-        width: 50%;
+        width: 100%;
         padding: 10px;
         }
 
@@ -91,11 +90,12 @@
         display: table;
         clear: both;
         }
-        .row{
-            display:flex;
-            justify-content:center;
+        .row {
+        display: flex;
+        flex-direction: column; /* Stacks items vertically */
+        align-items: center; /* Centers them horizontally */
+        width: 100%;
         }
-
         @keyframes slideInFromBelow {
             from {
                 transform: translateY(100%);
@@ -205,9 +205,9 @@
         <div class="row">
             <div class="column">
             <h1>MAKING THIS WEBSITE</h1>
-            <p style="padding-top:20px; font-size:20px;">I made this website with the goal of gaining a better understanding of front end development. I used HTML, CSS, and some basic JavaScript to create this website. I really enjoyed the process of starting from scratch and having to teach something completely new to myself. I now have a basic understanding of how websites are created and coding concepts. This project is only the beginning of my curiousity into the tech space!
+            <p style="padding-top:20px; font-size:20px;">I made this website with the goal of gaining a better understanding of front end development. I used HTML, CSS, and some basic JavaScript to create this website. I really enjoyed the process of starting from scratch and having to teach something completely new to myself. I now have a basic understanding of how websites are created and coding concepts. My goal is not to become an expert developer, but understand coding concepts to work better with developers. This project is only the beginning of my curiousity into the tech space!
             </p>
-                <div class="row">
+                <div class="column">
                     <img style="height:75px" src="images/stack overflow.png">
                     <img style="height:75px" src="images/github.png">
                     <img style="height:75px" src="images/visual studio code.png">
