@@ -12,10 +12,11 @@
         src: url(HannahHandwritingFont-Regular.ttf);
         }
     body {
-        font-family: Myfont;
+        font-family: Arial, Helvetica, sans-serif;
     background-color:whitesmoke
     }
-    p { color:black
+    p { color:black;
+        font-size:20px;
     }
     .topnav {
         overflow:hidden;
@@ -30,6 +31,7 @@
         text-align:center;
         height:75px;
         border-radius:10px;
+        Font-family:'Myfont';
     }
     .topnav a{
         float:left;
@@ -103,6 +105,10 @@
     .about{
         text-align:center;
         text-decoration-color:#555;
+        margin: 20px auto;
+        margin-right:150px;
+        margin-left:150px;
+        padding: 0px 20px;
     }
     @keyframes profileBounce {
         0%, 100% {
@@ -199,9 +205,10 @@
     }
 
     h2{
-        font: size 40px;
+        font-size: 40px;
         animation: profileBounce 4s;
         animation-iteration-count: 1;
+        font-family:'Myfont';
     }
 
     </style>
@@ -212,23 +219,25 @@
 
 <body>
     <nav class="topnav">
-        <a class="active" href=index.html">About Me</a>
-        <a href="Resume.html">Resume</a>
-        <a href="Current Projects.html">Current Projects</a>
-        <a href="mailto:hmbroom1@gmail.com" class="email-me">Email Me <ion-icon name="mail-outline"></ion-icon></a>
+        <a class="active" href=index.html>ABOUT ME</a>
+        <a href="Resume.html">RESUME</a>
+        <a href="Current Projects.html">CURRENT PROJECTS</a>
+        <a href="mailto:hmbroom1@gmail.com" class="email-me">EMAIL ME <ion-icon name="mail-outline"></ion-icon></a>
     </nav>
 
 <! -- Full width About Me section -- >
 <div class = "about"> 
         <div class="section full-width">
                 <h2>ABOUT ME</h2>
-            <p style="font-size:18px">If you are interested in learning more about my work experience, education, and what I have been up to recently, then you have come to the right place. I began this website as a personal project to learn about front end development. I love learning about technology and am constantly trying out new things. Below you will find pictures of hobbies, interests, and a bit more about my life.</p>
+           <b> <p style="font-size:20px">Hi - I'm Hannah Broom! Welcome to my personal website that I created. If you are interested in learning more about my work experience, education, and what I have been up to recently, then you have come to the right place. <br><br></b>
+            
+            I began this website as a personal project to learn about front end development (even turned my handwriting into font!). I love learning about technology and am constantly trying out new things. I currently attend the University of Texas at McCombs School of Business while pursuing my MBA. I began my career in consulting and quickly realized my interest in technology. To find out more about my work experience, see the <a href src=Resume.html>Resume tab</a> or the <a href src="Current Projects.html">Current Projects tab</a> to see what I am currently working on personally or in school. Below you will find a bit more about my life, such as my hobbies, interests, and music taste. I would love to connect!</p>
         </div> 
 </div>
 
     <div class = "about">
         <div class = "section full-width" style="align-items:center">
-                <h2>HOBBIES & INTERESTS</h2>
+                <h2>INTERESTS</h2><br>
                 <ul>
                     <li><img src="images/Hannah Sisters.jpg" width=200>
                     <p><i>My sisters</p></i></li>
@@ -243,10 +252,20 @@
                 </ul>
                 <div class="light">
                 </div>
+            <br><br>
+                <p>I am the oldest of nine siblings. Yes, nine! Those you see above are my three sisters. I love being from a big family and definitely play the eldest sibling role.
+                    <br><br><br>
+                    I saved up for months and bought my first camera in eigth grade. I used that Canon Rebel T3i up until this year when I finally decided to upgrade. While I'm no expert, I love capturing my experiences, family moments, and my travels. Now I have a Lumix DC-100 that I love!
+                    <br><br><br>
+                    I started crocheting in 2024 and fell in love with it. The process of picking a design, finding the right yarn, and then creating something is so rewarding. I love a home made gift so I love making gifts for my friends and family. Crochet has really allowed me to express my creative side.
+                    <br><br><br>
+                    I have been to 26 of the 50 states and 15 countries! I love traveling and experiencing new cultures. There is no food I won't at least try once and really enjoy the process of creating an itinerary.
+                    <br><br><br>
+                    I love spending time in nature and hiking. I have hiked in the Grand Canyon, Moab, Alaska, and try to get in as many local hikes as I can. My Type A nature turns very Type B when I can enjoy the outdoors. Soon, I'll be hiking Macchu Picchu!
+                </p>
             </div>
         </div>
     </div>
-        <br>
 
     <div class ="section full width" style="margin-top:50px;">
         <div class = "about">
