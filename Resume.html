@@ -1,281 +1,166 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
-    <meta name="author" content="Hannah Broom">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
-    <style>
-     @font-face {
-        font-family: 'Myfont';
-        src: url(HannahHandwritingFont-Regular.ttf);
-        }
-    body {font-family:Arial, Helvetica, sans-serif;
-    background-color: whitesmoke;
-    }
-    p { color:black;
-       font-size:20px;
-    }
-    .topnav {
-        overflow:hidden;
-        background-color:lavender;
-        display:flex;
-        position:sticky;
-        align-items:center;
-        justify-content:space-evenly;
-        background-blend-mode:darken;
-        background-size:cover;
-        text-decoration:none;
-        text-align:center;
-        height:75px;
-        border-radius:10px;
-        Font-family:'Myfont';
-    }
-    .topnav a{
-        float:left;
-        color:black;
-        text-align:center;
-        padding: 16px 16px;
-        font-size:18px;
-        font-weight:bold;
-        margin-right: 25px;
-        border-radius:10px;
-        transition:color .3s ease-in-out;
-        text-decoration: none;
-    }
-    .topnav a:hover {
-        background-color:white;
-        color:black;
-        border-radius:10px;
-    }
-    .topnav a.active{
-        background-color:slateblue;
-        color:white;
-        border-color:black;
-        border-width:5px;
-    }
-    .topnav a.email-me {
-        align-items:right;
-        background-color: rgb(77, 65, 151);
-        color:white;
-
-    }
-    .topnav a.email-me:hover {
-        background-color:rgb(63, 53, 128);
-        color:white;
-        transition:color .3s ease-in-out;
-    }
-    .collapsible{
-        color:black;
-        background-color:lightgrey;
-        cursor:pointer;
-        padding:10px 10px;
-        width:100%;
-        height:auto;
-        text-align:left;
-        outline:none;
-        font-size:18px;
-    }
-    .active, .collapsible:hover{
-        background-color:darkgrey;
-    }
-    .content{
-        padding:0 18px;
-        display:none;
-        overflow:hidden;
-        background-color:whitesmoke;
-        font-size:20px;
-    }
-    .collapsible2{
-        color:black;
-        background-color:darkgrey;
-        cursor:pointer;
-        padding:10px;
-        width:100%;
-        height:auto;
-        text-align:left;
-        outline:none;
-        font-size:14px;
-    }
-    .active, .collapsible2:hover{
-        background-color:darkgray
-    }
-    .content2{
-        padding:0 18px;
-        display:none;
-        overflow:hidden;
-        background-color:whitesmoke;
-        font-size:20px;
-    }
-
-    div.a{
-        word-wrap:normal;
-    }
-    @media screen and (max-width:480px) {
-        .collapsible h3, .collapsiple h4 {
-            font-size:12px;
-        }
-    .topnav {
-        flex-direction: column; /* Stack items vertically */
-        height: auto; /* Adjust height to fit all items */
-        align-items: stretch; /* Make items fill the width of the container */
-    }
-
-    .topnav a {
-        margin: 5px 0; /* Add spacing between buttons */
-        text-align: center; /* Center text in each link */
-        padding: 10px; /* Adjust padding for better fit */
-        font-size: 16px; /* Reduce font size for smaller screens */
-        text-decoration: none;
-    }
-
-    .topnav a.email-me {
-        align-self: center; /* Ensure "Email Me" is properly aligned */
-    }
-    }
-    h3{
-        font-size:24px;
-    }
-    </style>
-    </head>
-
-<title> Hannah's Experiences
-    </title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, resume, MBA, product owner, consulting">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Resume and experience for Hannah Broom.">
+  <title>Hannah Broom | Resume</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
 <body>
-    <nav class="topnav">
-        <a href="index.html">ABOUT ME</a>
-        <a class="active" href="Resume.html">RESUME</a>
-        <a href="Current Projects.html">CURRENT PROJECTS</a>
-        <a href="mailto:hmbroom1@gmail.com" class="email-me">EMAIL ME <ion-icon name="mail-outline"></ion-icon></a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a class="active" href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
     </nav>
-    <div style="padding-left:16px">
-        <p> Check out my LinkedIn <img style="height:20px;" src= "images/linkedin.png"> for more details: <a style="color: slateblue;" href="https://www.linkedin.com/in/hannah-broom/">LinkedIn Profile.</a> </p>
-        <p><b style="color:slateblue"> Click into each section below to expand and learn more.</b></p>
+  </header>
 
+  <main id="main">
+    <section class="page-hero section">
+      <p class="eyebrow">Resume</p>
+      <h1>Product, consulting, and delivery experience.</h1>
+      <section class="snapshot-summary snapshot-dashboard" aria-labelledby="snapshot-dashboard-title">
+        <h2 id="snapshot-dashboard-title">Snapshot</h2>
+        <div class="snapshot-dashboard-grid">
+          <article>
+            <span>Background</span>
+            <strong>Senior consultant + product owner</strong>
+          </article>
+          <article>
+            <span>AI focus</span>
+            <strong>Building and working with agents</strong>
+          </article>
+          <article>
+            <span>Education</span>
+            <strong>MBA candidate at UT Austin McCombs</strong>
+          </article>
+          <article>
+            <span>Credential</span>
+            <strong>PMP certified</strong>
+          </article>
+        </div>
+      </section>
+      <div class="actions">
+        <a class="button" href="https://www.linkedin.com/in/hannah-broom/">LinkedIn profile</a>
+        <a class="button secondary" href="mailto:hmbroom1@gmail.com">Contact me</a>
+      </div>
+    </section>
 
-            <button class="collapsible"><h3>ABOUT ME</h3></button>
-            <div class ="content">
-            <p>Senior consultant with a strong background in project management and leading technical teams. Effective at managing teams and clients, working with Agile principles, and supporting business requirements. </p>
+    <section class="section resume-layout resume-full">
+      <div class="timeline">
+        <details class="resume-section resume-disclosure">
+          <summary>Skills and certifications</summary>
+          <div class="pill-list" aria-label="Skills">
+            <span>PMP</span>
+            <span>Salesforce</span>
+            <span>Product Management</span>
+            <span>AI Agents</span>
+            <span>Project Management</span>
+            <span>Business Requirements</span>
+          </div>
+        </details>
+
+        <details class="resume-section resume-disclosure">
+          <summary>Experience</summary>
+          <article class="timeline-item">
+            <div>
+              <h3>AI Product Management Intern</h3>
+              <p class="meta">Microsoft · May 2026 – August 2026 · Redmond, WA</p>
             </div>
-
-            <button class="collapsible"><h3>CERTIFICATIONS & SKILLSETS</h3></button>
-            <div class ="content">
-                <ul>
-                    <li>Project Management Professional (PMP) Certified: 2023 </li><br>
-                    <li>Salesforce Business Analyst Certified: 2023</li><br>
-                    <li>Skills: PowerPoint, Salesforce, Excel, Mural, Qualtrics, and Jira</li> <br>
-                </ul>
-            </div>
-            
-
-            <button class="collapsible"><h3>EXPERIENCE</h3></button>
-            <div class ="content">
-                <br>
-            <button class ="collapsible2"><h4>Associate Product Owner Senior Associate at KPMG: October 2024 – July 2025 </h4></button>
-            <div class="content2">
-
-            <h4>Owner of Case Management Salesforce Feature</h4>
             <ul>
-                <li>Led workstream from business requirement gathering process through prioritization, design, development, and go live</li>
-                <li>Developed three new use cases that released successfully in May, as well as enhancing the two existing use cases</li>
-                <li>Reviewed 100+ user stories and 150+ test scripts with technical teams to ensure business requirement alignment and UAT readiness</li>
+              <li>Built an AI-powered agent to automate weekly reporting and business insight trend analysis, reducing 4–5 hours of manual work each week.</li>
+              <li>Synthesized Kusto, Azure DevOps, and Power BI data into product metrics and self-serve insights for Dataverse product managers.</li>
+              <li>Owned requirements, workflows, and metrics while using Copilot Studio, Power Apps, Copilot CLI, and GitHub to execute across teams.</li>
             </ul>
+          </article>
+
+          <article class="timeline-item">
+            <div>
+              <h3>Associate Product Owner Senior Associate</h3>
+              <p class="meta">KPMG · October 2024 – July 2025</p>
             </div>
-
-                <br><br>
-
-            <button class ="collapsible2"><h4>Customer & Operations Advisory Senior Associate at KPMG: October 2023 – October 2024 </h4></button>
-            <div class="content2">
-        
-            <h4>Development of New Salesforce Feature: Case Management</h4>
             <ul>
-                <li>Responsible for gathering business requirements, creating design documentation, achieving stakeholder alignment, and project management to bring new feature to Salesforce</li>
-                <li>Led workshops with business to prioritize and evaluate backlog items and new use cases</li>
-                <li>Managed work across three contractors and an intern while developing their knowledge and skillsets</li>
-                <li>Evaluated Service Cloud and Sales Cloud for possible solution selection</li>
+              <li>Owned a case management Salesforce feature from requirements through prioritization, design, development, and go-live.</li>
+              <li>Developed three new use cases that released successfully in May while enhancing two existing use cases.</li>
+              <li>Reviewed 100+ user stories and 150+ test scripts with technical teams to support UAT readiness.</li>
             </ul>
+          </article>
 
-            <h4>Development of New Salesforce Feature: Alumni Management</h4>
+          <article class="timeline-item">
+            <div>
+              <h3>Customer & Operations Advisory Senior Associate</h3>
+              <p class="meta">KPMG · October 2023 – October 2024</p>
+            </div>
             <ul>
-                <li>Responsible as workstream lead for gathering business requirements, conducting visioning workshops, drafting process flows, and reviewing priorities across KPMG functions and partners</li>
-                <li>Conducted data migration analysis and integration of three platforms to Salesforce: Marketing Cloud, historical CRM, and an alumni network portal</li>
-                <li>Coordinated across 6+ teams including data analysis, platform, Q&A, and security teams to develop new Salesforce feature</li>
-                <li>Participated and led various Agile focused calls: scrum of scrums, grooming sessions, sprint review and demos, and weekly status reports</li>
-                <li>Oversaw completion of UAT (user acceptance testing), identified personas, developed test scripts, and assisted with all defect review and resolution</li>
-                <li>Salesforce enhancement MVP output included a successful launch of new features, reports, and alumni capabilities for the business to leverage when selling</li>
+              <li>Gathered business requirements, created design documentation, aligned stakeholders, and managed delivery for Salesforce features.</li>
+              <li>Led workshops to prioritize backlog items and evaluate new use cases across business teams.</li>
+              <li>Coordinated across 6+ teams for data analysis, platform, QA, and security workstreams.</li>
+              <li>Managed work across contractors and an intern while helping develop their knowledge and skillsets.</li>
             </ul>
+          </article>
 
+          <article class="timeline-item">
+            <div>
+              <h3>Customer & Operations Advisory Associate</h3>
+              <p class="meta">KPMG · October 2021 – October 2023</p>
             </div>
-
-            <br><br>
-            <button class="collapsible2"><h4>Customer & Operations Advisory Associate at KPMG: October 2021 – October 2023</h4></button>
-            <div class="content2">
-
-            <h4>GTM & Technology Strategy Support for Multiple Clients</h4>
             <ul>
-                <li>Developed all process documentation and assessed existing go to market technology platform of 75,000 users. Provided final recommendation of ‘best-fit’ future technology solution and migration plan to support telecommunication client’s marketing team</li>
-                <li>Led survey distribution and data analysis of 100+ sellers for international insurance client to establish a Sales Operation Center of Excellence. Identified gaps in sales operations activities and recommended a new operating model</li>
-                <li>Supported development of a future state operating model for go to market and sales enablement strategy. Led current state analysis workstream and document review</li>
-                <li>Promoted a year early to Senior Associate due to high performance</li>
+              <li>Developed process documentation and assessed a go-to-market technology platform supporting 75,000 users.</li>
+              <li>Led survey distribution and analysis for 100+ sellers to help establish a Sales Operations Center of Excellence.</li>
+              <li>Supported current-state analysis, future-state operating model design, and sales enablement strategy work.</li>
+              <li>Promoted a year early to Senior Associate due to high performance.</li>
             </ul>
-            </div>
-            </div>
-            
-            <br>
+          </article>
+        </details>
 
-             <button class="collapsible"><h3>EDUCATION </h3></button>
-             <div class ="content"> 
-                <h4>University of Texas at Austin – M.B.A </h4>
-                <ul>
-                    <li>Class of 2027</li>
-                </ul>
-                <h4>University of Georgia – B.B.A | Economics – Honors </h4>
-            <ul>
-                <li>GPA: 3.91</li>
-            </ul>
-            </div>
-            <br><br>
-            <p style="font-size:10px; text-align:center;">Icons by <a style="color: grey;" href="https://icons8.com">Icons8. </a></p>
-             </p>
-    </div>
+        <details class="resume-section resume-disclosure">
+          <summary>Education</summary>
+          <div class="card-grid two-column education-grid">
+            <article class="simple-card">
+              <h3>University of Texas at Austin</h3>
+              <p>MBA, McCombs School of Business</p>
+              <p>Class of 2027</p>
+              <p>President of Tech Club</p>
+            </article>
+            <article class="simple-card">
+              <h3>University of Georgia</h3>
+              <p>BBA, Economics Honors · GPA: 3.91</p>
+            </article>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
 
-    <script>
-
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        }
-
-        var coll2 = document.getElementsByClassName("collapsible2");
-        var j;
-
-        for (j = 0; j < coll2.length; j++) {
-            coll2[j].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content2 = this.nextElementSibling;
-                if (content2.style.display === "block") {
-                    content2.style.display = "none";
-                } else {
-                    content2.style.display = "block";
-                }
-            });
-        }
-    </script>
-    </body>
-
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+    <p class="fine-print">Icons by <a href="https://icons8.com">Icons8</a>.</p>
+  </footer>
+</body>
 </html>
-
-

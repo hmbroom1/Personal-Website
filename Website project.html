@@ -1,238 +1,131 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
-    <meta name="author" content="Hannah Broom">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        @font-face {
-        font-family: 'Myfont';
-        src: url(HannahHandwritingFont-Regular.ttf);
-        }
-        body {font-family:Arial, Helvetica, sans-serif;
-        background-color:whitesmoke
-        }
-        p { color:black
-        }
-        .topnav {
-            overflow:hidden;
-            background-color:lavender;
-            display:flex;
-            position:sticky;
-            align-items:center;
-            justify-content:space-evenly;
-            background-blend-mode:darken;
-            background-size:cover;
-            text-decoration:none;
-            text-align:center;
-            height:75px;
-            border-radius:10px;
-            Font-family:'Myfont';
-        }
-        .topnav a{
-            float:left;
-            color:black;
-            text-align:center;
-            padding: 16px 16px;
-            font-size:18px;
-            font-weight:bold;
-            margin-right: 25px;
-            border-radius:10px;
-            transition:color .3s ease-in-out;
-            text-decoration: none;
-        }
-        .topnav a:hover {
-            background-color:white;
-            color:black;
-            border-radius:10px;
-        }
-        .topnav a.active{
-            background-color:slateblue;
-            color:white;
-            border-color:black;
-            border-width:5px;
-        }
-        .topnav a.email-me {
-            align-items:right;
-            background-color: rgb(77, 65, 151);
-            color:white;
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, website project, HTML, CSS, GitHub Pages">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="How Hannah Broom built her personal website.">
+  <title>Hannah Broom | Website Project</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        }
-        .topnav a.email-me:hover {
-            background-color:rgb(63, 53, 128);
-            color:white;
-            transition:color .3s ease-in-out;   
-        }
-        .section{
-            padding:20px;
-            margin: 10px 0;
-        }
-        .header {
-        text-align: center;
-        padding: 32px;
-        }
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
+    </nav>
+  </header>
 
-        /* Create two equal columns that floats next to each other */
-        .column {
-        width: 100%;
-        padding: 10px;
-        }
+  <main id="main">
+    <article class="case-study section narrow">
+      <p class="eyebrow">Case study</p>
+      <h1>Making this website</h1>
+      <p class="lede">
+        I learn by doing. This site started as a blank file and became a practical way to understand front-end structure,
+        responsive design, personal expression, and how quickly AI tools are changing the building process.
+      </p>
+      <div class="actions">
+        <a class="button secondary" href="Current%20Projects.html">Back to projects</a>
+      </div>
 
-        .column img {
-        margin-top: 12px;
-        animation: slideInFromBelow 3s ease-in forwards;
-        opacity:0;
-        }
+      <section>
+        <details class="story-disclosure">
+          <summary>Click to see the design journey</summary>
+          <p>
+            The earlier site had the basic layout idea and personal elements I wanted: purple, my handwritten font, and
+            sections for work, projects, and interests. What was harder was making it feel aesthetically polished and
+            clearly communicating what I wanted people to take away.
+          </p>
+          <div class="comparison-grid">
+            <figure class="process-shot">
+              <img src="images/website-before-resume.png" alt="Earlier resume page design with lavender navigation and large grey expandable sections">
+              <figcaption>Earlier resume page: the structure was there, but the design felt heavy and hard to scan.</figcaption>
+            </figure>
+            <figure class="process-shot">
+              <img src="images/website-before-about.png" alt="Earlier about page design with personal interest photos and lavender navigation">
+              <figcaption>Earlier about page: personal and fun, but less streamlined than the current direction.</figcaption>
+            </figure>
+          </div>
+        </details>
+      </section>
 
-        /* Clear floats after the columns */
-        .row:after {
-        content: "";
-        display: table;
-        clear: both;
-        }
-        .row {
-        display: flex;
-        flex-direction: column; /* Stacks items vertically */
-        align-items: center; /* Centers them horizontally */
-        width: 100%;
-        }
-        @keyframes slideInFromBelow {
-            from {
-                transform: translateY(100%);
-                opacity:0;
-            }
-            to {
-                transform: translateY(0);
-                opacity:1;
-            }
-        }
-        
-        .column img:nth-child(1) {
-        animation-delay: .25s;
-        }
-        .column img:nth-child(2) {
-        animation-delay: .5s;
-        }
-        .column img:nth-child(3) {
-        animation-delay: .75s;
-        }
-        .column img:nth-child(4) {
-        animation-delay: 1s;
-        }
-        .column img:nth-child(5) {
-        animation-delay: 1.25s;
-        }
-
-        @keyframes rotateStar{
-            0% {
-                transform: rottate(0deg);
-            }
-            50% {
-                transform: rotate(180deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media screen and (max-width:400px) {
-        .column {
-            width: 100%;
-            margin-bottom:20px;
-            font-size:18px;
-        }
-        @media (max-width:400px) {
-            .row {
-               flex-direction:column;
-               align-items:center;
-            }
-        }
-        .row{
-            font-size:18px;
-            flex-wrap:wrap;
-        }
-        .column img{
-            height:5px;
-        }
-    .topnav {
-        flex-direction: column; /* Stack items vertically */
-        height: auto; /* Adjust height to fit all items */
-        align-items: stretch; /* Make items fill the width of the container */
-    }
-
-    .topnav a {
-        margin: 5px 0; /* Add spacing between buttons */
-        text-align: center; /* Center text in each link */
-        padding: 10px; /* Adjust padding for better fit */
-        font-size: 16px; /* Reduce font size for smaller screens */
-        text-decoration: none;
-    }
-
-    .topnav a.email-me {
-        align-self: center; /* Ensure "Email Me" is properly aligned */
-    }
-        }
-        .ul li::before {
-            content: '★';
-            color: black;
-            font-size: 20px;
-            margin-right:5px;
-            display:inline-block;
-            animation:rotateStar 2s infinite;
-        }
-        .ul {
-            list-style-type:none;
-            padding-left:0;
-            font-size:20px;
-        }
-
-    </style>
-    </head>
-
-    <title> Making This Website
-    </title>
-
-    <body>
-
-        <nav class="topnav">
-            <a href="index.html">ABOUT ME</a>
-            <a href="Resume.html">RESUME</a>
-            <a class="active" href="Current Projects.html">CURRENT PROJECTS</a>
-            <a href="mailto:hmbroom1@gmail.com" class="email-me">EMAIL ME <ion-icon name="mail-outline"></ion-icon></a>
-        </nav>
-
-  <div class="header">
-        <div class="row">
-            <div class="column">
-            <h1>MAKING THIS WEBSITE</h1>
-            <p style="padding-top:20px; font-size:20px;">I made this website with the goal of gaining a better understanding of front end development. I used HTML, CSS, and some basic JavaScript to create this website. I really enjoyed the process of starting from scratch and having to teach something completely new to myself. I now have a basic understanding of how websites are created and coding concepts. My goal is not to become an expert developer, but understand coding concepts to work better with developers. This project is only the beginning of my curiousity into the tech space!
-            </p>
-                <div class="column">
-                    <img style="height:75px" src="images/stack overflow.png">
-                    <img style="height:75px" src="images/github.png">
-                    <img style="height:75px" src="images/visual studio code.png">
-                        <img style="height:75px" src="images/html.png">   
-                        <img style="height:75px" src="images/youtube.png">
-                </div>
-            </div>
-            <div class="column">
-                <h1>INSIGHTS</h1>
-                <div class="row">
-                        <ul class="ul" style="text-align:left;">
-                            <li>This project helped me understand what resources to use - such as Github Pages for hosting the website, Stack Overflow for when I had questions, and Youtube for a many tutorials! I had a lot of fun starting from scratch and teaching myself.</li><br>
-                            <li>Learning HTML and CSS helped me understand design, layout, coding concepts, and file structure. In the beginning of making this site, I did not put my style CSS in a separate file. This creates a lot of redundancies that I have to track across multiple pages. When creating my crochet project site, I learned and created a separate file that time! It was much easier.</li><br>
-                            <li>I had to understand how the layout would be impacted on different device screen size, such as desktop vs mobile. I used VS Code extensions to test my design on Iphones while I worked primarily on my computer. I ensured that the navigation bar would also collapse accordingly. If you are viewing on one device over another, feel free to check out the differences!</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  <br>
-        <p style="font-size:10px; text-align:center;">Icons by <a style="color: grey;" href="https://icons8.com">Icons8. </a></p>
+      <section>
+        <h2>Starting from blank</h2>
+        <p>
+          I started the first version in Fall 2025 with a very basic understanding of HTML and CSS. The goal was not to
+          make the perfect portfolio. I wanted to see what I could build, understand how files connected to each other,
+          and learn why small design decisions like spacing, hierarchy, and navigation matter.
         </p>
+        <p>
+          That early version was rough, but it gave me a foundation. It helped me understand what I was asking for when I
+          wanted a box moved, a heading resized, or a page to work differently on mobile than it did on desktop.
+        </p>
+      </section>
 
-    </body>
+      <section>
+        <h2>Revisiting it with newer AI tools</h2>
+        <p>
+          I came back to the site in June 2026 and was surprised by how different the building experience felt. Earlier,
+          I remember going back and forth over small CSS issues like padding, alignment, and responsive spacing. This time,
+          the models understood those fixes much faster and could help me make more intentional design choices.
+        </p>
+        <p>
+          The redesign also pushed me to think less like I was filling in a template and more like I was shaping how I
+          wanted to be perceived. I wanted the site to feel modern and simple, but still have a little personality: purple
+          accents, greyscale visuals, and my own handwriting used for the Hannah Broom wordmark.
+        </p>
+      </section>
 
+      <section>
+        <h2>What changed</h2>
+        <div class="card-grid two-column">
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Desktop and mobile are different products</h3>
+            <p>
+              Testing the site on smaller screens made it obvious that mobile could not just be the desktop site squeezed
+              into a narrow column. Navigation, spacing, and section length all needed different decisions.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Design is part of the message</h3>
+            <p>
+              I realized I did not just want the site to list work. I wanted it to communicate taste, curiosity, and a
+              design aesthetic that feels modern with a splash of personality.
+            </p>
+          </article>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+    <p class="fine-print">Icons by <a href="https://icons8.com">Icons8</a>.</p>
+  </footer>
+</body>
 </html>
