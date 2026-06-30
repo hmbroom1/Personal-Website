@@ -172,7 +172,33 @@ a:active {
   font-family: "Hannah Handwriting", "Segoe UI", Aptos, Calibri, sans-serif;
   font-size: clamp(1.65rem, 3vw, 2.35rem);
   font-weight: 700;
+  display: inline-block;
+  position: relative;
   text-decoration: none;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.brand:hover,
+.brand:focus-visible,
+.brand.is-sparkling {
+  color: var(--cp-accent);
+  transform: rotate(-1deg) translateY(-1px);
+}
+
+.brand-sparkle {
+  color: var(--cp-accent);
+  font-size: 0.85rem;
+  left: var(--sparkle-x);
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: var(--sparkle-y);
+  transform: translate(-50%, -50%) scale(0.4);
+  z-index: 12;
+}
+
+.brand-sparkle.is-visible {
+  animation: sparkle-pop 680ms ease-out forwards;
 }
 
 .nav-menu-toggle {
@@ -465,11 +491,58 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.interest-card,
 .project-card,
 .simple-card,
 .sidebar-card {
   padding: 1.15rem 0;
+}
+
+.interest-card {
+  padding: 1.15rem;
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 520ms ease, transform 520ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card,
+.simple-card,
+.interest-card,
+.resume-disclosure summary,
+.case-disclosure summary,
+.story-disclosure summary,
+.text-link,
+.button {
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    opacity 520ms ease,
+    transform 180ms ease;
+}
+
+.project-card:hover,
+.simple-card:hover,
+.interest-card:hover,
+.resume-disclosure summary:hover,
+.case-disclosure summary:hover,
+.story-disclosure summary:hover {
+  border-color: var(--cp-border-strong);
+  transform: translateY(-2px);
+}
+
+.text-link:hover,
+.text-link:focus-visible,
+.button:hover,
+.button:focus-visible {
+  transform: translateX(2px);
 }
 
 .interest-card img {
@@ -482,6 +555,14 @@ h3 {
 
 .page-hero {
   padding-bottom: 2rem;
+}
+
+.projects-hero {
+  padding-bottom: 1rem;
+}
+
+.projects-grid-section {
+  padding-top: 1rem;
 }
 
 .snapshot-summary {
@@ -875,6 +956,66 @@ h3 {
 
 .fine-print {
   font-size: 0.72rem;
+}
+
+@keyframes sparkle-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.35) rotate(0deg);
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(calc(-50% + var(--sparkle-dx)), calc(-50% + var(--sparkle-dy)))
+      scale(1)
+      rotate(var(--sparkle-rotate));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .brand,
+  .project-card,
+  .simple-card,
+  .interest-card,
+  .resume-disclosure summary,
+  .case-disclosure summary,
+  .story-disclosure summary,
+  .text-link,
+  .button,
+  .scroll-reveal {
+    transition: none;
+  }
+
+  .brand:hover,
+  .brand:focus-visible,
+  .brand.is-sparkling,
+  .project-card:hover,
+  .simple-card:hover,
+  .interest-card:hover,
+  .resume-disclosure summary:hover,
+  .case-disclosure summary:hover,
+  .story-disclosure summary:hover,
+  .text-link:hover,
+  .text-link:focus-visible,
+  .button:hover,
+  .button:focus-visible,
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .brand-sparkle {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
