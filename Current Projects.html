@@ -1,191 +1,110 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
-    <meta name="author" content="Hannah Broom">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <style>
-
-    @font-face {
-        font-family: 'Myfont';
-        src: url(HannahHandwritingFont-Regular.ttf);
-        }
-    body {
-        font-family:Arial, Helvetica, sans-serif;
-        background-color:whitesmoke;
-        margin:0;
-    }
-    p { 
-        color:white;
-       font-size:20px;
-    }
-    .topnav {
-        overflow:hidden;
-        background-color:lavender;
-        display:flex;
-        position:sticky;
-        align-items:center;
-        justify-content:space-evenly;
-        background-blend-mode:darken;
-        background-size:cover;
-        text-decoration:none;
-        text-align:center;
-        height:75px;
-        border-radius:10px;
-        Font-family:'Myfont';
-    }
-    .topnav a{
-        float:left;
-        color:black;
-        text-align:center;
-        padding: 16px 16px;
-        font-size:18px;
-        font-weight:bold;
-        margin-right: 25px;
-        border-radius:10px;
-        transition:color .3s ease-in-out;
-         text-decoration: none;
-    }
-    .topnav a:hover {
-        background-color:white;
-        color:black;
-        border-radius:10px;
-    }
-    .topnav a.active{
-        background-color:slateblue;
-        color:white;
-        border-color:black;
-        border-width:5px;
-    }
-    .topnav a.email-me {
-        align-items:right;
-        background-color: rgb(77, 65, 151);
-        color:white;
-
-    }
-    .topnav a.email-me:hover {
-        background-color:rgb(63, 53, 128);
-        color:white;
-        transition:color .3s ease-in-out;   
-    }
-
-/* Projects Section */
-#projects {
-    background: linear-gradient(135deg,slateblue,rgba(105, 90, 205, 0.699));
-    padding: 40px 20px;
-    text-align: center;
-    color: #fff;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.7);
-    min-height:100vh;
-    display: flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-#projects h2 {
-    text-shadow: 3px 3px 8px #000;
-}
-
-#projects .project {
-    margin: 20px auto; /* Add spacing between the different projects and centers on screen*/
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.9);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add shadow to each box*/
-    width:90%;
-}
-
-#projects .project:hover {
-    transform: scale(1.05); /* Make box 'grow' when scrolling over it*/
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
-}
-
-#projects a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.container { /* Make sure the slateblue background extends fully down*/
-    width:100%;
-    margin: 0; 
-    padding: 0 20px;
-    text-align: center;
-}
-
-#projects a:hover {
-    color: white;
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) { /* Adjust for viewing on smaller screens*/
-    header nav ul li {
-        display: block;
-        margin: 10px 10px;
-    }
-    #projects{
-        padding: 10px 10px;
-        font-size:16px;
-    }
-    .topnav {
-        flex-direction: column; /* Stack items vertically */
-        height: auto; /* Adjust height to fit all items */
-        align-items: stretch; /* Make items fill the width of the container */
-    }
-    .topnav a {
-        margin: 5px 0; /* Add spacing between buttons */
-        text-align: center; /* Center text in each link */
-        padding: 10px; /* Adjust padding for better fit */
-        font-size: 16px; /* Reduce font size for smaller screens */
-        text-decoration: none; /* Remove the underline from the links */
-    }
-    .topnav a.email-me {
-        align-self: center; /* Ensure "Email Me" is properly aligned */
-    }
-    }
-
-    </style>
-    </head>
-
-<title> Hannah's Projects
-    </title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, projects, portfolio, website, crochet tracker">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Projects by Hannah Broom.">
+  <title>Hannah Broom | Projects</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
 <body>
-    <nav class="topnav">
-        <a href="index.html">ABOUT ME</a>
-        <a href="Resume.html">RESUME</a>
-        <a class="active" href="Current Projects.html">CURRENT PROJECTS</a>
-        <a href="mailto:hmbroom1@gmail.com" class="email-me">EMAIL ME <ion-icon name="mail-outline"></ion-icon></a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a class="active" href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
     </nav>
+  </header>
 
-        <section id="projects">
-            <div class="container">
-                 <h2 style="font-size:30px;">MY PROJECTS</h2>
-                <p style="font-size:24px;"> I'm always up to something new! Click into each project to learn more about it.</p>
+  <main id="main">
+    <section class="page-hero section narrow">
+      <p class="eyebrow">Projects</p>
+      <h1>I learn by doing.</h1>
+      <p class="lede">
+        I'm always trying something new. Each project below is either a personal or work project that showcases
+        how I approach my work.
+      </p>
+    </section>
 
+    <section class="section project-grid">
+      <article class="project-card featured">
+        <div>
+          <p class="eyebrow">Portfolio</p>
+          <h2>Making my own website</h2>
+          <p>
+            You are seeing this project in action, but it didn't always look like this. I started this to learn basic HTML,
+            CSS, and file structure, but it has turned into a powerful lesson on how fast AI models are improving.
+          </p>
+        </div>
+        <a class="text-link" href="Website%20project.html">Read the process</a>
+      </article>
 
-                 <div class="project">
-                     <a href ="Website project.html"><h3 style="font-size:24px;">Making My Own Website</h3> </a>
-                    <p> You're seeing this project in action! Learn more about my first time coding, teaching myself something from scratch, and how this project came to be.</p> 
-                </div>
+      <article class="project-card">
+        <div>
+          <p class="eyebrow">AI product work</p>
+          <h2>Report agent</h2>
+          <p>
+            Microsoft internship project where I built an agent that analyzed product metrics, produced a weekly report, and
+            notified team members of significant metric changes. Cleansed for portfolio use.
+          </p>
+        </div>
+        <a class="text-link" href="Report%20agent.html">Read the process</a>
+      </article>
 
+      <article class="project-card">
+        <div>
+          <p class="eyebrow">JavaScript app</p>
+          <h2>Crochet project tracker</h2>
+          <p>
+            A simple tracker for crochet projects with counters, goal inputs, hook and yarn details, and celebratory
+            animations when goals are reached.
+          </p>
+        </div>
+        <div class="project-actions">
+          <a class="text-link" href="Project%202.html">Read the process</a>
+          <a class="text-link" href="crochet.html">Open tracker</a>
+        </div>
+      </article>
 
-                <div class="project">
-                    <a href="Project 2.html"><h3 style="font-size:24px;">Crochet Project Tracker Site</h3></a>
-                    <p>I developed a site to help track progress when crocheting. This project helped me understand JavaScript and how to take an idea from design through execution, learning what I built upon from my website building project.</p>
-                </div>
+      <article class="project-card muted">
+        <div>
+          <p class="eyebrow">Coming soon</p>
+          <h2>Next experiment</h2>
+          <p>
+            I am always trying something new. This space is reserved for the next project, prototype, or learning sprint.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
 
-
-                <div class="project">
-                    <h3 style="font-size:24px;">To Be Announced</h3>
-                    <p>Stay tuned for updates!</p>
-                </div>
-            </div>
-
-        </section>
-    </body>
-
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+  </footer>
+</body>
 </html>

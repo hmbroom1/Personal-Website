@@ -1,303 +1,116 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta name="keywords" content ="Hannah Broom, Resume, University of Texas at Austin MBA">
-    <meta name="author" content="Hannah Broom">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <style>
-     @font-face {
-        font-family: 'Myfont';
-        src: url(HannahHandwritingFont-Regular.ttf);
-        }
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    background-color:whitesmoke
-    }
-    p { color:black;
-        font-size:20px;
-    }
-    .topnav {
-        overflow:hidden;
-        background-color:lavender;
-        display:flex;
-        position:sticky;
-        align-items:center;
-        justify-content:space-evenly;
-        background-blend-mode:darken;
-        background-size:cover;
-        text-decoration:none;
-        text-align:center;
-        height:75px;
-        border-radius:10px;
-        Font-family:'Myfont';
-    }
-    .topnav a{
-        float:left;
-        color:black;
-        text-align:center;
-        padding: 16px 16px;
-        font-size:18px;
-        font-weight:bold;
-        margin-right: 25px;
-        border-radius:10px;
-        transition:color .3s ease-in-out;
-        text-decoration: none;
-    }
-    .topnav a:hover {
-        background-color:white;
-        color:black;
-        border-radius:10px;
-    }
-    .topnav a.active{
-        background-color:slateblue;
-        color:white;
-        border-color:black;
-        border-width:5px;
-    }
-    .topnav a.email-me {
-        align-items:right;
-        background-color: rgb(77, 65, 151);
-        color:white;
-
-    }
-    .topnav a.email-me:hover {
-        background-color:rgb(63, 53, 128);
-        color:white;
-        transition:color .3s ease-in-out;   
-    }
-    .section{
-        padding:20px;
-        margin: 10px 0;
-        
-    }
-
-    .full-width{
-        display:flex;
-        justify-content:space-between;
-        flex-direction:column;
-    }
-    .half-width-container{
-        display:flex;
-        justify-content:space-between;
-    }
-    .half-width{
-        width:48%;
-        background-color:whitesmoke;
-    }
-    .about{
-        text-align:center;
-        text-decoration-color:#555;
-        margin: 20px auto;
-        margin-right:150px;
-        margin-left:150px;
-        padding: 0px 20px;
-    }
-    @keyframes profileBounce {
-        0%, 100% {
-            transform:translateY(0);
-        }
-        50% {
-            transform:translateY(-10px);
-        }
-    }
-    profileBounce animation {
-        transform:translateY(-.40288px);    
-    }
-    img.profile-picture{
-        max-width: 250px;
-        max-height:250px;
-        box-shadow:slateblue 0px 5px 10px;
-        border-radius: 50%;
-        margin: 20px auto;
-        border-width:5px;
-        border-color:slategray;
-        border-image:initial;
-        animation: profileBounce 3s infinite;
-    }
-    img {
-        overflow-clip-margin: content-box;
-        overflow-clip-margin:none;
-    }
-    .row {
-        display: flex;
-        align-items:center;
-        margin-bottom: 20px;
-        }
-    .row img {
-        max-width: 150px;
-        margin-right: 20px;
-    }
-     .row .text {
-        flex: 1;
-    }
-
-    ul{
-    position:relative;
-    margin:0;
-    padding:0;
-    }
-
-    li{
-    text-align:center;
-    height:auto;
-    display:inline-block;
-    align-items:center;
-    list-style:none;
-    position:relative;
-    border:solid 12px #fff;
-    background:#fff;
-    box-shadow:0 0 15px 0px #555;
-    transition:all 1s ease;
-    -o-transition:all 1s ease;
-    -moz-transition:all 1s ease;
-    -webkit-transition:all 1s ease;
-    }
-
-    li:hover{
-    top:-50px;
-    opacity:0.5;
-    }
-
-    li:nth-child(1){
-        transform:rotate(10deg);
-    }
-
-    li:nth-child(2){
-        transform:rotate(0deg);
-    }
-
-    li:nth-child(3){
-        transform:rotate(-10deg);
-    }
-
-    li:nth-child(4){
-        transform:rotate(20deg);
-    }
-    .light{
-    border-radius:50%;
-    position:absolute;
-    left:0;
-    right:0;
-    width:700px;
-    height:700px;
-    background:#fff;
-    filter:blur(100px);
-    opacity:0.2;
-    pointer-events:none;
-    }
-
-    h2{
-        font-size: 40px;
-        animation: profileBounce 4s;
-        animation-iteration-count: 1;
-        font-family:'Myfont';
-    }
-    @media (max-width: 768px) {
-        .topnav {
-            flex-direction: column; /* Stack items vertically */
-            height: auto; /* Adjust height to fit all items */
-            align-items: stretch; /* Make items fill the width of the container */
-        }
-        .about {
-            margin: 0px 0px;
-            margin-right:0px;
-            margin-left:0px;
-            padding: 0px 0px;
-        }
-
-        .topnav a {
-            margin: 5px 0; /* Add spacing between buttons */
-            text-align: center; /* Center text in each link */
-            padding: 10px; /* Adjust padding for better fit */
-            font-size: 16px; /* Reduce font size for smaller screens */
-            text-decoration: none;
-        }
-
-        .topnav a.email-me {
-            align-self: center; /* Ensure "Email Me" is properly aligned */
-        }
-    }
-    </style>
-    </head>
-
-<title> About Hannah
-    </title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, resume, MBA, product management, personal website">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Personal website for Hannah Broom, an MBA candidate and product-minded builder.">
+  <title>Hannah Broom | About</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
 <body>
-    <nav class="topnav">
-        <a class="active" href=index.html>ABOUT ME</a>
-        <a href="Resume.html">RESUME</a>
-        <a href="Current Projects.html">CURRENT PROJECTS</a>
-        <a href="mailto:hmbroom1@gmail.com" class="email-me">EMAIL ME <ion-icon name="mail-outline"></ion-icon></a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a class="active" href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
     </nav>
+  </header>
 
-<! -- Full width About Me section -- >
-<div class = "about"> 
-        <div class="section full-width">
-                <h2>ABOUT ME</h2>
-           <b> <p style="font-size:20px">Hi - I'm Hannah Broom! Welcome to my personal website that I created. If you are interested in learning more about my work experience, education, and what I have been up to recently, then you have come to the right place. <br><br></b>
-            
-            I began this website as a personal project to learn about front end development (even turned my handwriting into font!). I love learning about technology and am constantly trying out new things. I currently attend the University of Texas at McCombs School of Business while pursuing my MBA. I began my career in consulting and quickly realized my interest in technology. 
-            To find out more about my work experience, see the <a href="Resume.html">Resume tab</a> or the <a href="Current Projects.html">Current Projects tab</a> to see what I am currently working on personally or in school. Below you will find a bit more about my life, such as my hobbies, interests, and music taste. I would love to connect!</p>
-        </div> 
-</div>
-
-    <div class = "about">
-        <div class = "section full-width" style="align-items:center">
-                <h2>INTERESTS</h2><br>
-                <ul>
-                    <li><img src="images/Hannah Sisters.jpg" width=200>
-                    <p><i>My sisters</p></i></li>
-                    <li><img src="images/Hannah Taking Photo.jpg" width="200"/>
-                    <p><i>Photography</p></i></li>
-                    <li><img src="images/Hannah Gnome Crochet.jpg" width="200"/>
-                    <p><i>Crochet</i></p></li>
-                    <li><img src="images/Hannah Japan.jpg" width="200"/>
-                    <p><i>Travel</p></i></li>
-                    <li><img src="images/Hannah in Cave.jpg" width="200"/>
-                    <p><i>Hiking</p></i></li>
-                </ul>
-                <div class="light">
-                </div>
-            <br><br>
-                <p>I am the oldest of nine siblings. Yes, nine! Those you see above are my three sisters. I love being from a big family and definitely play the eldest sibling role.
-                    <br><br><br>
-                    I saved up for months and bought my first camera in eigth grade. I used that Canon Rebel T3i up until this year when I finally decided to upgrade. While I'm no expert, I love capturing my experiences, family moments, and my travels. Now I have a Lumix DC-100 that I love!
-                    <br><br><br>
-                    I started crocheting in 2024 and fell in love with it. The process of picking a design, finding the right yarn, and then creating something is so rewarding. I love a home made gift so I love making gifts for my friends and family. Crochet has really allowed me to express my creative side.
-                    <br><br><br>
-                    I have been to 26 of the 50 states and 15 countries! I love traveling and experiencing new cultures. There is no food I won't at least try once and really enjoy the process of creating an itinerary.
-                    <br><br><br>
-                    I love spending time in nature and hiking. I have hiked in the Grand Canyon, Moab, Alaska, and try to get in as many local hikes as I can. My Type A nature turns very Type B when I can enjoy the outdoors. Soon, I'll be hiking Macchu Picchu!
-                </p>
-            </div>
+  <main id="main">
+    <section class="hero section">
+      <div class="hero-copy">
+        <p class="eyebrow">MBA candidate · Product-minded builder · Curious learner</p>
+        <h1>Hi, I’m Hannah. I like turning ambiguous ideas into practical, people-centered products.</h1>
+        <p class="lede">
+          I started this website as fun project but it has become a small portfolio for my
+          work, projects, interests, and the things I am learning along the way.
+        </p>
+        <div class="actions">
+          <a class="button" href="Current%20Projects.html">View projects</a>
+          <a class="button secondary" href="Resume.html">See resume</a>
         </div>
-    </div>
+      </div>
+      <figure class="hero-card">
+        <img src="images/Hannah%20Japan.jpg" alt="Hannah traveling in Japan">
+      </figure>
+    </section>
 
-    <div class ="section full width" style="margin-top:50px;">
-        <div class = "about">
-            <h2>MUSIC</h2>
-        <iframe style="border-radius:12px" 
-            src="https://open.spotify.com/embed/playlist/7BqMx666z3YhuuzziWZ0QS?utm_source=generator" 
-            width="80%" 
-            height="352"
-            frameBorder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-        </iframe>
-        </div>
-    </div>
+    <section class="section split">
+      <div>
+        <p class="eyebrow">About me</p>
+        <h2>Business background, technical curiosity.</h2>
+      </div>
+      <div class="stack">
+        <p>
+          I am pursuing my MBA at the University of Texas at Austin McCombs School of Business. I began my career in
+          consulting and quickly became interested in how technology teams translate business needs into useful products.
+        </p>
+        <p>
+          I collaborate well with technical teams and have spent time learning about agents, AI tools, and how to most
+          efficiently build products. I'm looking for opportunities that both spark my curiosity and challenge me.
+        </p>
+      </div>
+    </section>
 
-    <div class="section full-width">
-        <div class ="about">
-            <small>Can you guess my favorite color based on this website? <img src ="images/laugh.png" style="height: 12px; width: 12px;"></small><br><br>
-            <p style="font-size:10px;">Icons by <a style="color: grey;" href="https://icons8.com">Icons8. </a></p>
-        </div>
-    </div>
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Interests</p>
+        <h2>Things outside of work and school</h2>
+      </div>
+      <div class="interest-grid">
+        <article class="interest-card">
+          <img src="images/Hannah%20Sisters.jpg" alt="Hannah with her sisters">
+          <h3>Family</h3>
+          <p>I am the oldest of nine siblings, which means I have had a lot of practice organizing chaos.</p>
+        </article>
+        <article class="interest-card">
+          <img src="images/Hannah%20Taking%20Photo.jpg" alt="Hannah taking a photo">
+          <h3>Photography</h3>
+          <p>I bought my first camera in eighth grade and still love capturing family moments and travel.</p>
+        </article>
+        <article class="interest-card">
+          <img src="images/Hannah%20Gnome%20Crochet.jpg" alt="A crocheted gnome">
+          <h3>Crochet</h3>
+          <p>I started crocheting in 2024 and love the process of turning an idea into a handmade gift.</p>
+        </article>
+        <article class="interest-card">
+          <img src="images/Hannah%20in%20Cave.jpg" alt="Hannah hiking in a cave">
+          <h3>Travel and hiking</h3>
+          <p>I have visited 26 states and 15 countries, and I am happiest when an itinerary includes a hike.</p>
+        </article>
+      </div>
+    </section>
 
-    </body>
+  </main>
 
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+    <p class="fine-print">Icons by <a href="https://icons8.com">Icons8</a>.</p>
+  </footer>
+</body>
 </html>

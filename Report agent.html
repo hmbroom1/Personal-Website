@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, report agent, AI product management, product metrics">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Process page for Hannah Broom's report agent project.">
+  <title>Hannah Broom | Report Agent</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="case-study section narrow">
+      <p class="eyebrow">Case study</p>
+      <h1>Report agent</h1>
+      <p class="lede">
+        Microsoft internship project where I built an agent that analyzed product metrics, produced a weekly report, and
+        notified team members of significant metric changes. Cleansed for portfolio use.
+      </p>
+      <div class="actions">
+        <a class="button secondary" href="Current%20Projects.html">Back to projects</a>
+      </div>
+
+      <details class="case-disclosure">
+        <summary>The problem</summary>
+        <p>
+          During my Microsoft internship, I worked on a reporting process that was valuable, but time-consuming. Each
+          cycle required people to collect product metrics, review changes, identify meaningful movement, write narrative
+          updates, and notify the right owners when something needed attention.
+        </p>
+        <p>
+          The goal was to move the process from manual assembly toward a repeatable agent workflow: less time spent
+          gathering information, more time spent understanding what changed and what action should happen next.
+        </p>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>How I approached it</summary>
+        <div class="card-grid two-column compact-grid">
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Requirements first</h3>
+            <p>
+              I started by understanding what the report needed to accomplish, which sections mattered most, what data
+              needed to be trusted, and where human review still belonged in the process.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Stakeholder input</h3>
+            <p>
+              I talked with team members to understand metric ownership, review expectations, and where the current
+              process created friction or repeated follow-up.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Agent instructions</h3>
+            <p>
+              I learned how skill and instruction files shaped the agent's behavior, then used them to define the report
+              structure, writing rules, data inputs, and execution steps.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Iterative build</h3>
+            <p>
+              I built toward a working foundation first, then layered in improvements like owner routing, change callouts,
+              repeatable configuration, and safer review paths.
+            </p>
+          </article>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>How the agent works</summary>
+        <div class="agent-flow" aria-label="Report agent workflow">
+          <div>
+            <strong><span>1</span> - Prepare</strong>
+            <p>Load the reporting period, team configuration, owner mapping, and current and historical metric inputs.</p>
+          </div>
+          <div>
+            <strong><span>2</span> - Analyze</strong>
+            <p>Compare metric movement over time, identify notable changes, and connect each area to an owner or review path.</p>
+          </div>
+          <div>
+            <strong><span>3</span> - Draft</strong>
+            <p>Generate the report structure, metric tables, plain-language summaries, and callouts for areas that need attention.</p>
+          </div>
+          <div>
+            <strong><span>4</span> - Route</strong>
+            <p>Send the output for review and trigger notifications when significant changes need follow-up from the right people.</p>
+          </div>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>Tools and product decisions</summary>
+        <p>
+          The key product decision was keeping the system configurable, so report structure, owners, data sources, and
+          workflow steps could change without rebuilding the entire agent.
+        </p>
+        <div class="pill-list" aria-label="Tools used">
+          <span>Python</span>
+          <span>Kusto queries</span>
+          <span>Power BI</span>
+          <span>GitHub</span>
+          <span>Copilot CLI</span>
+          <span>Power Automate</span>
+          <span>VS Code</span>
+          <span>PowerShell</span>
+          <span>Agent instructions</span>
+          <span>Configuration files</span>
+          <span>Document generation</span>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>Impact to users</summary>
+        <p class="impact-stat">Saved 4–5 hours a week on reporting.</p>
+        <div class="card-grid two-column impact-grid">
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Reduced manual effort</h3>
+            <p>
+              Automated repetitive report assembly and metric review steps.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Improved consistency</h3>
+            <p>
+              Standardized how metrics, owners, follow-ups, and changes were captured.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Stronger signal</h3>
+            <p>
+              Highlighted meaningful metric movement instead of only producing status updates.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Reusable foundation</h3>
+            <p>
+              Created a configurable foundation for future reports and teams.
+            </p>
+          </article>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>What I learned</summary>
+        <p>
+          This project helped me connect product management and AI implementation in a practical way. I had to translate
+          messy reporting needs into requirements, understand enough of the technical system to shape the agent, and make
+          product decisions about trust, review, usability, and impact.
+        </p>
+      </details>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>
