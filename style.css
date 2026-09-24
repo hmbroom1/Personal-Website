@@ -1,262 +1,331 @@
-/* General Layout */
+/* Keeping Up With Crochet
+   Styling only. Every id and class the tracker's JavaScript relies on is kept,
+   so the counters, timer, colors, goals and celebration gifs behave exactly as
+   before. Palette and type follow site.css so the tracker matches the site. */
+
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --surface-soft: #f1f0ee;
+  --border: #e2e1dc;
+  --border-strong: #111111;
+  --text: #111111;
+  --text-muted: #5b5b57;
+  --accent: #6a5acd;
+  --accent-hover: #4d4197;
+  --accent-soft: rgba(106, 90, 205, 0.12);
+  --radius: 14px;
+  --sans: Aptos, "Segoe UI", Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+  color-scheme: light;
+}
+
+@font-face {
+  font-family: "Hannah Handwriting";
+  src: url("HannahHandwritingFont-Regular.otf") format("opentype"),
+       url("HannahHandwritingFont-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
+  font-family: var(--sans);
+  margin: 0;
+  padding: 24px 16px 48px;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  overflow-x: hidden;
 }
 
 /* Container */
 .container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns */
-    grid-template-rows: auto auto;
-    flex-wrap:wrap;
-    gap: 10px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
 }
 
 /* Title */
 .title {
-    grid-column: 1 / -1; /* Span both columns */
-    text-align: center;
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    border-bottom: 3px solid lightgrey;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+  grid-column: 1 / -1;
+  text-align: center;
+  font-family: "Hannah Handwriting", var(--sans);
+  /* One case reads cleaner in the handwriting face than mixed caps. */
+  text-transform: lowercase;
+  font-size: clamp(34px, 6vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text);
+  text-shadow: none;
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin: 8px 0 4px;
 }
 
-/* Box Styles */
+/* Boxes */
 .box {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    flex: 1 1 calc(100% - 20px); /* Makes boxes take full width on smaller screens */
-    padding: 20px;
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    justify-content: middle;
-    position: relative; /* Positions the elements relative to the box */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  transition: border-color 160ms ease, transform 160ms ease;
 }
 
-/* Other Specific Box Styles */
-#hook-size-box select, #goals-box input[type="number"] 
-{   width: 100%; 
-    padding: 8px; 
-    font-size: 16px; 
-    margin-bottom: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-}
+.box:hover { border-color: #cfcec8; }
+
 .box h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: #333;
-}
-/* Counter Styles */
-.counter {
-    display: flex;
-    align-items: center;
-}
-.counter button:first-of-type {
-    margin-right: 10px; /* Space between the decrease button and the text box */
-}
-.counter input[type="text"] {
-    width: 60px;
-    text-align: center;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-}
-.counter button {
-    padding: 12px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #000;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    height:40px;
-    width:40px;
-}
-.counter button:hover {
-    background-color: grey;
-}
-.gif-container {
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: none; /* Initially hidden */
-    justify-content: center; /* Center the GIFs */
-    align-items: center;
-    flex-wrap: wrap; /* Arrange GIFs in a flexible layout */
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+  color: var(--text-muted);
+  font-weight: 600;
 }
 
-.gif {
-    max-width: 100px; /* Adjust size as needed */
-    margin: 5px;
+.box h3 { font-size: 15px; margin: 0; }
+
+label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
 }
+
+/* Inputs and selects */
+#hook-size-box select,
+#goals-box input[type="number"],
+#current-color-selector,
+.counter input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--surface);
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+select:hover, input:hover { border-color: #c9c8c2; }
+
+select:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Counters */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter input[type="text"] {
+  width: 84px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.counter button {
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+  color: #fff;
+  background-color: var(--text);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 42px;
+  width: 42px;
+  flex: none;
+  transition: background-color 140ms ease, transform 120ms ease;
+}
+
+.counter button:first-of-type { margin-right: 0; }
+.counter button:hover { background-color: var(--accent); }
+.counter button:active { transform: scale(0.94); }
+
 .counter-container {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-    justify-content: center; /* Ensure the entire container is centered */
-    gap: 10px; /* Add spacing between images and the counter */
-    max-width: 100%; /* Prevents the container from exceeding the screen width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 100%;
 }
 
 .counter-image {
-    width: 80px; /* Adjust the size as needed */
-    max-width:100%;
-    height: auto;
-    object-fit: contain; /* Ensures the entire image is visible within the box */
-    display: block; /* Removes extra spacing around inline images */
-    margin: 0 auto; /* Centers the image within the container */
-    }
-#current-color-selector {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px;
+  width: 72px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
+
+/* Celebration gifs */
+.gif-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.gif { max-width: 100px; margin: 5px; }
+
+.sparkles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Colors */
 #color-inputs-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between each color input */
-    justify-content: space-between; /* Spread out the inputs evenly */
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 14px;
 }
 
 #color-inputs-container div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-#color-inputs-container label {
-    font-size: 16px; /* Adjust label size if needed */
-    margin-bottom: 5px; /* Space between the label and the input */
-}
+#color-inputs-container label { font-size: 12px; margin-bottom: 2px; }
 
 #color-inputs-container input[type="color"] {
-    width: 40px;
-    height: 40px; /* Adjust the size of the color picker */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
+  width: 46px;
+  height: 46px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform 140ms ease, border-color 140ms ease;
 }
+
+#color-inputs-container input[type="color"]:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+/* Timer */
 #timer-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #timer-display {
-    font-size: 24px;
-    margin-bottom: 15px;
+  font-size: clamp(34px, 7vw, 46px);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
 }
+
 #timer-box .button-container {
-    display: flex; /* Align buttons horizontally */
-    gap: 10px; /* Add space between buttons */
-    justify-content: center; /* Center the buttons */
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #timer-box button {
-    padding: 10px 20px; /* Add padding for a better look */
-    font-size: 16px; /* Adjust font size for readability */
-    background-color: black; /* Button color */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 18px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--text);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 140ms ease, transform 120ms ease;
 }
 
-#timer-box button:hover {
-    background-color: grey;
-}
-/* Mobile View */
-@media (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr; /* Stacks boxes vertically */
-        grid-template-rows: auto; /* Adjust row heights dynamically */
-        gap: 15px; /* Adds space between boxes */
-        width: 100%; /* Ensures container fits the viewport width */
-    }
-    .box {
-        flex: 1 1 100%; /* Ensures all boxes take full width */
-            padding: 15px; /* Reduces padding for smaller screens */
-            margin: 5px 0; /* Simplifies spacing between boxes */
-    }
+#timer-box button:hover { background-color: var(--accent); }
+#timer-box button:active { transform: scale(0.97); }
 
-    #color-inputs-container div {
-        display: block; /* Stacks color inputs vertically */
-        margin-bottom: 10px;
-    }
-
-    .button-container {
-        flex-direction: column; /* Stacks buttons vertically */
-        gap: 5px; /* Adds spacing between buttons */
-    }
-
-    h1, h2 {
-        font-size: 20px; /* Adjusts font size for headers */
-    }
-
-    input, select {
-        font-size: 14px; /* Adjusts input font size */
-    }
-    .counter-image, #sparkle-right-image, #sparkle-left-image, #color-inputs-container input[type="color"] {
-        max-width: 100%; /* Prevents images from exceeding their container */
-        height: auto; /* Keeps aspect ratio */
-    }    
-    .counter-image {
-        max-width: 60%; /* Reduces the image size for smaller screens */
-        height: auto; /* Maintains aspect ratio */
-    }
-    .counter-container {
-        flex-direction: column; /* Stacks elements vertically on smaller screens */
-    }
-}
-body {
-    overflow-x: hidden; /* Prevents horizontal scrolling */
-}
-.sparkles {
-    display: flex; /* Displays the images in a row */
-    justify-content: center; /* Centers the images horizontally */
-    gap: 10px; /* Adds spacing between the images */
-}
+/* Clear project */
 .clear-project-row {
-    grid-column: 1 / -1; /* Spans across both columns */
-    text-align: center; /* Centers content horizontally */
-    margin-bottom:10px;
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: 4px;
 }
 
 #clear-project-button {
-    background-color: grey; /* Red background */
-    color: white; /* White text */
-    font-size: 12px; /* Small text size */
-    border: 3px solid black;
-    padding: 5px 10px; /* Compact padding */
-    border-radius: 3px; /* Slightly rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    margin: 0 auto; /* Centers the button within the row */
-    display: inline-block; /* Ensures button does not stretch */
+  background-color: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: inline-block;
+  transition: border-color 140ms ease, color 140ms ease;
 }
 
 #clear-project-button:hover {
-    background-color: darkgrey; /* Darker red on hover */
+  background-color: transparent;
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body { padding: 16px 12px 40px; }
+
+  .container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+
+  .box { padding: 16px; margin: 0; }
+
+  #color-inputs-container { gap: 12px; justify-content: space-between; }
+
+  .button-container { flex-direction: row; gap: 8px; }
+
+  .box h2 { font-size: 14px; }
+
+  input, select { font-size: 15px; }
+
+  .counter-image, #sparkle-right-image, #sparkle-left-image { max-width: 60%; height: auto; }
+
+  .counter-container { flex-direction: row; flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }
