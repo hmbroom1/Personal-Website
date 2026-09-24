@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, agent evaluation, AI evals, observability, AI product management">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Process page for Hannah Broom's agent evaluation and observability project.">
+  <title>Hannah Broom | Evaluating Agents</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="case-study section narrow">
+      <p class="eyebrow">Case study</p>
+      <h1>Evaluating agents</h1>
+      <p class="lede">
+        I got really interested in two questions about AI agents. How do you see what they actually did, and how do you
+        know if they got it right? That's observability and evals. I built this project to learn both by doing them.
+      </p>
+      <p>
+        I picked flight search because the answers are easy to check. A fare either fits the budget and the dates or it
+        doesn't. There's no arguing about whether the response was good enough. That made it a clean way to test whether
+        an agent follows the criteria it was given, and to catch it when it doesn't.
+      </p>
+
+      <figure class="process-shot">
+        <img src="images/flight-eval-report.png" alt="The eval report showing five Claude models compared on pass rate, run time and cost per run">
+        <figcaption>The report I built to read the results. Five models, same 15 scenarios, same flight data.</figcaption>
+      </figure>
+
+      <div class="actions">
+        <a class="button" href="https://hmbroom1.github.io/flight-search-eval-agent/">Open the live report</a>
+        <a class="button secondary" href="https://github.com/hmbroom1/flight-search-eval-agent">View the code</a>
+        <a class="button secondary" href="Current%20Projects.html">Back to projects</a>
+      </div>
+
+      <details class="case-disclosure">
+        <summary>How the eval works</summary>
+        <p>
+          The agent searches real flights for two trips I'm actually taking, a bachelorette weekend in Mexico City and a
+          honeymoon in Asia. It checks each option against the budget, the dates and the stop rules, then makes a
+          simulated booking. It never buys anything.
+        </p>
+        <p>
+          The eval is the part I cared about. It scores every step of the run, not just the final message. That matters
+          because an agent can give a confident answer and still have skipped the search, quoted a fare nobody returned,
+          or quietly raised the budget so something would fit. All of those look fine if you only read the reply.
+        </p>
+        <div class="agent-flow" aria-label="How the evaluation works">
+          <div>
+            <strong><span>1</span> - Write the test cases</strong>
+            <p>15 scenarios. Two real trips on live flight data, plus traps like a budget one dollar under the cheapest fare, a city with three airports, vague dates, and a flight API that fails.</p>
+          </div>
+          <div>
+            <strong><span>2</span> - Record everything</strong>
+            <p>Every search, every check, every decision gets saved as it happens. You can't grade a step you didn't capture, which is the whole argument for observability.</p>
+          </div>
+          <div>
+            <strong><span>3</span> - Score six things</strong>
+            <p>Outcome, tool use, accuracy, grounding, safety and efficiency. Each one is checked in code, against an answer key I built separately from the agent's own tools.</p>
+          </div>
+          <div>
+            <strong><span>4</span> - Compare and repeat</strong>
+            <p>Scores, timing and cost are tracked per model and per change, so the eval works as a regression test instead of a one-time score.</p>
+          </div>
+        </div>
+        <p>
+          Two decisions I'd defend. Eligibility is checked with rules, not with another AI, because "is $289 under $300"
+          has one right answer. And booking gets its own safety check, separate from whether the answer was correct,
+          because booking is the step you can't undo.
+        </p>
+        <div class="pill-list" aria-label="Tools used">
+          <span>Python</span>
+          <span>Claude API</span>
+          <span>Tool use</span>
+          <span>Langfuse</span>
+          <span>SerpApi</span>
+          <span>pytest</span>
+          <span>GitHub</span>
+          <span>GitHub Pages</span>
+          <span>Claude Code</span>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>Comparing models</summary>
+        <p>
+          I ran all 15 scenarios on five Claude models. Every model saw identical flight data, so any difference is the
+          model and not the fares. Three of the five passed everything, which left cost as the only thing separating
+          them.
+        </p>
+        <p class="impact-stat">The most capable model cost 5x more for the same score.</p>
+        <div class="card-grid two-column compact-grid">
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Capability stopped mattering</h3>
+            <p>
+              This task is bounded. Search, apply clear rules, report back. Past a certain point the extra reasoning had
+              nothing left to buy, and the price gap stayed.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Newer was better and cheaper</h3>
+            <p>
+              One newer model beat its predecessor and cost less per run. You only find that by measuring it.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> The cheap model broke quietly</h3>
+            <p>
+              The smallest model passed 11 of 15. Its misses were good answers in the wrong format, with the required
+              final step skipped. Nothing downstream could use them.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> One run each isn't proof</h3>
+            <p>
+              75 runs total, one per model per scenario. A three way tie is exactly where run to run variance matters, so
+              I'm treating the tie as unresolved.
+            </p>
+          </article>
+        </div>
+        <p>
+          The whole comparison cost about four dollars, because the flight data was cached and reused. That felt like a
+          fair trade for an answer to "should we just pay for the best model."
+        </p>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>What I learned</summary>
+        <p>
+          My eval was wrong before my agent was. The first live run failed, and all three reasons turned out to be bugs
+          in my scoring: a missing airport, an unfair comparison, and a limit I'd set too low. I only caught them because
+          every step of the run was recorded and I could go read it.
+        </p>
+        <p>
+          The hardest part wasn't the code. It was deciding what "correct" means precisely enough to check. A preference
+          for direct flights isn't the same as a requirement. A fare equal to the budget still fits. A price that's
+          almost right is still unsourced, so I kept that check strict even though it flags an honest rounding.
+        </p>
+        <p>
+          The traces also paid for themselves. They showed the agent asking for four searches at once while my code ran
+          them one at a time. I fixed it, and the same eval measured the result. The search phase went from 24 seconds to
+          9.
+        </p>
+        <p>
+          This is the part of AI product work I want more of. Not just building something that responds, but being able
+          to prove what it did and where it breaks.
+        </p>
+      </details>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>
