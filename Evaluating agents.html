@@ -56,8 +56,8 @@
       </p>
 
       <figure class="process-shot">
-        <img src="images/flight-eval-report.png" alt="The eval report showing five Claude models compared on pass rate, run time and cost per run">
-        <figcaption>The report I built to read the results. Five models, same 15 scenarios, same flight data.</figcaption>
+        <img src="images/flight-eval-report.png" alt="The eval report: four of six Claude models passed all 15 scenarios, and the priciest cost 4.8 times more than the cheapest for the same score">
+        <figcaption>The report I built to read the results. Six models, same 15 scenarios, same flight data.</figcaption>
       </figure>
 
       <div class="actions">
@@ -117,11 +117,11 @@
       <details class="case-disclosure">
         <summary>Comparing models</summary>
         <p>
-          I ran all 15 scenarios on five Claude models. Every model saw identical flight data, so any difference is the
-          model and not the fares. Three of the five passed everything, which left cost as the only thing separating
+          I ran all 15 scenarios on six Claude models. Every model saw identical flight data, so any difference is the
+          model and not the fares. Four of the six passed everything, which left cost as the only thing separating
           them.
         </p>
-        <p class="impact-stat">The most capable model cost 5x more for the same score.</p>
+        <p class="impact-stat">The most capable model cost 4.8x more for the same score.</p>
         <div class="card-grid two-column compact-grid">
           <article class="simple-card">
             <h3><span class="card-icon" aria-hidden="true">✦</span> Capability stopped mattering</h3>
@@ -146,13 +146,13 @@
           <article class="simple-card">
             <h3><span class="card-icon" aria-hidden="true">✦</span> One run each isn't proof</h3>
             <p>
-              75 runs total, one per model per scenario. A three way tie is exactly where run to run variance matters, so
+              90 runs total, one per model per scenario. A four way tie is exactly where run to run variance matters, so
               I'm treating the tie as unresolved.
             </p>
           </article>
         </div>
         <p>
-          The whole comparison cost about four dollars, because the flight data was cached and reused. That felt like a
+          The whole comparison cost under seven dollars, because the flight data was cached and reused. That felt like a
           fair trade for an answer to "should we just pay for the best model."
         </p>
       </details>
