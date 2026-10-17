@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, pottery tracker, web app, Google sign-in, AI product management">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Process page for Hannah Broom's pottery tracker app.">
+  <title>Hannah Broom | Pottery Tracker</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="case-study section narrow">
+      <p class="eyebrow">Case study</p>
+      <h1>Pottery tracker</h1>
+      <p class="lede">
+        I made a phone app for my pottery practice, and I use it every time I'm at the studio. It follows each piece
+        from wet clay to the final firing: what stage it's in, which shelf it's on, what glazes went on, and how they
+        came out.
+      </p>
+      <p>
+        You'd think you'd remember every piece you make, but the truth is a piece takes weeks to finish and it's easy
+        to lose track of things on the shelves. I had been using the Notes app on my iPhone to keep track, but I was
+        losing a lot of detail. I wanted one place that held a photo at every stage, the shelf, and the glaze recipe
+        together, on my phone, while I'm at the studio.
+      </p>
+      <p>
+        I planned it on October 13 and shipped the last planned feature on October 15. It installs to my home screen
+        like a regular app, with no App Store. A few friends can use it too. They sign in with Google, and only people
+        I invite can get in, so there's no public link to share here.
+      </p>
+
+      <details class="case-disclosure">
+        <summary>What it does</summary>
+        <p>
+          A piece goes from thrown to leather hard, trimmed, bone dry, bisque fired, glazed, and glaze fired. At any
+          moment I have a dozen pieces spread across four shared studio shelves. The app keeps track of all of it.
+        </p>
+        <div class="card-grid two-column compact-grid">
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Stage timeline</h3>
+            <p>
+              Every piece keeps a dated history with a photo, shelf, and note at each stage. I can always see how long
+              it's been sitting. A leather hard piece can't wait long to be trimmed.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Shelves</h3>
+            <p>
+              Picking a stage suggests the usual shelf. The home screen groups pieces by shelf, with the ones that have
+              waited longest at the top.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Goals and Due soon</h3>
+            <p>
+              I can set a goal like "glaze fired by Nov 20." Anything due within a week moves to the top of the home
+              screen.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Glaze layers</h3>
+            <p>
+              Each layer in order: dipped or brushed, how many coats, and where it went (whole piece, inside, outside,
+              or rim).
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Search by glaze</h3>
+            <p>
+              I can type a glaze, filter by white or red clay, and see every finished piece that used it and what it
+              was paired with. Now "what did Smoke look like on white clay?" takes seconds instead of a camera roll
+              scroll.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Trash with a reason</h3>
+            <p>
+              Pieces that crack or fail go to a trashed list with what went wrong, so I can learn from them later.
+            </p>
+          </article>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>How I built it and kept iterating</summary>
+        <p>
+          I acted as the product manager and designer, and Claude Code wrote the code. I set the requirements, made the
+          design and privacy calls, and tested every phase on my own phone before moving to the next one.
+        </p>
+        <div class="agent-flow" aria-label="How the app was built">
+          <div>
+            <strong><span>1</span> - Plan first</strong>
+            <p>Before any code, I wrote out the stages, the four shelves, how glazes get layered, and who should be able to see what.</p>
+          </div>
+          <div>
+            <strong><span>2</span> - Prove the risky part</strong>
+            <p>I didn't know if an app could live on my home screen without the App Store. Phase 1 only checked that it installed on my iPhone, opened the camera, and let me sign in with Google. It passed on day one.</p>
+          </div>
+          <div>
+            <strong><span>3</span> - Build in phases</strong>
+            <p>Pieces and photos, then shelves and glazes, then goals, then glaze search and sharing. After each phase I used it at the studio and sent feedback.</p>
+          </div>
+          <div>
+            <strong><span>4</span> - Design last</strong>
+            <p>I saved a Pinterest board of mid-century patterns and type early on, but held off on the restyle until the app did its job.</p>
+          </div>
+        </div>
+        <p class="impact-stat">6 phases and 27 updates in 3 days, each one tested on my phone.</p>
+        <p>
+          Most of the changes came from actually using it. The first phone test caught a date field and the stage
+          picker squeezed side by side. It looked fine on a laptop and broke on my iPhone. The stage dropdown became a
+          row of stops you tap, since dragging small things on a phone is fiddly. The back button was small and easy to
+          miss, so it became a bigger bar that stays at the top while you scroll.
+        </p>
+        <p>
+          Once my real pieces were in it, I started fixing what felt slow. Lists now load a 25 KB small copy of each
+          photo instead of the 300 KB full one, which is about 7x lighter on studio wifi. The list of 575 glazes only
+          loads when I tap "Add glaze," instead of every time I open a piece.
+        </p>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>Sign-in, privacy, and other decisions</summary>
+        <div class="card-grid two-column compact-grid">
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Google sign-in with an invite list</h3>
+            <p>
+              Nobody has to make a password. You sign in with your Google account, and only emails on my invite list
+              get in. Everyone else sees a message that they aren't on the list. Inviting a friend takes two steps, one
+              in Google and one in the app. It's a little manual, but for a handful of people I'd rather have that
+              control.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Privacy checks that run on every update</h3>
+            <p>
+              Everyone's pieces live in the same database, so I wanted proof nobody could see someone else's. Nine
+              automatic checks try to open, edit, or delete another person's piece before every update. If one fails,
+              the update is blocked. To test the tests, we removed a privacy rule on purpose. Two checks failed and
+              pointed right at the leak.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Anonymous sharing, off by default</h3>
+            <p>
+              Friends can choose to share finished pieces so everyone's glaze search has more examples. A shared result
+              only shows the photo, clay, and glazes. No name, notes, or email. I decided not to even label them "from a
+              friend."
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> A home screen app over the App Store</h3>
+            <p>
+              There's no review process, and updates go live as soon as they're pushed. The trade-off is that iPhone
+              notifications are weak for web apps, so reminders became a Due soon list inside the app.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> A real glaze catalog</h3>
+            <p>
+              I turned my local clay store's stock list into 575 searchable mid-fire glazes and underglazes. Typing
+              "PC-20" finds Blue Rutile. Keeping names consistent is what makes searching by glaze work later.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> A mid-century studio look</h3>
+            <p>
+              I steered away from the rounded cards and soft gradients a lot of AI-built apps have. It uses oxblood,
+              paper, and ink colors, wide capital headings, and pottery silhouettes when a piece doesn't have a photo
+              yet.
+            </p>
+          </article>
+        </div>
+        <p>
+          I also tested with fake accounts on a separate practice copy of the database, so trying things out never put
+          my real pieces at risk.
+        </p>
+        <div class="pill-list" aria-label="Tools used">
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>Neon Postgres</span>
+          <span>Vercel</span>
+          <span>Vercel Blob</span>
+          <span>Google sign-in</span>
+          <span>GitHub</span>
+          <span>Claude Code</span>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>What I learned</summary>
+        <p>
+          Answer the scariest question first. I wasn't sure an app without the App Store would work at all. Spending
+          Phase 1 only on that meant everything after it was built on something I'd already seen work on my phone.
+        </p>
+        <p>
+          My phone is the real test. After a screen that looked fine on my laptop broke on my iPhone, phone-width
+          screenshots became a rule for every change.
+        </p>
+        <p>
+          Being precise is the job. Most of my work was deciding exactly what I meant. Leather hard and trimmed are
+          separate stages. Anonymous means no name and not even "a friend." When I was vague, the app was vague. When I
+          was specific, it came back right.
+        </p>
+        <p>
+          Test the tests. A privacy check that always passes proves nothing. Watching the checks catch a rule I broke on
+          purpose is what made me trust them.
+        </p>
+        <p>
+          Next, I want to see how my friends actually use sharing, and whether they'd rather know who a result came
+          from.
+        </p>
+      </details>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>
