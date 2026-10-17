@@ -1270,3 +1270,28 @@ h3 {
     animation: none;
   }
 }
+
+/* Home headline word swap on the first visit */
+.swap-word {
+  display: inline-block;
+  transition: opacity 260ms ease, transform 260ms ease, color 900ms ease;
+}
+
+.swap-word.is-highlighted {
+  color: var(--cp-accent);
+}
+
+.swap-word.is-settled {
+  color: inherit;
+}
+
+.swap-word.is-leaving {
+  opacity: 0;
+  transform: translateY(-0.25em);
+}
+
+.swap-word.is-entering {
+  opacity: 0;
+  transform: translateY(0.25em);
+  transition: none;
+}

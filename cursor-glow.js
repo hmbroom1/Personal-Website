@@ -81,16 +81,48 @@
     });
   };
 
-  // Sign the wordmark once per visit, then finish with a sparkle
-  let alreadySigned = false;
+  // First home page load of a visit: swap a word in the headline.
+  // Every other page load: sign the wordmark, then finish with a sparkle.
+  const swapTarget = "ambiguous ideas";
+  const swapWords = ["messy problems", "AI-powered ideas", swapTarget];
+  const heroTitle = document.querySelector(".hero h1");
+  let alreadySwapped = false;
   try {
-    alreadySigned = sessionStorage.getItem("signedIn") === "yes";
-    sessionStorage.setItem("signedIn", "yes");
+    alreadySwapped = sessionStorage.getItem("headlineSwapped") === "yes";
   } catch (error) {
-    alreadySigned = false;
+    alreadySwapped = false;
   }
 
-  if (!reducedMotion && !alreadySigned) {
+  const runWordSwap = () => {
+    heroTitle.innerHTML = heroTitle.innerHTML.replace(
+      swapTarget,
+      `<span class="swap-word">${swapTarget}</span>`
+    );
+    const word = heroTitle.querySelector(".swap-word");
+    let index = 0;
+
+    const showNext = () => {
+      word.classList.add("is-leaving");
+      window.setTimeout(() => {
+        word.textContent = swapWords[index];
+        word.classList.remove("is-leaving");
+        word.classList.add("is-entering");
+        void word.offsetWidth;
+        word.classList.remove("is-entering");
+        index += 1;
+        if (index < swapWords.length) {
+          window.setTimeout(showNext, 1100);
+        } else {
+          window.setTimeout(() => word.classList.add("is-settled"), 900);
+        }
+      }, 260);
+    };
+
+    word.classList.add("is-highlighted");
+    window.setTimeout(showNext, 1400);
+  };
+
+  const runSignature = () => {
     brands.forEach((brand) => {
       brand.classList.add("is-signing");
       brand.addEventListener(
@@ -102,6 +134,19 @@
         { once: true }
       );
     });
+  };
+
+  if (!reducedMotion) {
+    if (heroTitle && heroTitle.innerHTML.includes(swapTarget) && !alreadySwapped) {
+      try {
+        sessionStorage.setItem("headlineSwapped", "yes");
+      } catch (error) {
+        // The swap still runs; it may just run again next time.
+      }
+      runWordSwap();
+    } else {
+      runSignature();
+    }
   }
 
   brands.forEach((brand) => {
