@@ -1340,3 +1340,18 @@ h3 {
     animation: none;
   }
 }
+
+/* Keep a swapping word and its period together; on phones start it on its own line */
+.nowrap {
+  white-space: nowrap;
+}
+
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .mobile-break {
+    display: inline;
+  }
+}
