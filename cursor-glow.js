@@ -81,36 +81,31 @@
     });
   };
 
-  // First home page load of a visit: swap a word in the headline.
-  // Every other page load: sign the wordmark, then finish with a sparkle.
-  const swapTarget = "ambiguous ideas";
-  const swapWords = ["messy problems", "AI-powered ideas", swapTarget];
-  const heroTitle = document.querySelector(".hero h1");
-  let alreadySwapped = false;
-  try {
-    alreadySwapped = sessionStorage.getItem("headlineSwapped") === "yes";
-  } catch (error) {
-    alreadySwapped = false;
+  // Mobile scroll hint on the home page fades once the visitor scrolls
+  const scrollHint = document.querySelector(".scroll-hint");
+  if (scrollHint) {
+    const updateHint = () => {
+      scrollHint.classList.toggle("is-hidden", window.scrollY > 40);
+    };
+    window.addEventListener("scroll", updateHint, { passive: true });
+    updateHint();
   }
 
-  const runWordSwap = () => {
-    heroTitle.innerHTML = heroTitle.innerHTML.replace(
-      swapTarget,
-      `<span class="swap-word">${swapTarget}</span>`
-    );
-    const word = heroTitle.querySelector(".swap-word");
+  // Headline word swap: plays once per page per visit.
+  // Markup: <span class="swap-word" data-swap="next|another|final">first</span>
+  const runWordSwap = (word, words) => {
     let index = 0;
 
     const showNext = () => {
       word.classList.add("is-leaving");
       window.setTimeout(() => {
-        word.textContent = swapWords[index];
+        word.textContent = words[index];
         word.classList.remove("is-leaving");
         word.classList.add("is-entering");
         void word.offsetWidth;
         word.classList.remove("is-entering");
         index += 1;
-        if (index < swapWords.length) {
+        if (index < words.length) {
           window.setTimeout(showNext, 1100);
         } else {
           window.setTimeout(() => word.classList.add("is-settled"), 900);
@@ -122,32 +117,21 @@
     window.setTimeout(showNext, 1400);
   };
 
-  const runSignature = () => {
-    brands.forEach((brand) => {
-      brand.classList.add("is-signing");
-      brand.addEventListener(
-        "animationend",
-        () => {
-          brand.classList.remove("is-signing");
-          launchSparkles(brand);
-        },
-        { once: true }
-      );
-    });
-  };
-
-  if (!reducedMotion) {
-    if (heroTitle && heroTitle.innerHTML.includes(swapTarget) && !alreadySwapped) {
-      try {
-        sessionStorage.setItem("headlineSwapped", "yes");
-      } catch (error) {
-        // The swap still runs; it may just run again next time.
-      }
-      runWordSwap();
-    } else {
-      runSignature();
+  document.querySelectorAll("[data-swap]").forEach((word) => {
+    const words = word.dataset.swap.split("|");
+    const key = `wordSwap:${window.location.pathname}`;
+    let alreadySwapped = false;
+    try {
+      alreadySwapped = sessionStorage.getItem(key) === "yes";
+      sessionStorage.setItem(key, "yes");
+    } catch (error) {
+      alreadySwapped = false;
     }
-  }
+
+    if (!reducedMotion && !alreadySwapped) {
+      runWordSwap(word, words);
+    }
+  });
 
   brands.forEach((brand) => {
     brand.addEventListener("pointerenter", () => {
