@@ -1169,17 +1169,6 @@ h3 {
   }
 }
 
-@keyframes hero-photo-in {
-  from {
-    clip-path: inset(100% 0 0 0);
-    opacity: 0.4;
-  }
-
-  to {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-  }
-}
 
 .hero-copy > * {
   animation: hero-rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
@@ -1190,13 +1179,9 @@ h3 {
 .hero-copy > :nth-child(3) { animation-delay: 340ms; }
 .hero-copy > :nth-child(4) { animation-delay: 460ms; }
 
-.hero-card img {
-  animation: hero-photo-in 1100ms cubic-bezier(0.65, 0, 0.35, 1) 250ms both;
-}
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-copy > *,
-  .hero-card img {
+  .hero-copy > * {
     animation: none;
   }
 }
@@ -1204,4 +1189,84 @@ h3 {
 /* Subheadings inside an open case study section */
 .case-disclosure > h3 {
   margin-top: 1.5rem;
+}
+
+/* Pottery case study: demo clip beside a grid of phone screenshots */
+.phone-showcase {
+  align-items: start;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0.5rem 0 1.5rem;
+}
+
+.phone-showcase figure {
+  margin: 0;
+}
+
+.phone-showcase img {
+  filter: none;
+  height: auto;
+  width: 100%;
+}
+
+.phone-stills {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.phone-stills img {
+  border: 1px solid var(--cp-border);
+}
+
+.phone-showcase figcaption {
+  color: var(--cp-text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.phone-demo figcaption {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .phone-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-demo {
+    justify-self: center;
+    max-width: 280px;
+  }
+}
+
+/* Wordmark writes itself in on the first page of a visit */
+@keyframes brand-sign {
+  0% {
+    clip-path: inset(-30% 100% -30% -5%);
+  }
+
+  42% {
+    clip-path: inset(-30% 49% -30% -5%);
+    animation-timing-function: linear;
+  }
+
+  52% {
+    clip-path: inset(-30% 47% -30% -5%);
+  }
+
+  100% {
+    clip-path: inset(-30% -5% -30% -5%);
+  }
+}
+
+.brand.is-signing {
+  animation: brand-sign 1500ms cubic-bezier(0.45, 0.05, 0.4, 1) 150ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand.is-signing {
+    animation: none;
+  }
 }

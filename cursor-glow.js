@@ -81,6 +81,29 @@
     });
   };
 
+  // Sign the wordmark once per visit, then finish with a sparkle
+  let alreadySigned = false;
+  try {
+    alreadySigned = sessionStorage.getItem("signedIn") === "yes";
+    sessionStorage.setItem("signedIn", "yes");
+  } catch (error) {
+    alreadySigned = false;
+  }
+
+  if (!reducedMotion && !alreadySigned) {
+    brands.forEach((brand) => {
+      brand.classList.add("is-signing");
+      brand.addEventListener(
+        "animationend",
+        () => {
+          brand.classList.remove("is-signing");
+          launchSparkles(brand);
+        },
+        { once: true }
+      );
+    });
+  }
+
   brands.forEach((brand) => {
     brand.addEventListener("pointerenter", () => {
       if (!coarsePointer) {
