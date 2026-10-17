@@ -56,18 +56,10 @@
         losing a lot of detail. I wanted one place that held a photo at every stage, the shelf, and the glaze recipe
         together, on my phone, while I'm at the studio.
       </p>
-      <p>
-        I planned it on October 13 and shipped the last planned feature on October 15. It installs to my home screen
-        like a regular app, with no App Store. A few friends can use it too. They sign in with Google, and only people
-        I invite can get in, so there's no public link to share here.
-      </p>
 
       <details class="case-disclosure">
         <summary>What it does</summary>
-        <p>
-          A piece goes from thrown to leather hard, trimmed, bone dry, bisque fired, glazed, and glaze fired. At any
-          moment I have a dozen pieces spread across four shared studio shelves. The app keeps track of all of it.
-        </p>
+        <!-- MEDIA: app screenshots and demo video go here -->
         <div class="card-grid two-column compact-grid">
           <article class="simple-card">
             <h3><span class="card-icon" aria-hidden="true">✦</span> Stage timeline</h3>
@@ -115,45 +107,29 @@
       </details>
 
       <details class="case-disclosure">
-        <summary>How I built it and kept iterating</summary>
+        <summary>Product decisions</summary>
         <p>
           I acted as the product manager and designer, and Claude Code wrote the code. I set the requirements, made the
-          design and privacy calls, and tested every phase on my own phone before moving to the next one.
+          design and privacy calls, and tested everything on my own phone.
         </p>
         <div class="agent-flow" aria-label="How the app was built">
           <div>
-            <strong><span>1</span> - Plan first</strong>
+            <strong><span>1</span> - Plan</strong>
             <p>Before any code, I wrote out the stages, the four shelves, how glazes get layered, and who should be able to see what.</p>
           </div>
           <div>
-            <strong><span>2</span> - Prove the risky part</strong>
-            <p>I didn't know if an app could live on my home screen without the App Store. Phase 1 only checked that it installed on my iPhone, opened the camera, and let me sign in with Google. It passed on day one.</p>
+            <strong><span>2</span> - Build in phases</strong>
+            <p>Pieces and photos first, then shelves and glazes, then goals, then glaze search and sharing.</p>
           </div>
           <div>
-            <strong><span>3</span> - Build in phases</strong>
-            <p>Pieces and photos, then shelves and glazes, then goals, then glaze search and sharing. After each phase I used it at the studio and sent feedback.</p>
+            <strong><span>3</span> - Test</strong>
+            <p>After each phase I used it at the studio and sent feedback before starting the next one.</p>
           </div>
           <div>
-            <strong><span>4</span> - Design last</strong>
-            <p>I saved a Pinterest board of mid-century patterns and type early on, but held off on the restyle until the app did its job.</p>
+            <strong><span>4</span> - Design</strong>
+            <p>Once the app did its job, I restyled it using a Pinterest board of mid-century patterns and type I'd saved early on.</p>
           </div>
         </div>
-        <p class="impact-stat">6 phases and 27 updates in 3 days, each one tested on my phone.</p>
-        <p>
-          Most of the changes came from actually using it. The first phone test caught a date field and the stage
-          picker squeezed side by side. It looked fine on a laptop and broke on my iPhone. The stage dropdown became a
-          row of stops you tap, since dragging small things on a phone is fiddly. The back button was small and easy to
-          miss, so it became a bigger bar that stays at the top while you scroll.
-        </p>
-        <p>
-          Once my real pieces were in it, I started fixing what felt slow. Lists now load a 25 KB small copy of each
-          photo instead of the 300 KB full one, which is about 7x lighter on studio wifi. The list of 575 glazes only
-          loads when I tap "Add glaze," instead of every time I open a piece.
-        </p>
-      </details>
-
-      <details class="case-disclosure">
-        <summary>Sign-in, privacy, and other decisions</summary>
         <div class="card-grid two-column compact-grid">
           <article class="simple-card">
             <h3><span class="card-icon" aria-hidden="true">✦</span> Google sign-in with an invite list</h3>
@@ -165,7 +141,7 @@
             </p>
           </article>
           <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> Privacy checks that run on every update</h3>
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Privacy checks on every update</h3>
             <p>
               Everyone's pieces live in the same database, so I wanted proof nobody could see someone else's. Nine
               automatic checks try to open, edit, or delete another person's piece before every update. If one fails,
@@ -182,13 +158,6 @@
             </p>
           </article>
           <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> A home screen app over the App Store</h3>
-            <p>
-              There's no review process, and updates go live as soon as they're pushed. The trade-off is that iPhone
-              notifications are weak for web apps, so reminders became a Due soon list inside the app.
-            </p>
-          </article>
-          <article class="simple-card">
             <h3><span class="card-icon" aria-hidden="true">✦</span> A real glaze catalog</h3>
             <p>
               I turned my local clay store's stock list into 575 searchable mid-fire glazes and underglazes. Typing
@@ -196,17 +165,34 @@
             </p>
           </article>
           <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> A mid-century studio look</h3>
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Photos and hosting</h3>
             <p>
-              I steered away from the rounded cards and soft gradients a lot of AI-built apps have. It uses oxblood,
-              paper, and ink colors, wide capital headings, and pottery silhouettes when a piece doesn't have a photo
-              yet.
+              This was my first time hosting on Vercel. Photos are stored privately, with no public links, and the
+              phone shrinks each photo and removes its location before uploading. I tested with fake accounts on a
+              practice copy of the database, so my real pieces were never at risk.
+            </p>
+          </article>
+          <article class="simple-card">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> A home screen app over the App Store</h3>
+            <p>
+              There's no review process, and updates go live as soon as they're pushed. The trade-off is that iPhone
+              notifications are weak for web apps, so reminders became a Due soon list inside the app.
             </p>
           </article>
         </div>
+        <h3>Designing from a mood board</h3>
         <p>
-          I also tested with fake accounts on a separate practice copy of the database, so trying things out never put
-          my real pieces at risk.
+          I saved a Pinterest board early on with Bauhaus half-circle patterns, pottery silhouettes, and vintage type
+          specimens. I steered away from the rounded cards and soft gradients a lot of AI-built apps have. The half
+          circles became a strip across the top of every screen, the silhouettes stand in when a piece doesn't have a
+          photo yet, and the wide capital headings came from the type specimens. The colors are oxblood, paper, and ink.
+        </p>
+        <!-- MEDIA: design before and after go here -->
+        <h3>Making it faster after launch</h3>
+        <p>
+          Once my real pieces were in it, I started fixing what felt slow. Lists now load a 25 KB small copy of each
+          photo instead of the 300 KB full one, which is about 7x lighter on studio wifi. The list of 575 glazes only
+          loads when I tap "Add glaze," instead of every time I open a piece.
         </p>
         <div class="pill-list" aria-label="Tools used">
           <span>Next.js</span>
@@ -223,21 +209,23 @@
       <details class="case-disclosure">
         <summary>What I learned</summary>
         <p>
-          Answer the scariest question first. I wasn't sure an app without the App Store would work at all. Spending
-          Phase 1 only on that meant everything after it was built on something I'd already seen work on my phone.
+          Iterate as much as you can. The first version of almost every screen changed once I used it at the studio.
+          The stage dropdown became a row of stops you tap, and the back button got bigger and stays at the top while
+          you scroll. None of that showed up until I was actually using it.
         </p>
         <p>
-          My phone is the real test. After a screen that looked fine on my laptop broke on my iPhone, phone-width
-          screenshots became a rule for every change.
+          Test a lot. I tested on my phone after every phase and checked every privacy rule before every update. The
+          more I tested, the less I was guessing.
         </p>
         <p>
-          Being precise is the job. Most of my work was deciding exactly what I meant. Leather hard and trimmed are
-          separate stages. Anonymous means no name and not even "a friend." When I was vague, the app was vague. When I
-          was specific, it came back right.
+          Think about more than just me. I'm not the only person who will use this. Friends might not want their name on
+          a shared glaze photo, and someone new needs a clear message if they aren't on the invite list yet. Putting
+          myself in their shoes shaped a lot of the privacy decisions.
         </p>
         <p>
-          Test the tests. A privacy check that always passes proves nothing. Watching the checks catch a rule I broke on
-          purpose is what made me trust them.
+          Building for a phone is different. I had always built for a desktop. A screen that looked fine on my laptop
+          broke on my iPhone, so after that I checked every change at phone size. Tap targets, spacing, and how much
+          fits on a screen all needed their own decisions.
         </p>
         <p>
           Next, I want to see how my friends actually use sharing, and whether they'd rather know who a result came
