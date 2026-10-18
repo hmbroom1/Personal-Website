@@ -1774,3 +1774,133 @@ dt {
 .wide-case .case-disclosure > p {
   max-width: none;
 }
+
+/* Phones: feature callouts become compact rows with a small screenshot on the left */
+@media (max-width: 700px) {
+  .feature-layout .simple-card {
+    align-items: start;
+    column-gap: 0.9rem;
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .feature-layout .feature-shot {
+    border-radius: 8px;
+    grid-row: 1 / span 2;
+    margin: 0;
+    width: 112px;
+  }
+
+  .feature-layout .simple-card h3 {
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-layout .simple-card p {
+    margin: 0;
+  }
+}
+
+/* What I learned: a cloud of soft blobs; tap one to open it */
+.lesson-hint {
+  color: var(--cp-text-muted);
+  font-size: 0.9rem;
+}
+
+.lesson-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.lesson-blob {
+  background: color-mix(in srgb, var(--cp-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cp-accent) 35%, transparent);
+  border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%;
+  color: var(--cp-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 1.1rem 1.6rem;
+  transition: background 220ms ease, border-radius 600ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.lesson-blob:nth-child(2) {
+  border-radius: 45% 55% 40% 60% / 60% 42% 58% 40%;
+}
+
+.lesson-blob:nth-child(3) {
+  border-radius: 62% 38% 50% 50% / 42% 55% 45% 58%;
+}
+
+.lesson-blob:nth-child(4) {
+  border-radius: 40% 60% 58% 42% / 55% 45% 55% 45%;
+}
+
+.lesson-blob:hover,
+.lesson-blob:focus-visible {
+  border-radius: 50% 50% 46% 54% / 52% 48% 52% 48%;
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+.lesson-blob[aria-selected="true"] {
+  background: var(--cp-accent);
+  border-color: var(--cp-accent);
+  color: var(--cp-bg);
+}
+
+.lesson-num {
+  font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.8em;
+  margin-right: 0.35rem;
+  opacity: 0.75;
+}
+
+.lesson-panel {
+  border-left: 3px solid var(--cp-accent);
+  padding-left: 1.25rem;
+}
+
+.lesson-panel h3 {
+  margin-top: 0;
+}
+
+/* Phones: swipe through the blobs sideways */
+@media (max-width: 700px) {
+  .lesson-cloud {
+    flex-wrap: nowrap;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    overflow-x: auto;
+    padding: 0.5rem 1.25rem 0.75rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .lesson-cloud::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lesson-blob {
+    flex: 0 0 auto;
+    max-width: 75%;
+    scroll-snap-align: start;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-blob {
+    transition: none;
+  }
+
+  .lesson-blob:hover,
+  .lesson-blob:focus-visible {
+    transform: none;
+  }
+}
+
+/* Let wide children (like the swipeable lesson row) scroll instead of stretching the page */
+.case-study {
+  grid-template-columns: minmax(0, 1fr);
+}

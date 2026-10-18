@@ -160,6 +160,21 @@
     applyStack();
   }
 
+  // Lesson blobs: tapping one shows its panel and hides the others
+  document.querySelectorAll(".lesson-cloud").forEach((cloud) => {
+    const blobs = [...cloud.querySelectorAll(".lesson-blob")];
+    blobs.forEach((blob) => {
+      blob.addEventListener("click", () => {
+        blobs.forEach((other) => {
+          const isActive = other === blob;
+          other.setAttribute("aria-selected", String(isActive));
+          document.getElementById(other.getAttribute("aria-controls")).hidden = !isActive;
+        });
+        blob.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
+      });
+    });
+  });
+
   // Headline word swap: plays once per page per visit.
   // Markup: <span class="swap-word" data-swap="next|another|final">first</span>
   const runWordSwap = (word, words) => {

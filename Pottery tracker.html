@@ -162,29 +162,50 @@
 
       <details class="case-disclosure">
         <summary>What I learned</summary>
-        <h3>Iterate as much as you can</h3>
-        <p>The first version of almost every screen changed once I used it at the studio.</p>
-        <ul class="clean-list">
-          <li>The stage dropdown became a row of stops you tap.</li>
-          <li>The back button got bigger and stays at the top while you scroll.</li>
-          <li>Instead of typing glaze names, I wanted a catalog to pick from, so I added 575 glazes from my local clay store.</li>
-        </ul>
-        <h3>Test a lot</h3>
-        <ul class="clean-list">
-          <li>I tested on my phone after every phase.</li>
-          <li>Every privacy rule gets checked before every update.</li>
-        </ul>
-        <h3>Think about more than just me</h3>
-        <p>I'm not the only person who will use this. Putting myself in other people's shoes shaped a lot of the privacy decisions.</p>
-        <ul class="clean-list">
-          <li>Friends might not want their name on a shared glaze photo.</li>
-          <li>Someone new needs a clear message if they aren't on the invite list yet.</li>
-        </ul>
-        <h3>What's next</h3>
-        <p>
-          I want to see how my friends actually use sharing, and whether they'd rather know who a result came from.
-          I'm also excited to see my pottery skills grow. I love to create :)
-        </p>
+        <p class="lesson-hint">Tap a lesson to open it.</p>
+        <div class="lesson-cloud" role="tablist" aria-label="What I learned">
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-1" aria-selected="true" aria-controls="lesson-1"><span class="lesson-num">01</span> Iterate as much as you can</button>
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-2" aria-selected="false" aria-controls="lesson-2"><span class="lesson-num">02</span> Test a lot</button>
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-3" aria-selected="false" aria-controls="lesson-3"><span class="lesson-num">03</span> Think about more than just me</button>
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-4" aria-selected="false" aria-controls="lesson-4"><span class="lesson-num">04</span> What's next</button>
+        </div>
+        <div class="lesson-panel" id="lesson-1" role="tabpanel" aria-labelledby="lesson-tab-1">
+          <h3>Iterate as much as you can</h3>
+          <div>
+            <p>The first version of almost every screen changed once I used it at the studio.</p>
+            <ul class="clean-list">
+              <li>The stage dropdown became a row of stops you tap.</li>
+              <li>The back button got bigger and stays at the top while you scroll.</li>
+              <li>Instead of typing glaze names, I wanted a catalog to pick from, so I added 575 glazes from my local clay store.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lesson-panel" id="lesson-2" role="tabpanel" aria-labelledby="lesson-tab-2" hidden>
+          <h3>Test a lot</h3>
+          <div>
+            <ul class="clean-list">
+              <li>I tested on my phone after every phase.</li>
+              <li>Every privacy rule gets checked before every update.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lesson-panel" id="lesson-3" role="tabpanel" aria-labelledby="lesson-tab-3" hidden>
+          <h3>Think about more than just me</h3>
+          <div>
+            <p>I'm not the only person who will use this. Putting myself in other people's shoes shaped a lot of the privacy decisions.</p>
+            <ul class="clean-list">
+              <li>Friends might not want their name on a shared glaze photo.</li>
+              <li>Someone new needs a clear message if they aren't on the invite list yet.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lesson-panel" id="lesson-4" role="tabpanel" aria-labelledby="lesson-tab-4" hidden>
+          <h3>What's next</h3>
+          <div>
+            <p>I want to see how my friends actually use sharing, and whether they'd rather know who a result came from.</p>
+            <p>I'm also excited to see my pottery skills grow. I love to create :)</p>
+          </div>
+        </div>
       </details>
     </article>
   </main>
