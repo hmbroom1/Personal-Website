@@ -2030,3 +2030,113 @@ dt {
     transform: none;
   }
 }
+
+/* Lesson pots: the app's pottery silhouettes with little faces, one per lesson */
+.lesson-cloud {
+  align-items: start;
+  gap: 1rem 1.5rem;
+}
+
+.lesson-blob,
+.lesson-blob:nth-child(n) {
+  align-content: start;
+  aspect-ratio: auto;
+  gap: 0.4rem;
+  padding: 0.25rem 0.25rem 0.5rem;
+  width: 170px;
+}
+
+.lesson-blob::before {
+  display: none;
+}
+
+.pot-icon {
+  display: block;
+  height: 96px;
+  margin: 0 auto 0.25rem;
+  overflow: visible;
+  transform-origin: 50% 90%;
+  transition: transform 300ms cubic-bezier(0.3, 1.5, 0.5, 1);
+  width: 112px;
+}
+
+.pot-body {
+  fill: color-mix(in srgb, var(--cp-accent) 32%, var(--cp-bg));
+  transition: fill 220ms ease;
+}
+
+.pot-face {
+  fill: var(--cp-bg);
+}
+
+.pot-smile {
+  fill: none;
+  stroke: var(--cp-bg);
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.pot-cheek {
+  fill: #f4a3a3;
+  opacity: 0.55;
+}
+
+.lesson-blob:hover .pot-icon,
+.lesson-blob:focus-visible .pot-icon {
+  animation: pot-wiggle 600ms ease;
+}
+
+@keyframes pot-wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-7deg); }
+  60% { transform: rotate(5deg); }
+}
+
+.lesson-blob[aria-selected="true"] {
+  color: var(--cp-accent);
+}
+
+.lesson-blob[aria-selected="true"] .pot-body {
+  fill: var(--cp-accent);
+}
+
+.lesson-blob[aria-selected="true"] .pot-icon {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.lesson-num {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .lesson-blob,
+  .lesson-blob:nth-child(n) {
+    padding: 0.25rem 0.25rem 0.5rem;
+    width: 140px;
+  }
+
+  .pot-icon {
+    height: 80px;
+    width: 92px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-blob:hover .pot-icon,
+  .lesson-blob:focus-visible .pot-icon {
+    animation: none;
+  }
+
+  .pot-icon {
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .lesson-cloud {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
