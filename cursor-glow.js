@@ -103,6 +103,57 @@
     updateHint();
   }
 
+  // Phones: Interests become a stack of cards; tap one to open it
+  const interestGrid = document.querySelector(".interest-grid");
+  if (interestGrid) {
+    const phoneQuery = window.matchMedia("(max-width: 700px)");
+    const cards = [...interestGrid.querySelectorAll(".interest-card")];
+
+    const openCard = (card) => {
+      cards.forEach((other) => {
+        const isOpen = other === card;
+        other.classList.toggle("is-open", isOpen);
+        other.setAttribute("aria-expanded", String(isOpen));
+      });
+    };
+
+    const applyStack = () => {
+      const stacked = phoneQuery.matches;
+      interestGrid.classList.toggle("is-stacked", stacked);
+      cards.forEach((card) => {
+        if (stacked) {
+          card.setAttribute("role", "button");
+          card.setAttribute("tabindex", "0");
+        } else {
+          card.removeAttribute("role");
+          card.removeAttribute("tabindex");
+          card.removeAttribute("aria-expanded");
+          card.classList.remove("is-open");
+        }
+      });
+      if (stacked && !cards.some((card) => card.classList.contains("is-open"))) {
+        openCard(cards[0]);
+      }
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        if (interestGrid.classList.contains("is-stacked")) {
+          openCard(card);
+        }
+      });
+      card.addEventListener("keydown", (event) => {
+        if (interestGrid.classList.contains("is-stacked") && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          openCard(card);
+        }
+      });
+    });
+
+    phoneQuery.addEventListener("change", applyStack);
+    applyStack();
+  }
+
   // Headline word swap: plays once per page per visit.
   // Markup: <span class="swap-word" data-swap="next|another|final">first</span>
   const runWordSwap = (word, words) => {
