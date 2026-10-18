@@ -103,7 +103,7 @@
     updateHint();
   }
 
-  // Phones: Interests become a stack of cards; tap one to open it
+  // Phones: Interests become photo tiles; tap one to open it
   const interestGrid = document.querySelector(".interest-grid");
   if (interestGrid) {
     const phoneQuery = window.matchMedia("(max-width: 700px)");
@@ -133,8 +133,12 @@
           card.classList.remove("is-open");
         }
       });
-      if (stacked && !cards.some((card) => card.hasAttribute("aria-expanded"))) {
-        openCard(cards[0]);
+      if (stacked) {
+        cards.forEach((card) => {
+          if (!card.hasAttribute("aria-expanded")) {
+            card.setAttribute("aria-expanded", "false");
+          }
+        });
       }
     };
 
