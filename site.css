@@ -1536,3 +1536,18 @@ button.scroll-hint {
     content: "";
   }
 }
+
+/* Pottery demo on its own, centered */
+.phone-showcase.is-solo {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.phone-showcase.is-solo .phone-demo {
+  max-width: 300px;
+}
+
+/* Bullet lists inside case study sections */
+.case-disclosure .clean-list {
+  margin-bottom: 0.5rem;
+}

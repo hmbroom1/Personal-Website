@@ -59,7 +59,7 @@
 
       <details class="case-disclosure">
         <summary>What it does</summary>
-        <div class="phone-showcase">
+        <div class="phone-showcase is-solo">
           <figure class="phone-demo">
             <picture>
               <source media="(prefers-reduced-motion: reduce)" srcset="images/pottery/pottery-demo-poster.webp">
@@ -67,24 +67,6 @@
             </picture>
             <figcaption>A quick walkthrough with my real pieces.</figcaption>
           </figure>
-          <div class="phone-stills">
-            <figure>
-              <a href="images/pottery/pottery-home.webp"><img src="images/pottery/pottery-home.webp" width="500" height="889" loading="lazy" alt="Home screen listing pieces by shelf, with how many days each has been in its stage"></a>
-              <figcaption>Home, grouped by shelf</figcaption>
-            </figure>
-            <figure>
-              <a href="images/pottery/pottery-birdhouse.webp"><img src="images/pottery/pottery-birdhouse.webp" width="500" height="889" loading="lazy" alt="A piece page for a birdhouse showing its photo, clay, and current stage"></a>
-              <figcaption>A piece and its current stage</figcaption>
-            </figure>
-            <figure>
-              <a href="images/pottery/pottery-bird-glazes.webp"><img src="images/pottery/pottery-bird-glazes.webp" width="500" height="889" loading="lazy" alt="Two numbered glaze layers on a piece, each showing brand, dipped, and where it went"></a>
-              <figcaption>Glaze layers, in order</figcaption>
-            </figure>
-            <figure>
-              <a href="images/pottery/pottery-smoke-result.webp"><img src="images/pottery/pottery-smoke-result.webp" width="500" height="889" loading="lazy" alt="Glaze search for Smoke showing a finished mini vase on white clay, brushed with three coats"></a>
-              <figcaption>Searching by glaze</figcaption>
-            </figure>
-          </div>
         </div>
         <div class="card-grid two-column compact-grid">
           <article class="simple-card">
@@ -234,33 +216,42 @@
 
       <details class="case-disclosure">
         <summary>What I learned</summary>
+        <h3>Iterate as much as you can</h3>
+        <p>The first version of almost every screen changed once I used it at the studio.</p>
+        <ul class="clean-list">
+          <li>The stage dropdown became a row of stops you tap.</li>
+          <li>The back button got bigger and stays at the top while you scroll.</li>
+          <li>None of that showed up until I was actually using it.</li>
+        </ul>
+        <h3>Test a lot</h3>
+        <ul class="clean-list">
+          <li>I tested on my phone after every phase.</li>
+          <li>Every privacy rule gets checked before every update.</li>
+          <li>The more I tested, the less I was guessing.</li>
+        </ul>
+        <h3>Think about more than just me</h3>
+        <p>I'm not the only person who will use this. Putting myself in other people's shoes shaped a lot of the privacy decisions.</p>
+        <ul class="clean-list">
+          <li>Friends might not want their name on a shared glaze photo.</li>
+          <li>Someone new needs a clear message if they aren't on the invite list yet.</li>
+        </ul>
+        <h3>Building for a phone is different</h3>
         <p>
-          Iterate as much as you can. The first version of almost every screen changed once I used it at the studio.
-          The stage dropdown became a row of stops you tap, and the back button got bigger and stays at the top while
-          you scroll. None of that showed up until I was actually using it.
+          I had always built for a desktop. A screen that looked fine on my laptop broke on my iPhone, so after that I
+          checked every change at phone size. A few things needed their own decisions:
         </p>
+        <ul class="clean-list">
+          <li>Tap targets big enough for a thumb</li>
+          <li>Spacing that doesn't squeeze fields side by side</li>
+          <li>How much fits on one screen</li>
+        </ul>
+        <h3>Show it, don't just describe it</h3>
         <p>
-          Test a lot. I tested on my phone after every phase and checked every privacy rule before every update. The
-          more I tested, the less I was guessing.
+          The app is invite only, so most people reading this can't open it. A short walkthrough with my real pieces
+          shows what it does faster than any paragraph I could write.
         </p>
-        <p>
-          Think about more than just me. I'm not the only person who will use this. Friends might not want their name on
-          a shared glaze photo, and someone new needs a clear message if they aren't on the invite list yet. Putting
-          myself in their shoes shaped a lot of the privacy decisions.
-        </p>
-        <p>
-          Building for a phone is different. I had always built for a desktop. A screen that looked fine on my laptop
-          broke on my iPhone, so after that I checked every change at phone size. Tap targets, spacing, and how much
-          fits on a screen all needed their own decisions.
-        </p>
-        <p>
-          Show it, don't just describe it. The app is invite only, so most people reading this can't open it. A short
-          walkthrough with my real pieces shows what it does faster than any paragraph I could write.
-        </p>
-        <p>
-          Next, I want to see how my friends actually use sharing, and whether they'd rather know who a result came
-          from.
-        </p>
+        <h3>What's next</h3>
+        <p>I want to see how my friends actually use sharing, and whether they'd rather know who a result came from.</p>
       </details>
     </article>
   </main>
