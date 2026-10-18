@@ -83,7 +83,7 @@
 
   // Phone scroll hint on long pages: jumps down a screen, fades once scrolled
   const isPhone = window.matchMedia("(max-width: 700px)").matches;
-  const pageIsLong = document.documentElement.scrollHeight > window.innerHeight * 1.4;
+  const pageIsLong = document.documentElement.scrollHeight > window.innerHeight + 120;
   if (isPhone && pageIsLong) {
     const scrollHint = document.createElement("button");
     scrollHint.type = "button";

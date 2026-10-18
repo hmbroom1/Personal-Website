@@ -1622,3 +1622,48 @@ body {
 .process-shot figcaption {
   font-size: 0.95rem;
 }
+
+/* Pottery "What it does" on desktop: demo pinned on the left, feature cards on the right */
+@media (min-width: 901px) {
+  .feature-layout {
+    align-items: start;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .feature-layout .phone-showcase {
+    margin: 0;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .feature-layout .phone-showcase.is-solo .phone-demo {
+    max-width: 280px;
+  }
+
+  .feature-layout .card-grid {
+    gap: 1.25rem;
+  }
+
+  .feature-layout .simple-card {
+    padding-top: 0;
+  }
+}
+
+/* Pottery case study uses more of a wide screen; reading text keeps a comfortable line length */
+@media (min-width: 1100px) {
+  .case-study.wide-case {
+    max-width: 1080px;
+  }
+
+  .wide-case > p,
+  .wide-case .case-disclosure > p,
+  .wide-case .decision-list {
+    max-width: 860px;
+  }
+
+  .wide-case .feature-layout .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
