@@ -109,9 +109,11 @@
     const phoneQuery = window.matchMedia("(max-width: 700px)");
     const cards = [...interestGrid.querySelectorAll(".interest-card")];
 
+    // Tapping the open card closes it; tapping another opens it and closes the rest
     const openCard = (card) => {
+      const closing = card.classList.contains("is-open");
       cards.forEach((other) => {
-        const isOpen = other === card;
+        const isOpen = other === card && !closing;
         other.classList.toggle("is-open", isOpen);
         other.setAttribute("aria-expanded", String(isOpen));
       });
@@ -131,7 +133,7 @@
           card.classList.remove("is-open");
         }
       });
-      if (stacked && !cards.some((card) => card.classList.contains("is-open"))) {
+      if (stacked && !cards.some((card) => card.hasAttribute("aria-expanded"))) {
         openCard(cards[0]);
       }
     };
