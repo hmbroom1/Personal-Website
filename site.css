@@ -2167,3 +2167,26 @@ h3 {
 .site-footer {
   font-size: clamp(0.78rem, 0.7rem + 0.2vw, 0.9rem);
 }
+
+/* Resume Snapshot: bigger text on wide screens, full width, one row of four on desktop */
+.snapshot-summary h2 {
+  font-size: clamp(1.35rem, 1rem + 1.6vw, 2.4rem);
+}
+
+.snapshot-dashboard {
+  max-width: none;
+}
+
+.snapshot-dashboard-grid span {
+  font-size: clamp(0.75rem, 0.62rem + 0.32vw, 0.95rem);
+}
+
+.snapshot-dashboard-grid strong {
+  font-size: clamp(1.05rem, 0.8rem + 0.9vw, 1.5rem);
+}
+
+@media (min-width: 1100px) {
+  .snapshot-dashboard-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
