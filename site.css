@@ -2190,3 +2190,18 @@ h3 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* Wider screens: spread the four pots evenly across the full width */
+@media (min-width: 701px) {
+  .lesson-cloud {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lesson-blob,
+  .lesson-blob:nth-child(n) {
+    justify-self: center;
+    max-width: 220px;
+    width: 100%;
+  }
+}
