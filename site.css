@@ -1572,3 +1572,39 @@ button.scroll-hint {
 .feature-shot:hover {
   filter: none;
 }
+
+/* Product decisions as a ruled spec list: decision on the left, why on the right */
+.decision-list {
+  border-bottom: 1px solid var(--cp-border);
+  margin: 0.5rem 0 1.25rem;
+}
+
+.decision-list > div {
+  border-top: 1px solid var(--cp-border);
+  display: grid;
+  gap: 0.35rem 1.5rem;
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  padding: 1rem 0;
+}
+
+.decision-list dt {
+  color: var(--cp-text);
+  font-weight: 700;
+}
+
+.decision-list dt::before {
+  color: var(--cp-accent);
+  content: "✦";
+  margin-right: 0.5rem;
+}
+
+.decision-list dd {
+  color: var(--cp-text-muted);
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .decision-list > div {
+    grid-template-columns: 1fr;
+  }
+}

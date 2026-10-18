@@ -111,92 +111,41 @@
 
       <details class="case-disclosure">
         <summary>Product decisions</summary>
-        <p>
-          I acted as the product manager and designer, and Claude Code wrote the code. I set the requirements, made the
-          design and privacy calls, and tested everything on my own phone.
-        </p>
-        <div class="agent-flow" aria-label="How the app was built">
+        <p>I was the product manager and designer. Claude Code wrote the code, and I tested every change on my phone.</p>
+        <dl class="decision-list">
           <div>
-            <strong><span>1</span> - Plan</strong>
-            <p>Before any code, I wrote out the stages, the four shelves, how glazes get layered, and who should be able to see what.</p>
+            <dt>Google sign-in, invite only</dt>
+            <dd>Only emails on my invite list get in and are authenticated through Google. It's the right balance of control for what I was looking for.</dd>
           </div>
           <div>
-            <strong><span>2</span> - Build in phases</strong>
-            <p>Pieces and photos first, then shelves and glazes, then goals, then glaze search and sharing.</p>
+            <dt>Anonymous sharing</dt>
+            <dd>You can choose to share your finished piece so everyone can see your glaze results, but without sharing other information.</dd>
           </div>
           <div>
-            <strong><span>3</span> - Test</strong>
-            <p>After each phase I used it at the studio and sent feedback before starting the next one.</p>
+            <dt>Privacy checks</dt>
+            <dd>Nine automatic checks try to open someone else's piece before every update. If one gets through, the update is blocked.</dd>
           </div>
           <div>
-            <strong><span>4</span> - Design</strong>
-            <p>Once the app did its job, I restyled it using a Pinterest board of mid-century patterns and type I'd saved early on.</p>
+            <dt>A real glaze catalog</dt>
+            <dd>575 glazes from my local clay store, searchable by name or code, so names stay consistent.</dd>
           </div>
-        </div>
-        <div class="card-grid two-column compact-grid">
-          <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> Google sign-in with an invite list</h3>
-            <p>
-              Nobody has to make a password. You sign in with your Google account, and only emails on my invite list
-              get in. Everyone else sees a message that they aren't on the list. Inviting a friend takes two steps, one
-              in Google and one in the app. It's a little manual, but for a handful of people I'd rather have that
-              control.
-            </p>
-          </article>
-          <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> Privacy checks on every update</h3>
-            <p>
-              Everyone's pieces live in the same database, so I wanted proof nobody could see someone else's. Nine
-              automatic checks try to open, edit, or delete another person's piece before every update. If one fails,
-              the update is blocked. To test the tests, we removed a privacy rule on purpose. Two checks failed and
-              pointed right at the leak.
-            </p>
-          </article>
-          <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> Anonymous sharing, off by default</h3>
-            <p>
-              Friends can choose to share finished pieces so everyone's glaze search has more examples. A shared result
-              only shows the photo, clay, and glazes. No name, notes, or email. I decided not to even label them "from a
-              friend."
-            </p>
-          </article>
-          <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> A real glaze catalog</h3>
-            <p>
-              I turned my local clay store's stock list into 575 searchable mid-fire glazes and underglazes. Typing
-              "PC-20" finds Blue Rutile. Keeping names consistent is what makes searching by glaze work later.
-            </p>
-          </article>
-          <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> Photos and hosting</h3>
-            <p>
-              This was my first time hosting on Vercel. Photos are stored privately, with no public links, and the
-              phone shrinks each photo and removes its location before uploading. I tested with fake accounts on a
-              practice copy of the database, so my real pieces were never at risk.
-            </p>
-          </article>
-          <article class="simple-card">
-            <h3><span class="card-icon" aria-hidden="true">✦</span> A home screen app over the App Store</h3>
-            <p>
-              There's no review process, and updates go live as soon as they're pushed. The trade-off is that iPhone
-              notifications are weak for web apps, so reminders became a Due soon list inside the app.
-            </p>
-          </article>
-        </div>
-        <h3>Designing from a mood board</h3>
-        <p>
-          I saved a Pinterest board early on with Bauhaus half-circle patterns, pottery silhouettes, and vintage type
-          specimens. I steered away from the rounded cards and soft gradients a lot of AI-built apps have. The half
-          circles became a strip across the top of every screen, the silhouettes stand in when a piece doesn't have a
-          photo yet, and the wide capital headings came from the type specimens. The colors are oxblood, paper, and ink.
-        </p>
-        <!-- MEDIA: design before and after go here -->
-        <h3>Making it faster after launch</h3>
-        <p>
-          Once my real pieces were in it, I started fixing what felt slow. Lists now load a 25 KB small copy of each
-          photo instead of the 300 KB full one, which is about 7x lighter on studio wifi. The list of 575 glazes only
-          loads when I tap "Add glaze," instead of every time I open a piece.
-        </p>
+          <div>
+            <dt>Photos and hosting</dt>
+            <dd>My first time hosting on Vercel. Photos stay private, and the phone shrinks them and strips location first.</dd>
+          </div>
+          <div>
+            <dt>Home screen app</dt>
+            <dd>No review process and instant updates. Reminders live in a Due soon list instead of notifications.</dd>
+          </div>
+          <div>
+            <dt>Faster after launch</dt>
+            <dd>Lists load small photo copies, about 7x lighter, and the glaze list only loads when I need it.</dd>
+          </div>
+          <div>
+            <dt>Mid-century look</dt>
+            <dd>Pulled from my Pinterest board: oxblood, paper, and ink, with pottery silhouettes when a piece has no photo.</dd>
+          </div>
+        </dl>
         <div class="pill-list" aria-label="Tools used">
           <span>Next.js</span>
           <span>TypeScript</span>
