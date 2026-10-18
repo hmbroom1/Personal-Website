@@ -165,6 +165,19 @@
   const runWordSwap = (word, words) => {
     let index = 0;
 
+    // Hold the headline at the height of its tallest version so the page never jumps
+    const heading = word.closest("h1, h2") || word.parentElement;
+    const original = word.textContent;
+    let tallest = heading.getBoundingClientRect().height;
+    words.forEach((text, i) => {
+      word.classList.toggle("is-final", i === words.length - 1);
+      word.textContent = text;
+      tallest = Math.max(tallest, heading.getBoundingClientRect().height);
+    });
+    word.classList.remove("is-final");
+    word.textContent = original;
+    heading.style.minHeight = `${Math.ceil(tallest)}px`;
+
     const showNext = () => {
       word.classList.add("is-leaving");
       window.setTimeout(() => {
@@ -181,6 +194,10 @@
           window.setTimeout(showNext, 1100);
         } else {
           window.setTimeout(() => word.classList.add("is-settled"), 900);
+          // Keep the reserved height so nothing shifts at the end; let it reflow if the window resizes
+          window.addEventListener("resize", () => {
+            heading.style.minHeight = "";
+          }, { once: true });
         }
       }, 260);
     };
