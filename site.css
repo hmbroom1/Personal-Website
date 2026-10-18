@@ -1518,3 +1518,21 @@ button.scroll-hint {
 .section-heading h2 {
   text-wrap: balance;
 }
+
+/* Draw the tile + and - as lines so they sit dead center in the circle */
+@media (max-width: 700px) {
+  .interest-grid.is-stacked .interest-card::after {
+    background:
+      linear-gradient(#fff, #fff) center / 0.75rem 2px no-repeat,
+      linear-gradient(#fff, #fff) center / 2px 0.75rem no-repeat,
+      rgba(0, 0, 0, 0.6);
+    content: "";
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open::after {
+    background:
+      linear-gradient(#fff, #fff) center / 0.75rem 2px no-repeat,
+      rgba(0, 0, 0, 0.6);
+    content: "";
+  }
+}
