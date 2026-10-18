@@ -1767,3 +1767,10 @@ h3,
 dt {
   text-wrap: balance;
 }
+
+/* Pottery page: intro and section text stretch with the wider layout */
+.wide-case .lede,
+.wide-case > p,
+.wide-case .case-disclosure > p {
+  max-width: none;
+}
