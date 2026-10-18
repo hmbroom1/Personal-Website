@@ -163,6 +163,12 @@
   // Lesson blobs: tapping one shows its panel and hides the others
   document.querySelectorAll(".lesson-cloud").forEach((cloud) => {
     const blobs = [...cloud.querySelectorAll(".lesson-blob")];
+    const updateEdge = () => {
+      cloud.classList.toggle("is-at-end", cloud.scrollLeft + cloud.clientWidth >= cloud.scrollWidth - 8);
+    };
+    cloud.addEventListener("scroll", updateEdge, { passive: true });
+    window.addEventListener("resize", updateEdge);
+    updateEdge();
     blobs.forEach((blob) => {
       blob.addEventListener("click", () => {
         blobs.forEach((other) => {
