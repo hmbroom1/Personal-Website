@@ -1752,3 +1752,18 @@ body {
 .feature-layout .simple-card .card-icon {
   display: none;
 }
+
+/* Avoid a single word sitting alone on the last line */
+p,
+li,
+dd,
+figcaption {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+dt {
+  text-wrap: balance;
+}
