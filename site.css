@@ -1355,3 +1355,42 @@ h3 {
     display: inline;
   }
 }
+
+/* Desktop: less empty space under the hero, smaller home photo */
+@media (min-width: 901px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero.section {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero + .scroll-hint + .split.section,
+  .hero + .split.section {
+    padding-top: 2.5rem;
+  }
+
+  .hero-card {
+    justify-self: end;
+    max-width: 320px;
+    width: 100%;
+  }
+}
+
+/* Keep the name only as wide as its text so sparkles start from it */
+.brand {
+  justify-self: start;
+  width: fit-content;
+}
+
+/* The final, longer phrase in a word swap wraps like normal text */
+.swap-word.is-final {
+  display: inline;
+}
+
+/* The scroll hint is a button, so match the site text */
+button.scroll-hint {
+  cursor: pointer;
+  font-family: inherit;
+}

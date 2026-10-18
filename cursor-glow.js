@@ -81,9 +81,21 @@
     });
   };
 
-  // Mobile scroll hint on the home page fades once the visitor scrolls
-  const scrollHint = document.querySelector(".scroll-hint");
-  if (scrollHint) {
+  // Phone scroll hint on long pages: jumps down a screen, fades once scrolled
+  const isPhone = window.matchMedia("(max-width: 700px)").matches;
+  const pageIsLong = document.documentElement.scrollHeight > window.innerHeight * 1.4;
+  if (isPhone && pageIsLong) {
+    const scrollHint = document.createElement("button");
+    scrollHint.type = "button";
+    scrollHint.className = "scroll-hint";
+    scrollHint.setAttribute("aria-label", "Scroll down");
+    scrollHint.innerHTML = '<span>Scroll</span><span class="scroll-hint-arrow" aria-hidden="true"></span>';
+    document.body.appendChild(scrollHint);
+
+    scrollHint.addEventListener("click", () => {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+
     const updateHint = () => {
       scrollHint.classList.toggle("is-hidden", window.scrollY > 40);
     };
@@ -99,6 +111,9 @@
     const showNext = () => {
       word.classList.add("is-leaving");
       window.setTimeout(() => {
+        if (index === words.length - 1) {
+          word.classList.add("is-final");
+        }
         word.textContent = words[index];
         word.classList.remove("is-leaving");
         word.classList.add("is-entering");
@@ -128,7 +143,10 @@
       alreadySwapped = false;
     }
 
-    if (!reducedMotion && !alreadySwapped) {
+    if (reducedMotion) {
+      word.classList.add("is-final");
+      word.textContent = words[words.length - 1];
+    } else if (!alreadySwapped) {
       runWordSwap(word, words);
     }
   });
