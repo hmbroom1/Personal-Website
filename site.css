@@ -1658,8 +1658,7 @@ body {
   }
 
   .wide-case > p,
-  .wide-case .case-disclosure > p,
-  .wide-case .decision-list {
+  .wide-case .case-disclosure > p {
     max-width: 860px;
   }
 
@@ -1727,4 +1726,29 @@ body {
   .feature-layout .simple-card:hover .feature-shot {
     transform: none;
   }
+}
+
+/* Number the decisions 01, 02, ... like the glaze layers in the app, instead of stars */
+.decision-list {
+  counter-reset: decision;
+}
+
+.decision-list > div {
+  counter-increment: decision;
+}
+
+.decision-list dt::before {
+  color: var(--cp-accent);
+  content: counter(decision, decimal-leading-zero);
+  display: inline-block;
+  font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-right: 0.75rem;
+  min-width: 1.6em;
+}
+
+/* Feature callout titles don't need an icon; the screenshot does that job */
+.feature-layout .simple-card .card-icon {
+  display: none;
 }
