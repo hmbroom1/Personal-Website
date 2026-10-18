@@ -1551,3 +1551,24 @@ button.scroll-hint {
 .case-disclosure .clean-list {
   margin-bottom: 0.5rem;
 }
+
+/* Small "Back to projects" link at the top of each case study */
+.back-link {
+  font-size: 0.9rem;
+  justify-self: start;
+  margin-bottom: 0.5rem;
+}
+
+/* Small app screenshot at the top of each pottery feature card */
+.feature-shot {
+  border: 1px solid var(--cp-border);
+  filter: none;
+  height: auto;
+  margin-bottom: 0.75rem;
+  max-width: 320px;
+  width: 100%;
+}
+
+.feature-shot:hover {
+  filter: none;
+}
