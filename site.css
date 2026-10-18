@@ -1519,3 +1519,22 @@ button.scroll-hint {
     padding-bottom: 2.5rem;
   }
 }
+
+/* Desktop: pull the home sections closer together */
+@media (min-width: 901px) {
+  .hero.section {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero + .split.section {
+    padding-top: 2rem;
+  }
+
+  .split.section {
+    padding-bottom: 2.5rem;
+  }
+
+  .split + .section {
+    padding-top: 2.5rem;
+  }
+}
