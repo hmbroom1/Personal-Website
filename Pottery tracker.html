@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Hannah Broom, pottery tracker, web app, Google sign-in, AI product management">
+  <meta name="author" content="Hannah Broom">
+  <meta name="description" content="Process page for Hannah Broom's pottery tracker app.">
+  <title>Hannah Broom | Pottery Tracker</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <link rel="stylesheet" href="site.css">
+  <script src="cursor-glow.js" defer></script>
+  <script src="nav-menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Hannah Broom</a>
+      <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Toggle navigation menu</span>
+        <span class="menu-line menu-line-top" aria-hidden="true"></span>
+        <span class="menu-line menu-line-middle" aria-hidden="true"></span>
+        <span class="menu-line menu-line-bottom" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="primary-menu">
+        <a href="index.html">About</a>
+        <a href="Resume.html">Resume</a>
+        <a href="Current%20Projects.html">Projects</a>
+        <a class="button button-small" href="mailto:hmbroom1@gmail.com">Email me</a>
+        <button class="animation-toggle" type="button" data-animation-toggle aria-pressed="false">Glow off</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <article class="case-study section narrow wide-case">
+      <a class="text-link back-link" href="Current%20Projects.html">&larr; Back to projects</a>
+      <p class="eyebrow">Case study</p>
+      <h1>Pottery tracker</h1>
+      <p class="lede">
+        I made a phone app for my pottery practice, and I use it every time I'm at the studio. It follows each piece
+        from wet clay to the final firing: what stage it's in, which shelf it's on, what glazes went on, and how they
+        came out.
+      </p>
+
+      <details class="case-disclosure">
+        <summary>What it does</summary>
+        <div class="feature-layout">
+        <div class="phone-showcase is-solo">
+          <figure class="phone-demo">
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcset="images/pottery/pottery-demo-poster.webp">
+              <img src="images/pottery/pottery-demo.webp" width="508" height="882" alt="Demo of the app on a phone: the home screen grouped by shelf, moving a piece to the next stage, adding a glaze layer from the catalog, and searching finished pieces by glaze">
+            </picture>
+            <figcaption>A quick walkthrough with my real pieces.</figcaption>
+          </figure>
+        </div>
+        <div class="card-grid two-column compact-grid">
+          <article class="simple-card">
+            <img class="feature-shot" src="images/pottery/feature-timeline.webp" width="540" height="361" loading="lazy" alt="A piece's timeline with a photo, date, and shelf for each stage">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Stage timeline</h3>
+            <p>
+              Tracks when a piece was made, with a photo, shelf, and note at each stage.
+            </p>
+          </article>
+          <article class="simple-card">
+            <img class="feature-shot" src="images/pottery/feature-shelves.webp" width="540" height="361" loading="lazy" alt="Home screen list of pieces under the Greenware shelf heading">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Shelves</h3>
+            <p>
+              Home groups pieces by shelf, longest-waiting first.
+            </p>
+          </article>
+          <article class="simple-card">
+            <img class="feature-shot" src="images/pottery/feature-goal.webp" width="540" height="361" loading="lazy" alt="Goal form with a target stage and date">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Goals and tracking</h3>
+            <p>
+              Set a target date. Anything due within a week rises to the top.
+            </p>
+          </article>
+          <article class="simple-card">
+            <img class="feature-shot" src="images/pottery/feature-layers.webp" width="540" height="361" loading="lazy" alt="Two numbered glaze layers, each brushed with three coats">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Glaze layers</h3>
+            <p>
+              Each layer in order: dipped or brushed, coats, and where it went.
+            </p>
+          </article>
+          <article class="simple-card">
+            <img class="feature-shot" src="images/pottery/feature-search.webp" width="540" height="361" loading="lazy" alt="Glaze search for Smoke showing a finished mini vase">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Search by glaze</h3>
+            <p>
+              Find every finished piece with a glaze, filtered by white or red clay.
+            </p>
+          </article>
+          <article class="simple-card">
+            <img class="feature-shot" src="images/pottery/feature-trash.webp" width="540" height="361" loading="lazy" alt="Home tabs for In progress, Finished, and Trashed">
+            <h3><span class="card-icon" aria-hidden="true">✦</span> Trash and delete</h3>
+            <p>
+              Failed pieces go to the trash with what went wrong, and can be deleted for good.
+            </p>
+          </article>
+        </div>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>Product decisions</summary>
+        <p>I was the product manager and designer. Claude Code wrote the code, and I tested every change on my phone.</p>
+        <dl class="decision-list">
+          <div>
+            <dt>Google sign-in, invite only</dt>
+            <dd>Only emails on my invite list get in and are authenticated through Google. It's the right balance of control for what I was looking for.</dd>
+          </div>
+          <div>
+            <dt>Anonymous sharing</dt>
+            <dd>You can choose to share your finished piece so everyone can see your glaze results, but without sharing other information.</dd>
+          </div>
+          <div>
+            <dt>Privacy checks</dt>
+            <dd>Nine automatic checks try to open someone else's piece before every update. If one gets through, the update is blocked.</dd>
+          </div>
+          <div>
+            <dt>A real glaze catalog</dt>
+            <dd>575 glazes from my local clay store, searchable by name or code, so names stay consistent.</dd>
+          </div>
+          <div>
+            <dt>Photos and hosting</dt>
+            <dd>My first time hosting on Vercel. Photos stay private, and the phone shrinks them and strips location first.</dd>
+          </div>
+          <div>
+            <dt>Home screen app</dt>
+            <dd>No review process and instant updates. Reminders live in a Due soon list instead of notifications.</dd>
+          </div>
+          <div>
+            <dt>Faster after launch</dt>
+            <dd>Lists load small photo copies, about 7x lighter, and the glaze list only loads when I need it.</dd>
+          </div>
+          <div>
+            <dt>Mid-century look</dt>
+            <dd>Pulled from my Pinterest board: oxblood, paper, and ink, with pottery silhouettes when a piece has no photo.</dd>
+          </div>
+        </dl>
+        <div class="pill-list" aria-label="Tools used">
+          <span>Next.js</span>
+          <span>TypeScript</span>
+          <span>Neon Postgres</span>
+          <span>Vercel</span>
+          <span>Vercel Blob</span>
+          <span>Google sign-in</span>
+          <span>GitHub</span>
+          <span>Claude Code</span>
+        </div>
+      </details>
+
+      <details class="case-disclosure">
+        <summary>What I learned</summary>
+        <p class="lesson-hint"><span class="hint-desktop">Tap a pot to open each lesson.</span><span class="hint-phone">Swipe for more pots, then tap one &rarr;</span></p>
+        <div class="lesson-cloud" role="tablist" aria-label="What I learned">
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-1" aria-selected="true" aria-controls="lesson-1"><svg class="pot-icon" viewBox="0 6 100 82" aria-hidden="true"><path class="pot-body" d="M40 14h20v8c0 4-3 5-3 9 0 5 16 11 16 30 0 13-9 19-23 19S27 74 27 61c0-19 16-25 16-30 0-4-3-5-3-9z" fill-rule="evenodd"/><circle class="pot-face" cx="44" cy="60" r="2.2"/><circle class="pot-face" cx="56" cy="60" r="2.2"/><path class="pot-smile" d="M46 65q4 4 8 0"/><circle class="pot-cheek" cx="40" cy="65" r="2.6"/><circle class="pot-cheek" cx="60" cy="65" r="2.6"/></svg><span class="lesson-num">01</span> Iterate always</button>
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-2" aria-selected="false" aria-controls="lesson-2"><svg class="pot-icon" viewBox="0 6 100 82" aria-hidden="true"><path class="pot-body" d="M26 30h40v36c0 8-6 14-14 14H40c-8 0-14-6-14-14zM66 40h6c6 0 9 4 9 10s-3 10-9 10h-6v-6h5c3 0 4-2 4-4s-1-4-4-4h-5z" fill-rule="evenodd"/><circle class="pot-face" cx="40" cy="52" r="2.2"/><circle class="pot-face" cx="52" cy="52" r="2.2"/><path class="pot-smile" d="M42 57q4 4 8 0"/><circle class="pot-cheek" cx="36" cy="57" r="2.6"/><circle class="pot-cheek" cx="56" cy="57" r="2.6"/></svg><span class="lesson-num">02</span> Test a lot</button>
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-3" aria-selected="false" aria-controls="lesson-3"><svg class="pot-icon" viewBox="0 6 100 82" aria-hidden="true"><path class="pot-body" d="M18 40h64c0 20-14 34-32 34S18 60 18 40zM40 74h20v6H40z" fill-rule="evenodd"/><circle class="pot-face" cx="44" cy="52" r="2.2"/><circle class="pot-face" cx="56" cy="52" r="2.2"/><path class="pot-smile" d="M46 57q4 4 8 0"/><circle class="pot-cheek" cx="40" cy="57" r="2.6"/><circle class="pot-cheek" cx="60" cy="57" r="2.6"/></svg><span class="lesson-num">03</span> Think about users</button>
+          <button class="lesson-blob" type="button" role="tab" id="lesson-tab-4" aria-selected="false" aria-controls="lesson-4"><svg class="pot-icon" viewBox="0 6 100 82" aria-hidden="true"><path class="pot-body" d="M45 12h10v14c0 3 2 4 2 7 0 4 9 9 9 24 0 13-7 23-16 23s-16-10-16-23c0-15 9-20 9-24 0-3 2-4 2-7z" fill-rule="evenodd"/><circle class="pot-face" cx="44" cy="60" r="2.2"/><circle class="pot-face" cx="56" cy="60" r="2.2"/><path class="pot-smile" d="M46 65q4 4 8 0"/><circle class="pot-cheek" cx="40" cy="65" r="2.6"/><circle class="pot-cheek" cx="60" cy="65" r="2.6"/></svg><span class="lesson-num">04</span> What's next</button>
+        </div>
+        <div class="lesson-panel" id="lesson-1" role="tabpanel" aria-labelledby="lesson-tab-1">
+          <h3>Iterate always</h3>
+          <div>
+            <p>The first version of almost every screen changed once I used it at the studio.</p>
+            <ul class="clean-list">
+              <li>The stage dropdown became a row of stops you tap.</li>
+              <li>The back button got bigger and stays at the top while you scroll.</li>
+              <li>Instead of typing glaze names, I wanted a catalog to pick from, so I added 575 glazes from my local clay store.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lesson-panel" id="lesson-2" role="tabpanel" aria-labelledby="lesson-tab-2" hidden>
+          <h3>Test a lot</h3>
+          <div>
+            <ul class="clean-list">
+              <li>I tested on my phone after every phase.</li>
+              <li>Every privacy rule gets checked before every update.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lesson-panel" id="lesson-3" role="tabpanel" aria-labelledby="lesson-tab-3" hidden>
+          <h3>Think about users</h3>
+          <div>
+            <p>I'm not the only person who will use this. Putting myself in other people's shoes shaped a lot of the privacy decisions.</p>
+            <ul class="clean-list">
+              <li>Friends might not want their name on a shared glaze photo.</li>
+              <li>Someone new needs a clear message if they aren't on the invite list yet.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="lesson-panel" id="lesson-4" role="tabpanel" aria-labelledby="lesson-tab-4" hidden>
+          <h3>What's next</h3>
+          <div>
+            <p>I want to see how my friends actually use sharing, and whether they'd rather know who a result came from.</p>
+            <p>I'm also excited to see my pottery skills grow. I love to create! 😊</p>
+          </div>
+        </div>
+      </details>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built by Hannah Broom and hosted on GitHub Pages.</p>
+  </footer>
+</body>
+</html>

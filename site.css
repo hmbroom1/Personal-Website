@@ -1149,3 +1149,1059 @@ h3 {
     min-height: auto;
   }
 }
+
+/* About section body copy reads larger on wide screens */
+.split .stack p {
+  font-size: clamp(1rem, 0.6rem + 0.9vw, 1.3rem);
+  line-height: 1.65;
+}
+
+/* Gentle entrance for the home page hero, once on load */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.9rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+.hero-copy > * {
+  animation: hero-rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.hero-copy > :nth-child(1) { animation-delay: 80ms; }
+.hero-copy > :nth-child(2) { animation-delay: 200ms; }
+.hero-copy > :nth-child(3) { animation-delay: 340ms; }
+.hero-copy > :nth-child(4) { animation-delay: 460ms; }
+
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy > * {
+    animation: none;
+  }
+}
+
+/* Subheadings inside an open case study section */
+.case-disclosure > h3 {
+  margin-top: 1.5rem;
+}
+
+/* Pottery case study: demo clip beside a grid of phone screenshots */
+.phone-showcase {
+  align-items: start;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0.5rem 0 1.5rem;
+}
+
+.phone-showcase figure {
+  margin: 0;
+}
+
+.phone-showcase img {
+  filter: none;
+  height: auto;
+  width: 100%;
+}
+
+.phone-stills {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.phone-stills img {
+  border: 1px solid var(--cp-border);
+}
+
+.phone-showcase figcaption {
+  color: var(--cp-text-muted);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.phone-demo figcaption {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .phone-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-demo {
+    justify-self: center;
+    max-width: 280px;
+  }
+}
+
+
+/* Home headline word swap on the first visit */
+.swap-word {
+  display: inline-block;
+  transition: opacity 260ms ease, transform 260ms ease, color 900ms ease;
+}
+
+.swap-word.is-highlighted {
+  color: var(--cp-accent);
+}
+
+.swap-word.is-settled {
+  color: inherit;
+}
+
+.swap-word.is-leaving {
+  opacity: 0;
+  transform: translateY(-0.25em);
+}
+
+.swap-word.is-entering {
+  opacity: 0;
+  transform: translateY(0.25em);
+  transition: none;
+}
+
+/* Keep the home photo from filling the screen when the hero stacks */
+.hero-card img {
+  max-height: 70vh;
+}
+
+@media (max-width: 900px) {
+  .hero-card {
+    justify-self: center;
+    max-width: 360px;
+    width: 100%;
+  }
+}
+
+/* Mobile-only nudge to scroll past the hero */
+.scroll-hint {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .scroll-hint {
+    align-items: center;
+    background: var(--cp-bg);
+    border: 1px solid var(--cp-border);
+    border-radius: 999px;
+    bottom: 1.25rem;
+    color: var(--cp-text);
+    display: flex;
+    font-size: 0.72rem;
+    font-weight: 800;
+    gap: 0.5rem;
+    left: 50%;
+    letter-spacing: 0.18em;
+    padding: 0.55rem 1rem;
+    position: fixed;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    transition: opacity 300ms ease, transform 300ms ease;
+    z-index: 5;
+  }
+
+  .scroll-hint.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 0.75rem);
+  }
+
+  .scroll-hint-arrow {
+    animation: hint-bob 1.6s ease-in-out infinite;
+    border-bottom: 2px solid var(--cp-accent);
+    border-right: 2px solid var(--cp-accent);
+    height: 0.5rem;
+    transform: rotate(45deg);
+    width: 0.5rem;
+  }
+}
+
+@keyframes hint-bob {
+  0%,
+  100% {
+    translate: 0 -2px;
+  }
+
+  50% {
+    translate: 0 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint-arrow {
+    animation: none;
+  }
+}
+
+/* Keep a swapping word and its period together; on phones start it on its own line */
+.nowrap {
+  white-space: nowrap;
+}
+
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .mobile-break {
+    display: inline;
+  }
+}
+
+/* Desktop: less empty space under the hero, smaller home photo */
+@media (min-width: 901px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero.section {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero + .scroll-hint + .split.section,
+  .hero + .split.section {
+    padding-top: 2.5rem;
+  }
+
+  .hero-card {
+    justify-self: end;
+    max-width: 320px;
+    width: 100%;
+  }
+}
+
+/* Keep the name only as wide as its text so sparkles start from it */
+.brand {
+  justify-self: start;
+  width: fit-content;
+}
+
+/* The final, longer phrase in a word swap wraps like normal text */
+.swap-word.is-final {
+  display: inline;
+}
+
+/* The scroll hint is a button, so match the site text */
+button.scroll-hint {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Phones: Interests as 2x2 photo tiles; a tapped tile opens across the full width */
+@media (max-width: 700px) {
+  .interest-grid.is-stacked {
+    gap: 0.75rem;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .interest-grid.is-stacked .interest-card {
+    background: var(--cp-bg);
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+  }
+
+  .interest-grid.is-stacked .interest-card:hover {
+    transform: none;
+  }
+
+  .interest-grid.is-stacked .interest-card img {
+    aspect-ratio: 1;
+    margin: 0;
+    width: 100%;
+  }
+
+  .interest-grid.is-stacked .interest-card h3 {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.78));
+    bottom: 0;
+    color: #fff;
+    font-size: 0.95rem;
+    left: 0;
+    margin: 0;
+    padding: 1.75rem 0.75rem 0.65rem;
+    position: absolute;
+    right: 0;
+  }
+
+  .interest-grid.is-stacked .interest-card p {
+    display: none;
+  }
+
+  .interest-grid.is-stacked .interest-card::after {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    color: #fff;
+    content: "+";
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: 700;
+    height: 1.75rem;
+    justify-content: center;
+    line-height: 1;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    width: 1.75rem;
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open {
+    border-color: var(--cp-border-strong);
+    grid-column: 1 / -1;
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open::after {
+    content: "\2212";
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open img {
+    aspect-ratio: 4 / 3;
+    filter: none;
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open h3 {
+    background: none;
+    color: var(--cp-text);
+    font-size: 1.1rem;
+    padding: 0.9rem 1rem 0.35rem;
+    position: static;
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open p {
+    display: block;
+    margin: 0;
+    padding: 0 1rem 1.1rem;
+  }
+}
+
+/* Phones: less empty space under the Interests stack */
+@media (max-width: 700px) {
+  .section:has(> .interest-grid) {
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* Desktop: pull the home sections closer together */
+@media (min-width: 901px) {
+  .hero.section {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero + .split.section {
+    padding-top: 2rem;
+  }
+
+  .split.section {
+    padding-bottom: 2.5rem;
+  }
+
+  .split + .section {
+    padding-top: 2.5rem;
+  }
+}
+
+/* Section headings use the full width so they only wrap when the screen is narrow */
+.section-heading {
+  max-width: none;
+}
+
+.section-heading h2 {
+  text-wrap: balance;
+}
+
+/* Draw the tile + and - as lines so they sit dead center in the circle */
+@media (max-width: 700px) {
+  .interest-grid.is-stacked .interest-card::after {
+    background:
+      linear-gradient(#fff, #fff) center / 0.75rem 2px no-repeat,
+      linear-gradient(#fff, #fff) center / 2px 0.75rem no-repeat,
+      rgba(0, 0, 0, 0.6);
+    content: "";
+  }
+
+  .interest-grid.is-stacked .interest-card.is-open::after {
+    background:
+      linear-gradient(#fff, #fff) center / 0.75rem 2px no-repeat,
+      rgba(0, 0, 0, 0.6);
+    content: "";
+  }
+}
+
+/* Pottery demo on its own, centered */
+.phone-showcase.is-solo {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.phone-showcase.is-solo .phone-demo {
+  max-width: 300px;
+}
+
+/* Bullet lists inside case study sections */
+.case-disclosure .clean-list {
+  margin-bottom: 0.5rem;
+}
+
+/* Small "Back to projects" link at the top of each case study */
+.back-link {
+  font-size: 0.9rem;
+  justify-self: start;
+  margin-bottom: 0.5rem;
+}
+
+/* Small app screenshot at the top of each pottery feature card */
+.feature-shot {
+  border: 1px solid var(--cp-border);
+  filter: none;
+  height: auto;
+  margin-bottom: 0.75rem;
+  max-width: 320px;
+  width: 100%;
+}
+
+.feature-shot:hover {
+  filter: none;
+}
+
+/* Product decisions as a ruled spec list: decision on the left, why on the right */
+.decision-list {
+  border-bottom: 1px solid var(--cp-border);
+  margin: 0.5rem 0 1.25rem;
+}
+
+.decision-list > div {
+  border-top: 1px solid var(--cp-border);
+  display: grid;
+  gap: 0.35rem 1.5rem;
+  grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+  padding: 1rem 0;
+}
+
+.decision-list dt {
+  color: var(--cp-text);
+  font-weight: 700;
+}
+
+.decision-list dt::before {
+  color: var(--cp-accent);
+  content: "✦";
+  margin-right: 0.5rem;
+}
+
+.decision-list dd {
+  color: var(--cp-text-muted);
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .decision-list > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reading text grows with the screen: 16px on phones, about 18px on wide desktops */
+body {
+  font-size: clamp(1rem, 0.85rem + 0.45vw, 1.15rem);
+}
+
+.lede {
+  font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.4rem);
+}
+
+.phone-showcase figcaption,
+.process-shot figcaption {
+  font-size: 0.95rem;
+}
+
+/* Pottery "What it does" on desktop: demo pinned on the left, feature cards on the right */
+@media (min-width: 901px) {
+  .feature-layout {
+    align-items: start;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+
+  .feature-layout .phone-showcase {
+    margin: 0;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .feature-layout .phone-showcase.is-solo .phone-demo {
+    max-width: 280px;
+  }
+
+  .feature-layout .card-grid {
+    gap: 1.25rem;
+  }
+
+  .feature-layout .simple-card {
+    padding-top: 0;
+  }
+}
+
+/* Pottery case study uses more of a wide screen; reading text keeps a comfortable line length */
+@media (min-width: 1100px) {
+  .case-study.wide-case {
+    max-width: 1080px;
+  }
+
+  .wide-case > p,
+  .wide-case .case-disclosure > p {
+    max-width: 860px;
+  }
+
+  .wide-case .feature-layout .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Use more of a large screen: site content and nav up to 1240px wide */
+.nav,
+.section,
+.site-footer {
+  max-width: 1240px;
+}
+
+@media (min-width: 1100px) {
+  .case-study.wide-case {
+    max-width: 1240px;
+  }
+
+  .wide-case .feature-layout {
+    gap: 3rem;
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .wide-case .feature-layout .phone-showcase.is-solo .phone-demo {
+    max-width: 300px;
+  }
+}
+
+/* Feature callouts: no boxes, just a floating screenshot with a title and one line */
+.feature-layout .simple-card {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.feature-layout .simple-card:hover {
+  transform: none;
+}
+
+.feature-layout .feature-shot {
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  margin-bottom: 1rem;
+  max-width: none;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.feature-layout .simple-card:hover .feature-shot {
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+  transform: translateY(-4px);
+}
+
+.feature-layout .simple-card p {
+  color: var(--cp-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-layout .feature-shot {
+    transition: none;
+  }
+
+  .feature-layout .simple-card:hover .feature-shot {
+    transform: none;
+  }
+}
+
+/* Number the decisions 01, 02, ... like the glaze layers in the app, instead of stars */
+.decision-list {
+  counter-reset: decision;
+}
+
+.decision-list > div {
+  counter-increment: decision;
+}
+
+.decision-list dt::before {
+  color: var(--cp-accent);
+  content: counter(decision, decimal-leading-zero);
+  display: inline-block;
+  font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-right: 0.75rem;
+  min-width: 1.6em;
+}
+
+/* Feature callout titles don't need an icon; the screenshot does that job */
+.feature-layout .simple-card .card-icon {
+  display: none;
+}
+
+/* Avoid a single word sitting alone on the last line */
+p,
+li,
+dd,
+figcaption {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+dt {
+  text-wrap: balance;
+}
+
+/* Pottery page: intro and section text stretch with the wider layout */
+.wide-case .lede,
+.wide-case > p,
+.wide-case .case-disclosure > p {
+  max-width: none;
+}
+
+/* Phones: feature callouts become compact rows with a small screenshot on the left */
+@media (max-width: 700px) {
+  .feature-layout .simple-card {
+    align-items: start;
+    column-gap: 0.9rem;
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+  }
+
+  .feature-layout .feature-shot {
+    border-radius: 8px;
+    grid-row: 1 / span 2;
+    margin: 0;
+    width: 112px;
+  }
+
+  .feature-layout .simple-card h3 {
+    margin-bottom: 0.25rem;
+  }
+
+  .feature-layout .simple-card p {
+    margin: 0;
+  }
+}
+
+/* What I learned: a cloud of soft blobs; tap one to open it */
+.lesson-hint {
+  color: var(--cp-text-muted);
+  font-size: 0.9rem;
+}
+
+.lesson-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.lesson-blob {
+  background: color-mix(in srgb, var(--cp-accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cp-accent) 35%, transparent);
+  border-radius: 58% 42% 55% 45% / 48% 58% 42% 52%;
+  color: var(--cp-text);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 1.1rem 1.6rem;
+  transition: background 220ms ease, border-radius 600ms ease, color 220ms ease, transform 220ms ease;
+}
+
+.lesson-blob:nth-child(2) {
+  border-radius: 45% 55% 40% 60% / 60% 42% 58% 40%;
+}
+
+.lesson-blob:nth-child(3) {
+  border-radius: 62% 38% 50% 50% / 42% 55% 45% 58%;
+}
+
+.lesson-blob:nth-child(4) {
+  border-radius: 40% 60% 58% 42% / 55% 45% 55% 45%;
+}
+
+.lesson-blob:hover,
+.lesson-blob:focus-visible {
+  border-radius: 50% 50% 46% 54% / 52% 48% 52% 48%;
+  transform: translateY(-2px) rotate(-1deg);
+}
+
+.lesson-blob[aria-selected="true"] {
+  background: var(--cp-accent);
+  border-color: var(--cp-accent);
+  color: var(--cp-bg);
+}
+
+.lesson-num {
+  font-family: "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.8em;
+  margin-right: 0.35rem;
+  opacity: 0.75;
+}
+
+.lesson-panel {
+  border-left: 3px solid var(--cp-accent);
+  padding-left: 1.25rem;
+}
+
+.lesson-panel h3 {
+  margin-top: 0;
+}
+
+/* Phones: swipe through the blobs sideways */
+@media (max-width: 700px) {
+  .lesson-cloud {
+    flex-wrap: nowrap;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    overflow-x: auto;
+    padding: 0.5rem 1.25rem 0.75rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .lesson-cloud::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lesson-blob {
+    flex: 0 0 auto;
+    max-width: 75%;
+    scroll-snap-align: start;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-blob {
+    transition: none;
+  }
+
+  .lesson-blob:hover,
+  .lesson-blob:focus-visible {
+    transform: none;
+  }
+}
+
+/* Let wide children (like the swipeable lesson row) scroll instead of stretching the page */
+.case-study {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Lesson blobs v2: real organic shapes drawn with an SVG mask */
+.lesson-cloud {
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.lesson-blob,
+.lesson-blob:nth-child(n) {
+  align-items: center;
+  aspect-ratio: 200 / 170;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  display: grid;
+  isolation: isolate;
+  justify-items: center;
+  line-height: 1.25;
+  padding: 1.5rem 1.75rem;
+  position: relative;
+  text-align: center;
+  width: 200px;
+}
+
+.lesson-blob::before {
+  background: color-mix(in srgb, var(--cp-accent) 22%, transparent);
+  content: "";
+  inset: 0;
+  -webkit-mask: var(--blob) center / 100% 100% no-repeat;
+  mask: var(--blob) center / 100% 100% no-repeat;
+  position: absolute;
+  transition: background 220ms ease, transform 450ms cubic-bezier(0.3, 1.4, 0.5, 1);
+  z-index: -1;
+}
+
+.lesson-blob:nth-child(1) {
+  --blob: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 170'%3E%3Cpath d='M193.8 83.9 C192.8 106.7 166.4 137.0 147.2 150.1 C128.1 163.1 99.8 166.3 78.7 162.1 C57.7 157.9 32.2 144.4 21.0 125.0 C9.7 105.5 2.8 63.5 11.1 45.5 C19.4 27.6 47.1 22.6 70.7 17.1 C94.4 11.7 132.4 1.7 152.9 12.9 C173.4 24.0 194.7 61.0 193.8 83.9Z'/%3E%3C/svg%3E");
+}
+
+.lesson-blob:nth-child(2) {
+  --blob: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 170'%3E%3Cpath d='M204.4 96.2 C204.6 115.2 163.2 131.4 142.1 141.7 C120.9 152.0 96.9 162.4 77.6 157.7 C58.4 153.1 37.0 130.4 26.6 113.9 C16.2 97.4 7.7 75.5 15.3 58.6 C23.0 41.7 51.7 17.9 72.5 12.7 C93.3 7.5 118.4 13.5 140.4 27.4 C162.4 41.3 204.1 77.1 204.4 96.2Z'/%3E%3C/svg%3E");
+}
+
+.lesson-blob:nth-child(3) {
+  --blob: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 170'%3E%3Cpath d='M179.9 88.7 C181.6 110.2 179.0 142.0 160.8 153.6 C142.6 165.2 94.1 164.9 70.5 158.3 C46.9 151.8 26.3 131.5 19.1 114.4 C12.0 97.2 17.0 73.2 27.8 55.3 C38.6 37.3 63.5 11.8 84.0 6.7 C104.4 1.5 134.5 10.6 150.5 24.2 C166.5 37.9 178.1 67.1 179.9 88.7Z'/%3E%3C/svg%3E");
+}
+
+.lesson-blob:nth-child(4) {
+  --blob: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 170'%3E%3Cpath d='M180.7 93.4 C180.9 116.3 174.5 135.5 155.8 145.7 C137.2 155.8 92.0 158.5 68.7 154.3 C45.3 150.0 26.4 137.8 15.7 120.4 C5.1 103.0 -7.6 69.6 4.6 50.0 C16.9 30.4 64.1 9.9 89.1 3.0 C114.1 -3.9 139.4 -6.5 154.7 8.6 C170.0 23.7 180.5 70.6 180.7 93.4Z'/%3E%3C/svg%3E");
+}
+
+.lesson-blob:nth-child(2)::before {
+  transform: rotate(-8deg);
+}
+
+.lesson-blob:nth-child(3)::before {
+  transform: rotate(6deg);
+}
+
+.lesson-blob:hover,
+.lesson-blob:focus-visible {
+  transform: none;
+}
+
+.lesson-blob:hover::before,
+.lesson-blob:focus-visible::before {
+  transform: rotate(10deg) scale(1.06);
+}
+
+.lesson-blob[aria-selected="true"] {
+  background: none;
+  color: var(--cp-bg);
+}
+
+.lesson-blob[aria-selected="true"]::before {
+  background: var(--cp-accent);
+}
+
+.lesson-num {
+  display: block;
+  margin: 0 0 0.25rem;
+}
+
+/* Hints: tap on desktop, swipe on phones */
+.hint-phone {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .hint-desktop {
+    display: none;
+  }
+
+  .hint-phone {
+    display: inline;
+  }
+
+  .lesson-blob,
+  .lesson-blob:nth-child(n) {
+    max-width: none;
+    padding: 1.25rem 1.4rem;
+    width: 170px;
+  }
+
+  /* Fade the right edge so it's clear more blobs are off screen */
+  .lesson-cloud {
+    -webkit-mask-image: linear-gradient(to right, #000 78%, transparent);
+    mask-image: linear-gradient(to right, #000 78%, transparent);
+  }
+
+  .lesson-cloud.is-at-end {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-blob::before {
+    transition: none;
+  }
+
+  .lesson-blob:hover::before,
+  .lesson-blob:focus-visible::before {
+    transform: none;
+  }
+}
+
+/* Lesson pots: the app's pottery silhouettes with little faces, one per lesson */
+.lesson-cloud {
+  align-items: start;
+  gap: 1rem 1.5rem;
+}
+
+.lesson-blob,
+.lesson-blob:nth-child(n) {
+  align-content: start;
+  aspect-ratio: auto;
+  gap: 0.4rem;
+  padding: 0.25rem 0.25rem 0.5rem;
+  width: 170px;
+}
+
+.lesson-blob::before {
+  display: none;
+}
+
+.pot-icon {
+  display: block;
+  height: 96px;
+  margin: 0 auto 0.25rem;
+  overflow: visible;
+  transform-origin: 50% 90%;
+  transition: transform 300ms cubic-bezier(0.3, 1.5, 0.5, 1);
+  width: 112px;
+}
+
+.pot-body {
+  fill: color-mix(in srgb, var(--cp-accent) 32%, var(--cp-bg));
+  transition: fill 220ms ease;
+}
+
+.pot-face {
+  fill: var(--cp-bg);
+}
+
+.pot-smile {
+  fill: none;
+  stroke: var(--cp-bg);
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.pot-cheek {
+  fill: #f4a3a3;
+  opacity: 0.55;
+}
+
+.lesson-blob:hover .pot-icon,
+.lesson-blob:focus-visible .pot-icon {
+  animation: pot-wiggle 600ms ease;
+}
+
+@keyframes pot-wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-7deg); }
+  60% { transform: rotate(5deg); }
+}
+
+.lesson-blob[aria-selected="true"] {
+  color: var(--cp-accent);
+}
+
+.lesson-blob[aria-selected="true"] .pot-body {
+  fill: var(--cp-accent);
+}
+
+.lesson-blob[aria-selected="true"] .pot-icon {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.lesson-num {
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .lesson-blob,
+  .lesson-blob:nth-child(n) {
+    padding: 0.25rem 0.25rem 0.5rem;
+    width: 140px;
+  }
+
+  .pot-icon {
+    height: 80px;
+    width: 92px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-blob:hover .pot-icon,
+  .lesson-blob:focus-visible .pot-icon {
+    animation: none;
+  }
+
+  .pot-icon {
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .lesson-cloud {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* Smaller text also grows on wide screens (phones keep their current sizes) */
+h3 {
+  font-size: clamp(1.1rem, 0.95rem + 0.45vw, 1.35rem);
+}
+
+.eyebrow {
+  font-size: clamp(0.78rem, 0.7rem + 0.22vw, 0.92rem);
+}
+
+.snapshot-dashboard-grid span {
+  font-size: clamp(0.72rem, 0.64rem + 0.22vw, 0.86rem);
+}
+
+.pill-list span,
+.agent-flow p {
+  font-size: clamp(0.92rem, 0.82rem + 0.28vw, 1.06rem);
+}
+
+.back-link,
+.lesson-hint {
+  font-size: clamp(0.9rem, 0.82rem + 0.22vw, 1.02rem);
+}
+
+.site-footer {
+  font-size: clamp(0.78rem, 0.7rem + 0.2vw, 0.9rem);
+}
+
+/* Resume Snapshot: bigger text on wide screens, full width, one row of four on desktop */
+.snapshot-summary h2 {
+  font-size: clamp(1.35rem, 1rem + 1.6vw, 2.4rem);
+}
+
+.snapshot-dashboard {
+  max-width: none;
+}
+
+.snapshot-dashboard-grid span {
+  font-size: clamp(0.75rem, 0.62rem + 0.32vw, 0.95rem);
+}
+
+.snapshot-dashboard-grid strong {
+  font-size: clamp(1.05rem, 0.8rem + 0.9vw, 1.5rem);
+}
+
+@media (min-width: 1100px) {
+  .snapshot-dashboard-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Wider screens: spread the four pots evenly across the full width */
+@media (min-width: 701px) {
+  .lesson-cloud {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lesson-blob,
+  .lesson-blob:nth-child(n) {
+    justify-self: center;
+    max-width: 220px;
+    width: 100%;
+  }
+}

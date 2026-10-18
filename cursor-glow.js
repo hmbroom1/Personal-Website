@@ -81,6 +81,171 @@
     });
   };
 
+  // Phone scroll hint on long pages: jumps down a screen, fades once scrolled
+  const isPhone = window.matchMedia("(max-width: 700px)").matches;
+  const pageIsLong = document.documentElement.scrollHeight > window.innerHeight + 120;
+  if (isPhone && pageIsLong) {
+    const scrollHint = document.createElement("button");
+    scrollHint.type = "button";
+    scrollHint.className = "scroll-hint";
+    scrollHint.setAttribute("aria-label", "Scroll down");
+    scrollHint.innerHTML = '<span>Scroll</span><span class="scroll-hint-arrow" aria-hidden="true"></span>';
+    document.body.appendChild(scrollHint);
+
+    scrollHint.addEventListener("click", () => {
+      window.scrollBy({ top: window.innerHeight * 0.8, behavior: reducedMotion ? "auto" : "smooth" });
+    });
+
+    const updateHint = () => {
+      scrollHint.classList.toggle("is-hidden", window.scrollY > 40);
+    };
+    window.addEventListener("scroll", updateHint, { passive: true });
+    updateHint();
+  }
+
+  // Phones: Interests become photo tiles; tap one to open it
+  const interestGrid = document.querySelector(".interest-grid");
+  if (interestGrid) {
+    const phoneQuery = window.matchMedia("(max-width: 700px)");
+    const cards = [...interestGrid.querySelectorAll(".interest-card")];
+
+    // Tapping the open card closes it; tapping another opens it and closes the rest
+    const openCard = (card) => {
+      const closing = card.classList.contains("is-open");
+      cards.forEach((other) => {
+        const isOpen = other === card && !closing;
+        other.classList.toggle("is-open", isOpen);
+        other.setAttribute("aria-expanded", String(isOpen));
+      });
+    };
+
+    const applyStack = () => {
+      const stacked = phoneQuery.matches;
+      interestGrid.classList.toggle("is-stacked", stacked);
+      cards.forEach((card) => {
+        if (stacked) {
+          card.setAttribute("role", "button");
+          card.setAttribute("tabindex", "0");
+        } else {
+          card.removeAttribute("role");
+          card.removeAttribute("tabindex");
+          card.removeAttribute("aria-expanded");
+          card.classList.remove("is-open");
+        }
+      });
+      if (stacked) {
+        cards.forEach((card) => {
+          if (!card.hasAttribute("aria-expanded")) {
+            card.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        if (interestGrid.classList.contains("is-stacked")) {
+          openCard(card);
+        }
+      });
+      card.addEventListener("keydown", (event) => {
+        if (interestGrid.classList.contains("is-stacked") && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          openCard(card);
+        }
+      });
+    });
+
+    phoneQuery.addEventListener("change", applyStack);
+    applyStack();
+  }
+
+  // Lesson blobs: tapping one shows its panel and hides the others
+  document.querySelectorAll(".lesson-cloud").forEach((cloud) => {
+    const blobs = [...cloud.querySelectorAll(".lesson-blob")];
+    const updateEdge = () => {
+      cloud.classList.toggle("is-at-end", cloud.scrollLeft + cloud.clientWidth >= cloud.scrollWidth - 8);
+    };
+    cloud.addEventListener("scroll", updateEdge, { passive: true });
+    window.addEventListener("resize", updateEdge);
+    updateEdge();
+    blobs.forEach((blob) => {
+      blob.addEventListener("click", () => {
+        blobs.forEach((other) => {
+          const isActive = other === blob;
+          other.setAttribute("aria-selected", String(isActive));
+          document.getElementById(other.getAttribute("aria-controls")).hidden = !isActive;
+        });
+        blob.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reducedMotion ? "auto" : "smooth" });
+      });
+    });
+  });
+
+  // Headline word swap: plays once per page per visit.
+  // Markup: <span class="swap-word" data-swap="next|another|final">first</span>
+  const runWordSwap = (word, words) => {
+    let index = 0;
+
+    // Hold the headline at the height of its tallest version so the page never jumps
+    const heading = word.closest("h1, h2") || word.parentElement;
+    const original = word.textContent;
+    let tallest = heading.getBoundingClientRect().height;
+    words.forEach((text, i) => {
+      word.classList.toggle("is-final", i === words.length - 1);
+      word.textContent = text;
+      tallest = Math.max(tallest, heading.getBoundingClientRect().height);
+    });
+    word.classList.remove("is-final");
+    word.textContent = original;
+    heading.style.minHeight = `${Math.ceil(tallest)}px`;
+
+    const showNext = () => {
+      word.classList.add("is-leaving");
+      window.setTimeout(() => {
+        if (index === words.length - 1) {
+          word.classList.add("is-final");
+        }
+        word.textContent = words[index];
+        word.classList.remove("is-leaving");
+        word.classList.add("is-entering");
+        void word.offsetWidth;
+        word.classList.remove("is-entering");
+        index += 1;
+        if (index < words.length) {
+          window.setTimeout(showNext, 1100);
+        } else {
+          window.setTimeout(() => word.classList.add("is-settled"), 900);
+          // Keep the reserved height so nothing shifts at the end; let it reflow if the window resizes
+          window.addEventListener("resize", () => {
+            heading.style.minHeight = "";
+          }, { once: true });
+        }
+      }, 260);
+    };
+
+    word.classList.add("is-highlighted");
+    window.setTimeout(showNext, 1400);
+  };
+
+  document.querySelectorAll("[data-swap]").forEach((word) => {
+    const words = word.dataset.swap.split("|");
+    const key = `wordSwap:${window.location.pathname}`;
+    let alreadySwapped = false;
+    try {
+      alreadySwapped = sessionStorage.getItem(key) === "yes";
+      sessionStorage.setItem(key, "yes");
+    } catch (error) {
+      alreadySwapped = false;
+    }
+
+    if (reducedMotion) {
+      word.classList.add("is-final");
+      word.textContent = words[words.length - 1];
+    } else if (!alreadySwapped) {
+      runWordSwap(word, words);
+    }
+  });
+
   brands.forEach((brand) => {
     brand.addEventListener("pointerenter", () => {
       if (!coarsePointer) {
